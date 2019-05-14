@@ -1,5 +1,5 @@
 public class AnxiousAlex {
   public static void main (String [] main){
-    System.out.println ("Hello");
+    mainMenu m = new mainMenu ();
   }
 }
