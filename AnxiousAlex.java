@@ -6,7 +6,7 @@ public class AnxiousAlex {
     LevelOne l1 = new LevelOne();
     JFrame frame = new JFrame ("Test");
     frame.add(new LevelOne ());
-    frame.setSize (800,550);
+    frame.setSize (1000,700);
     frame.setVisible (true);
   }
 }

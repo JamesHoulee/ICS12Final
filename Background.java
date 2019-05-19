@@ -7,17 +7,14 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 import java.io.File;
 
-/**
- * 
- */
-public class DrawSprite extends JLabel {
+public class Background extends JLabel {
   
   private int imageWidth, imageHeight;
   private SpringLayout layout;
-  BufferedImage fluff;
-  JLabel fluffLabel;
+  BufferedImage background;
+  JLabel backgroundLabel;
   
-  public DrawSprite (String img, int imgWidth, int imgHeight){
+  public Background (String img, int imgWidth, int imgHeight){
     
     imageWidth = imgWidth;
     imageHeight = imgHeight;
@@ -28,9 +25,9 @@ public class DrawSprite extends JLabel {
     setVisible (true);  
     
     try{
-      fluff = ImageIO.read (new File (img));
-      fluffLabel = new JLabel (new ImageIcon (fluff));
-      add (fluffLabel);
+      background = ImageIO.read (new File (img));
+      backgroundLabel = new JLabel (new ImageIcon (background));
+      add (backgroundLabel);
     }
     catch (IOException e){}
   } 
@@ -41,3 +38,6 @@ public class DrawSprite extends JLabel {
     return new Dimension(imageWidth,imageHeight);
   }
 }
+
+
+

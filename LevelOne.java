@@ -5,13 +5,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 import java.awt.Graphics;
-import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.SpringLayout;
 
 public class LevelOne extends JPanel implements ActionListener, KeyListener {
-  
-  DrawSprite sprite = new DrawSprite (Color.BLACK);
+   
+  DrawSprite sprite = new DrawSprite ("Button8.png",350,100);
+  Background background = new Background ("Untitled2.png",2000,700);
   SpringLayout layout;
   
   Timer timer = new Timer(5,this);
@@ -33,9 +33,13 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     layout.putConstraint (layout.WEST, sprite, 100, layout.WEST, this);
     layout.putConstraint (layout.NORTH, sprite, 300, layout.NORTH, this);
     add (sprite);
+    
+    layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
+    layout.putConstraint (layout.NORTH, background, 0, layout.NORTH, this);
+    add (background);
   }
   
-  @Override
+ /* @Override
   public void paintComponent (Graphics g){
     super.paintComponent (g);
     g.setColor (Color.RED);
@@ -45,10 +49,8 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     g.setColor (Color.LIGHT_GRAY);
     g.fillRect (-x,0,1000,450);
     g.setColor (Color.DARK_GRAY);
-    g.fillRect (-x + 1000, 0, 1000, 450);
-    
-
-  }
+    g.fillRect (-x + 1000, 0, 1000, 450); 
+  }*/
   
   public void actionPerformed (ActionEvent e){
     if (x < 0){
@@ -80,6 +82,9 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     layout.putConstraint (layout.NORTH, sprite, 300+y, layout.NORTH, this);
     layout.putConstraint (layout.WEST, sprite, 100, layout.WEST, this);
     
+    layout.putConstraint (layout.WEST, background, 0-x, layout.WEST, this);
+    layout.putConstraint (layout.NORTH, background, 0, layout.NORTH, this);
+    
     refresh();
   }
   
@@ -99,13 +104,13 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   public void keyPressed (KeyEvent e){
     int c = e.getKeyCode();
     
-    if (c == KeyEvent.VK_LEFT) {
+    if (c == KeyEvent.VK_LEFT || c == KeyEvent.VK_A) {
       dx = -3;
     }
-    if (c == KeyEvent.VK_RIGHT){
+    if (c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D){
       dx = 3;
     }
-    if (c == KeyEvent.VK_UP && y == 0){
+    if ((c == KeyEvent.VK_UP || c == KeyEvent.VK_W )&& y == 0 ){
       dy = -2;
       update();
     }
