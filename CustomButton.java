@@ -14,7 +14,23 @@ public class CustomButton extends JButton implements MouseListener {
   int xLocation, yLocation;
   Dimension size = new Dimension(250, 150); // the size of the rectangle
   
-  public CustomButton(String text, int sizeX, int sizeY, int xLocation, int yLocation) {
+  private int path = 0;
+  
+  public CustomButton (String text, int sizeX, int sizeY){
+    setVisible(true);
+    setFocusable(true);
+    setContentAreaFilled(false);
+    setBorderPainted(false);
+    
+    this.text = text;
+    this.sizeX = sizeX;
+    this.sizeY = sizeY;
+    
+    addMouseListener(this);
+  }
+    
+  
+ /* public CustomButton(String text, int sizeX, int sizeY, int xLocation, int yLocation) {
     setVisible(true);
     setFocusable(true);
     setContentAreaFilled(false);
@@ -27,7 +43,7 @@ public class CustomButton extends JButton implements MouseListener {
     this.yLocation = yLocation;
     
     addMouseListener(this);
-  }
+  } */
   
   @Override
   public void paintComponent(Graphics g) {
@@ -107,9 +123,12 @@ public class CustomButton extends JButton implements MouseListener {
   
   @Override
   public void mouseClicked(MouseEvent e) {
-    JFrame frame = new JFrame ();
-    frame.add (new LevelOne ());
-    frame.setVisible (true);
-    frame.setSize (1000,700);
+    if (text.equals ("Play")){
+      path = 1;
+    }
+  }
+  
+  public int getPath (){
+    return path;
   }
 }

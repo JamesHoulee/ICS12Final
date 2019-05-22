@@ -42,19 +42,6 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     add (background);
   }
   
- /* @Override
-  public void paintComponent (Graphics g){
-    super.paintComponent (g);
-    g.setColor (Color.RED);
-    g.fillRect (-x, 450, 1000,100);
-    g.setColor (Color.blue);
-    g.fillRect (-x+1000,450,1000,100);
-    g.setColor (Color.LIGHT_GRAY);
-    g.fillRect (-x,0,1000,450);
-    g.setColor (Color.DARK_GRAY);
-    g.fillRect (-x + 1000, 0, 1000, 450); 
-  }*/
-  
   public void actionPerformed (ActionEvent e){
     if (x < 0){
       dx = 0;
@@ -95,11 +82,6 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       repaint ();
       revalidate ();
     }
-  
-  @Override
-  /*public Dimension getPreferredSize() {
-    return new Dimension(20 + 2 * x, 20 + 2 * y);
-  }*/
   
   /**
    * @source https://www.youtube.com/watch?v=Km81XyczqC4
