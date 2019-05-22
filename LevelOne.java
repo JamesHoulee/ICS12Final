@@ -10,14 +10,17 @@ import javax.swing.SpringLayout;
 
 public class LevelOne extends JPanel implements ActionListener, KeyListener {
    
-  DrawSprite sprite = new DrawSprite ("Button8.png",350,100);
-  Background background = new Background ("Untitled2.png",2000,700);
+  Images sprite;
+  Images background;
   SpringLayout layout;
   
   Timer timer = new Timer(5,this);
   int x = 0, y = 0, dx = 0, dy = 0;
   
   public LevelOne (){
+    
+    sprite = new Images ("Button8.png",350,100);
+    background = new Images ("Untitled2.png",2000,700);
     
     //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
     timer.start ();
