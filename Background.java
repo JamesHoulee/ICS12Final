@@ -6,7 +6,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 import java.io.File;
-
+/**
+ * 
+ */
 public class Background extends JLabel {
   
   private int imageWidth, imageHeight;

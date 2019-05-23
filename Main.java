@@ -1,6 +1,9 @@
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
+/**
+ * 
+ */
 public class Main extends JPanel {
   
   Images background;

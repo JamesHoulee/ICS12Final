@@ -2,8 +2,11 @@ import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
-
 import javax.swing.JFrame;
+
+/**
+ * 
+ */
 
 public class CustomButton extends JButton implements MouseListener {
   
@@ -49,15 +52,15 @@ public class CustomButton extends JButton implements MouseListener {
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     if (click) {
-      g.setColor(Color.GREEN);
+      g.setColor(new Color (217,217,219));
       g.fillRect(xLocation, yLocation, sizeX, sizeY);
       
     } else if (hover) {
-      g.setColor(Color.BLUE);
+      g.setColor(new Color (143,144,145));
       g.fillRect(xLocation, yLocation, sizeX, sizeY);
       
     } else if (!hover) {
-      g.setColor(Color.RED);
+      g.setColor(new Color (177,178,181));
       g.fillRect(xLocation, yLocation, sizeX, sizeY);
       
     } else {
@@ -130,5 +133,9 @@ public class CustomButton extends JButton implements MouseListener {
   
   public int getPath (){
     return path;
+    JFrame frame = new JFrame ();
+    frame.add (new LevelOne ());
+    frame.setVisible (true);
+    frame.setSize (1000,750);
   }
 }
