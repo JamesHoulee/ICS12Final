@@ -31,7 +31,7 @@ public class Main extends JPanel {
     add(button2);
     add(button3);
     
-     background = new Images ("TheAnxiousLifeOfAlexBackground.png",1000,750);
+    background = new Images ("TheAnxiousLifeOfAlexBackground.png",1000,750);
     
     layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
     layout.putConstraint (layout.NORTH, background, 0, layout.NORTH, this);
