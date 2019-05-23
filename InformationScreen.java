@@ -13,12 +13,13 @@ public class InformationScreen extends JPanel{
     public InformationScreen (){
         setSize(1000,750); 
         setVisible (true); 
-        CustomButton = new CustomButton ("Back", 250, 150, 10, 10); 
-    }    
+        button = new CustomButton ("Back", 250, 150); 
+    }  
+    /*
     public void paintComponent (Graphics g){
         g.setColor(Color.BLACK); 
         g.setFont (Font.decode ("arial-BOLD-24")); 
         g.drawString ("Just Testing", 100,100); 
-    }
+    }*/
 
 }

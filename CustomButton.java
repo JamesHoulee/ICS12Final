@@ -15,7 +15,6 @@ public class CustomButton extends JButton implements MouseListener {
   private String text = "";
   int sizeX, sizeY;
   int xLocation, yLocation;
-  Dimension size = new Dimension(250, 150); // the size of the rectangle
   
   private int path = 0;
   
@@ -82,10 +81,10 @@ public class CustomButton extends JButton implements MouseListener {
   
   @Override
   public Dimension getPreferredSize() {
-    return size;
+    return new Dimension (sizeX, sizeY);
   }
   
-  @Override
+ /* @Override
   public Dimension getMaximumSize() {
     return size;
   }
@@ -93,7 +92,7 @@ public class CustomButton extends JButton implements MouseListener {
   @Override
   public Dimension getMinimumSize() {
     return size;
-  }
+  } */
   
   public void setButtonText(String text) {
     this.text = text;
@@ -129,13 +128,13 @@ public class CustomButton extends JButton implements MouseListener {
     if (text.equals ("Play")){
       path = 1;
     }
+    if (text.equals ("Instructions")){
+      path = 2;
+    }
   }
+  
   
   public int getPath (){
     return path;
-    JFrame frame = new JFrame ();
-    frame.add (new LevelOne ());
-    frame.setVisible (true);
-    frame.setSize (1000,750);
   }
 }

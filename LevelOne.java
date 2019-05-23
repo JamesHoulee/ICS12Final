@@ -13,6 +13,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   Images sprite;
   Images background;
   SpringLayout layout;
+  Images brotherSprite;
   
   Timer timer = new Timer(5,this);
   int x = 0, y = 0, dx = 0, dy = 0;
@@ -21,6 +22,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     
     sprite = new Images ("AlexSmile.png",200,200);
     background = new Images ("BackgroundVersion1.png",8000,750);
+    brotherSprite = new Images ("BigBrother.png",210,200);
     
     //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
     timer.start ();
@@ -36,6 +38,10 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     layout.putConstraint (layout.EAST, sprite, 250, layout.WEST, this);
     layout.putConstraint (layout.NORTH, sprite, 450, layout.NORTH, this);
     add (sprite);
+    
+    layout.putConstraint (layout.WEST, brotherSprite, 790, layout.WEST, background);
+    layout.putConstraint (layout.NORTH, brotherSprite, 420, layout.NORTH, this);
+    add (brotherSprite);
     
     layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
     layout.putConstraint (layout.NORTH, background, 0, layout.NORTH, this);
