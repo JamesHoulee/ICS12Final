@@ -1,51 +1,61 @@
 import javax.swing.JFrame;
 
-public class AnxiousAlex extends JFrame {
+public class AnxiousAlex {
   
   JFrame frame;
   Main mainMenu;
   LevelOne levelOne;
   InformationScreen infoScreen;
   
-  boolean check;
+  JFrame mainMenuFrame;
+  JFrame levelOneFrame;
+  JFrame infoScreenFrame;
   
   public AnxiousAlex (){
     
     mainMenu = new Main ();
-    check = true;
     
-    add (mainMenu);
-    setSize (1000,750);
-    setVisible (true);
-    setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
+    levelOneFrame = new JFrame ("Level One");
+    infoScreenFrame = new JFrame ("Info Screen");
     
-    while (check){
+    while (true){
       checkPath ();
     }
   }
   
   public void checkPath (){
     if (mainMenu.button.getPath () == 1){
-      JFrame frame = new JFrame ("Level One");
+      levelOneFrame = new JFrame ("Level One");
       
       levelOne = new LevelOne ();
-      frame.add (levelOne);
-      frame.setSize (1000,750);
-      frame.setVisible (true);
-      frame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
-      this.dispose ();
-      check = false;
+      levelOneFrame.add (levelOne);
+      levelOneFrame.setSize (1000,750);
+      levelOneFrame.setVisible (true);
+      levelOneFrame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
+      mainMenuFrame.dispose ();
+      mainMenu.button.setPath (0);
     }
-    else if (mainMenu.button2.getPath () == 2){
-      JFrame frame = new JFrame ("Instructions");
+    else if (mainMenu.button.getPath () == 2){
+      infoScreenFrame = new JFrame ("Instructions");
       
       infoScreen = new InformationScreen ();
-      frame.add (infoScreen);
-      frame.setSize (1000,750);
-      frame.setVisible (true);
-      frame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
-      this.dispose ();
-      check = false;
+      infoScreenFrame.add (infoScreen);
+      infoScreenFrame.setSize (1000,750);
+      infoScreenFrame.setVisible (true);
+      infoScreenFrame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
+      mainMenuFrame.dispose ();
+      mainMenu.button.setPath (0);
+    }
+    else if (mainMenu.button.getPath () == -999){
+      mainMenuFrame = new JFrame ("The Anxious Life Of Alex Joe");
+      
+      mainMenuFrame.add (mainMenu);
+      mainMenuFrame.setSize (1000,750);
+      mainMenuFrame.setVisible (true);
+      mainMenuFrame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
+      levelOneFrame.dispose ();
+      infoScreenFrame.dispose ();
+      mainMenu.button.setPath (0);
     }
     else
       System.out.print ("");

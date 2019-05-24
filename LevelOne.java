@@ -13,14 +13,20 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   SpringLayout layout;
   Images brotherSprite;
   
+  MenuButton menuButton;
+  AnxietyBar anxietyBar;
+  
   Timer timer = new Timer(5,this);
-  int x = 0, y = 0, dx = 0, dy = 0;
+  private int x = 0, y = 0, dx = 0, dy = 0;
   
   public LevelOne (){
     
     sprite = new Images ("AlexSmile.png",200,200);
     background = new Images ("BackgroundVersion1.png",8000,750);
     brotherSprite = new Images ("BigBrother.png",210,200);
+    
+    menuButton = new MenuButton (135,40);
+    anxietyBar = new AnxietyBar (0);
     
     //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
     timer.start ();
@@ -41,6 +47,14 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     layout.putConstraint (layout.NORTH, brotherSprite, 420, layout.NORTH, this);
     add (brotherSprite);
     
+    layout.putConstraint (layout.EAST, menuButton, 25, layout.EAST, this);
+    layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
+    add (menuButton);
+    
+    layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
+    layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
+    add (anxietyBar);
+    
     layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
     layout.putConstraint (layout.NORTH, background, 0, layout.NORTH, this);
     add (background);
@@ -58,7 +72,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     }
     
     //defines the movement of the jump pre/post stairs
-    if (x < 1075 || x > 4155){
+    if (x <= 1075 || x > 4155){
       if (dy == -2 && y < -200){
         dy = 2;
         y = -200;
@@ -129,7 +143,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     }
     //top
     if (x>1360 && x <3870){
-      if (y == -270){
+      if (y == -270 && x < 3800){
         dx = 0;
         x = 1360;
       }
@@ -150,7 +164,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     
     //going down the stairs
     //first step
-    if (x > 3870 && x < 3965){
+    if (x >= 3870 && x < 3965){
       y = -270;
     }
     if (x > 3965 && x < 4060){
@@ -189,10 +203,10 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   public void keyPressed (KeyEvent e){
     int c = e.getKeyCode();
     
-    if (c == KeyEvent.VK_LEFT || c == KeyEvent.VK_A) {
+    if ((c == KeyEvent.VK_LEFT || c == KeyEvent.VK_A) && dy == 0) {
       dx = -3;
     }
-    if (c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D){
+    if ((c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D) && dy ==0){
       dx = 3;
     }
     if ((c == KeyEvent.VK_UP || c == KeyEvent.VK_W )&& (y == 0 || y == -90 || y == -180 || y == -270 || y == - 360)){

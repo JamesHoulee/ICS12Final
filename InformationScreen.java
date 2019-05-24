@@ -7,13 +7,18 @@ import javax.swing.JPanel;
 
 public class InformationScreen extends JPanel{
 
-    CustomButton button; 
+    MenuButton button; 
     private String text = "";
 
     public InformationScreen (){
         setSize(1000,750); 
         setVisible (true); 
-        button = new CustomButton ("Back", 250, 150); 
+        
+        //added by james for proof of concept
+        button = new MenuButton (100,100);
+        add (button);
+        
+        //button = new CustomButton ("Back", 250, 150); 
     }  
     /*
     public void paintComponent (Graphics g){

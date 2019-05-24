@@ -6,14 +6,14 @@ import javax.swing.JButton;
 /**
  * 
  */
-public class CustomButton extends JButton implements MouseListener {
+public abstract class CustomButton extends JButton implements MouseListener {
   
   private boolean hover = false;
   private boolean click = false;
   private String text = "";
   private int sizeX, sizeY;
   
-  private int path = 0;
+  private static int path = -999;
   
   public CustomButton (String text, int sizeX, int sizeY){
     setVisible(true);
@@ -95,5 +95,8 @@ public class CustomButton extends JButton implements MouseListener {
   
   public int getPath (){
     return path;
+  }
+  public void setPath (int newPath){
+    path = newPath;
   }
 }

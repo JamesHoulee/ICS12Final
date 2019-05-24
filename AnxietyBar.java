@@ -16,7 +16,7 @@ public class AnxietyBar extends JPanel{
   @Override
   public Dimension getPreferredSize() {
     // so that our GUI is big enough
-    return new Dimension(135,40);
+    return new Dimension(136,41);
   }
     
   @Override
