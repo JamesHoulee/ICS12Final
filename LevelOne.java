@@ -16,9 +16,13 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   MenuButton menuButton;
   AnxietyBar anxietyBar;
   
+  int animationNum = 0;
+  
   Timer timer = new Timer(5,this);
   private int x = 0, y = 0, dx = 0, dy = 0;
   private int anxietyPercent = 0;
+  
+  private int bigBroX = 790, bigBroY = 405;
   
   public LevelOne (){
     
@@ -45,7 +49,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     add (sprite);
     
     layout.putConstraint (layout.WEST, brotherSprite, 790, layout.WEST, background);
-    layout.putConstraint (layout.NORTH, brotherSprite, 420, layout.NORTH, this);
+    layout.putConstraint (layout.NORTH, brotherSprite, 405, layout.NORTH, this);
     add (brotherSprite);
     
     layout.putConstraint (layout.EAST, menuButton, 25, layout.EAST, this);
@@ -175,14 +179,31 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       y = -90;
     }
     
-    boolean check1 = false;
+    
     //Anxiety bar updates
+    boolean check1 = false;
     if (x >= 3000 && check1 == false){
       anxietyBar.setPercent (15);
     }
     if (x >= 4000){ //this is being used as a proof of concept
       anxietyBar.setPercent (60);
       check1 = true; //this line must be used to prevent the anxiety bar from reverting just because the player goes backwards
+    }
+    
+    //moving big bro
+    
+    if (x >= 500)
+      animationNum = 1;
+    if (animationNum == 1){
+      if (bigBroX < 1125)
+        bigBroX+=3;
+      if (bigBroX >= 1125 && bigBroX < 1600 && bigBroY > 80 ){
+        bigBroX +=2;
+        bigBroY -=2;
+      }
+      if (bigBroX < 1800 && bigBroY <= 80){
+        bigBroX +=3;
+      }
     }
     
     update();
@@ -194,7 +215,6 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   
   public void update (){
     
-    
     layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
     layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
     
@@ -204,7 +224,8 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     layout.putConstraint (layout.WEST, background, 0-x, layout.WEST, this);
     layout.putConstraint (layout.NORTH, background, 0, layout.NORTH, this);
     
-    
+    layout.putConstraint (layout.WEST, brotherSprite, bigBroX, layout.WEST, background);
+      layout.putConstraint (layout.NORTH, brotherSprite, bigBroY, layout.NORTH, this);
     
     refresh();
   }
