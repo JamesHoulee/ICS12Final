@@ -18,6 +18,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   
   Timer timer = new Timer(5,this);
   private int x = 0, y = 0, dx = 0, dy = 0;
+  private int anxietyPercent = 0;
   
   public LevelOne (){
     
@@ -174,6 +175,15 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       y = -90;
     }
     
+    boolean check1 = false;
+    //Anxiety bar updates
+    if (x >= 3000 && check1 == false){
+      anxietyBar.setPercent (15);
+    }
+    if (x >= 4000){ //this is being used as a proof of concept
+      anxietyBar.setPercent (60);
+      check1 = true; //this line must be used to prevent the anxiety bar from reverting just because the player goes backwards
+    }
     
     update();
     
@@ -183,11 +193,18 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   }
   
   public void update (){
+    
+    
+    layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
+    layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
+    
     layout.putConstraint (layout.NORTH, sprite, 450+y, layout.NORTH, this);
     layout.putConstraint (layout.EAST, sprite, 250, layout.WEST, this);
     
     layout.putConstraint (layout.WEST, background, 0-x, layout.WEST, this);
     layout.putConstraint (layout.NORTH, background, 0, layout.NORTH, this);
+    
+    
     
     refresh();
   }

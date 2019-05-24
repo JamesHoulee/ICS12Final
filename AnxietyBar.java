@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 public class AnxietyBar extends JPanel{
   
-  private int anxietyPercent;
+  private static int anxietyPercent;
   
   public AnxietyBar (int percent){
     anxietyPercent = percent;
@@ -26,10 +26,7 @@ public class AnxietyBar extends JPanel{
     g.fillRect (1,1,134*anxietyPercent/100,39);
   }
   
-  public static void main (String [] args){
-    JFrame frame = new JFrame ();
-    frame.add (new AnxietyBar (50));
-    frame.setSize (1000,750);
-    frame.setVisible (true);
+  public void setPercent (int percent){
+    anxietyPercent = percent;
   }
 }
