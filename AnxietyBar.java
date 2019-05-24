@@ -3,8 +3,6 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import javax.swing.JFrame;
-
 public class AnxietyBar extends JPanel{
   
   private int anxietyPercent;

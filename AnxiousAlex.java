@@ -57,6 +57,9 @@ public class AnxiousAlex {
       infoScreenFrame.dispose ();
       mainMenu.button.setPath (0);
     }
+    else if (mainMenu.button.getPath () == 3){
+      System.exit(0);
+    }
     else
       System.out.print ("");
   }
