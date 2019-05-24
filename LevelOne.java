@@ -191,7 +191,6 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     }
     
     //moving big bro
-    
     if (x >= 500)
       animationNum = 1;
     if (animationNum == 1){
