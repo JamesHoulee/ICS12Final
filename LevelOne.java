@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import javax.swing.Timer;
-import java.awt.Graphics;
-import java.awt.Color;
 import javax.swing.SpringLayout;
 
 public class LevelOne extends JPanel implements ActionListener, KeyListener {

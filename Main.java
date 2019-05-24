@@ -7,8 +7,8 @@ import javax.swing.SpringLayout;
 public class Main extends JPanel {
   
   Images background;
-  CustomButton button;
-  CustomButton button2;
+  PlayButton button;
+  InfoButton button2;
   CustomButton button3;
   SpringLayout layout;
   
@@ -17,8 +17,8 @@ public class Main extends JPanel {
     layout = new SpringLayout ();
     setLayout (layout);
     
-    button = new CustomButton("Play", 250, 150);
-    button2 = new CustomButton("Instructions", 250, 150);
+    button = new PlayButton(250, 150);
+    button2 = new InfoButton(250, 150);
     button3 = new CustomButton("Quit", 250, 150);
     
     layout.putConstraint (layout.WEST, button, 338, layout.WEST, this);
