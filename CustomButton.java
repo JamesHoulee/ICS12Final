@@ -37,19 +37,16 @@ public abstract class CustomButton extends JButton implements MouseListener {
       g.setColor(new Color (143,144,145));
       g.fillRect(0, 0, sizeX, sizeY);
     }
-    else if (!hover) {
+    else {
       g.setColor(new Color (177,178,181));
       g.fillRect(0, 0, sizeX, sizeY);
     }
-    else {
-      g.setColor(Color.YELLOW);
-      g.fillRect(0, 0, sizeX, sizeY); 
-    }
+    
     g.setColor(Color.WHITE);
     g.setFont(Font.decode("arial-BOLD-24"));
     FontMetrics metrics = g.getFontMetrics();
     int width = metrics.stringWidth(text);
-    g.drawString(text, 125 - width / 2, 85); // xSize/2 , size/2
+    g.drawString(text, sizeX/2 - width / 2, 85); // xSize/2 , size/2
   } 
   
   public void redraw() {

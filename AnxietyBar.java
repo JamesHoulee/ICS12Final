@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 public class AnxietyBar extends JPanel{
   
-  private static int anxietyPercent;
+  private int anxietyPercent;
   
   public AnxietyBar (int percent){
     anxietyPercent = percent;

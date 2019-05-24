@@ -240,10 +240,10 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   public void keyPressed (KeyEvent e){
     int c = e.getKeyCode();
     
-    if ((c == KeyEvent.VK_LEFT || c == KeyEvent.VK_A) && dy == 0) {
+    if (c == KeyEvent.VK_LEFT || c == KeyEvent.VK_A) {
       dx = -3;
     }
-    if ((c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D) && dy ==0){
+    if (c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D){
       dx = 3;
     }
     if ((c == KeyEvent.VK_UP || c == KeyEvent.VK_W )&& (y == 0 || y == -90 || y == -180 || y == -270 || y == - 360)){
