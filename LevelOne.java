@@ -77,7 +77,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     }
     
     //defines the movement of the jump pre/post stairs
-    if (x <= 1075 || x > 4155){
+    if (x <= 1075 || x >= 4155){
       if (dy == -2 && y < -200){
         dy = 2;
         y = -200;
@@ -170,19 +170,67 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     //going down the stairs
     //first step
     if (x >= 3870 && x < 3965){
-      y = -270;
+      if (y == -270 && dy != -2 && x < 3880 && dx == -3){
+        x = 3870;
+        dx = 0;
+      }
+      if (dy == -2 && y < -470){
+        dy = 2;
+        y = -470;
+      }
+      if (dy == 2 && y > -270){
+        dy = 0;
+        y = -270;
+        dx = 0;
+      }
+      if (dy == 0)
+        y = -270; 
     }
-    if (x > 3965 && x < 4060){
-      y = -180;
+    //second step
+    if (x >= 3965 && x < 4060){
+      if (y == -180 && dy != -2 && x < 3975 && dx == -3){
+        x = 3965;
+        dx = 0;
+      }
+      if (dy == -2 && y < -380){
+        dy = 2;
+        y = -380;
+      }
+      if (dy == 2 && y > -180){
+        dy = 0;
+        y = -180;
+        dx = 0;
+      }
+      if (dy == 0)
+        y = -180;
     }
-    if (x > 4065 && x < 4155){
-      y = -90;
+    //third step
+    if (x >= 4065 && x < 4155){
+      if (y == -90 && dy != -2 && x < 4075 && dx == -3){
+        x = 4065;
+        dx = 0;
+      }
+      if (dy == -2 && y < -290){
+        dy = 2;
+        y = -290;
+      }
+      if (dy == 2 && y > -90){
+        dy = 0;
+        y = -90;
+        dx = 0;
+      }
+      if (dy == 0)
+        y = -90;
     }
-    
+    //bottom
+    if (y == 0 && dy != -2 && x >= 4155 && x <4165 && dx == -3){
+      x = 4155;
+      dx = 0;
+    }
     
     //Anxiety bar updates
     boolean check1 = false;
-    if (x >= 3000 && check1 == false){
+    if (x >= 2000 && check1 == false){
       anxietyBar.setPercent (15);
     }
     if (x >= 4000){ //this is being used as a proof of concept
@@ -191,8 +239,13 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     }
     
     //moving big bro
-    if (x >= 500)
+    if (x >= 500 && x <1350)
       animationNum = 1;
+    else if (x >= 1350)
+      animationNum = 2;
+    else 
+      animationNum = 0;
+    
     if (animationNum == 1){
       if (bigBroX < 1125)
         bigBroX+=3;
@@ -204,6 +257,11 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
         bigBroX +=3;
       }
     }
+    if (animationNum == 2){
+      if (bigBroX < 3000)
+        bigBroX += 3;
+    }
+    
     
     update();
     
@@ -264,4 +322,9 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       dx = 0;
   }
   
+  
+  //temp
+  public static void main (String [] args){
+    new AnxiousAlex ();
+  }
 }
