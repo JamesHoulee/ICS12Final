@@ -6,7 +6,7 @@ import javax.swing.JButton;
 /**
  * 
  */
-public abstract class CustomButton extends JButton implements MouseListener {
+public class CustomButton extends JButton implements MouseListener {
   
   private boolean hover = false;
   private boolean click = false;
@@ -90,7 +90,7 @@ public abstract class CustomButton extends JButton implements MouseListener {
   @Override
   public void mouseClicked(MouseEvent e) {}
   
-  public int getPath (){
+  public static int getPath (){
     return path;
   }
   public void setPath (int newPath){
