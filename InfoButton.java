@@ -3,7 +3,7 @@ import java.awt.event.MouseEvent;
 /**
  * The InfoButton class is a subclass of CustomButton. This class creates a button
  * with specified dimensions and a set label of "Instructions". It also overrides
- * the moouseClicked method to set the path variable to equal 2.
+ * the mouseClicked method to set the path variable to equal 2.
  * 
  * @author James Houle and Juan Diego Castano
  * @version 1 05.28.19

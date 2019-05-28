@@ -6,31 +6,105 @@ import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 import javax.swing.SpringLayout;
 
+/**
+ * The LevelOne class is a subclass of JPanel and implements both ActionListener and KeyListener. 
+ * This class defines the progression of the first level of the game. The controls a character
+ * who moves across a background (the background moves behind the player) while they learn how to play 
+ * the game. The class defines boundaries in which that player cannot move through and the player can 
+ * trigger certain events like the movement of a non-player character or the changing of the main
+ * character's anxiety level when the player reaches specific points in the game. 
+ * 
+ * <p>
+ * <b>Instance Variables: </b>
+ * <p>
+ * <b>sprite </b> This variable holds the information of an Images object representing the player's
+ *                sprite
+ * <p>
+ * <b>background </b> This variable holds the information of an Images object representing the level's
+ *                background
+ * <p>
+ * <b>brotherSprite </b> This variable holds the information of and Images object representing the sprite 
+ *                       of the character's big brother 
+ * <p>
+ * <b>layout </b> This variable holds the information of a SpringLayout object for the layout of the JPanel
+ * <p>
+ * <b>menuButton </b> This variable holds the information of a MenuButton object that will display a 
+ *                    button that allows the player to go back to the main menu.
+ * <p>
+ * <b>anxietyBar </b> This variable holds the information of an Anxietybar object that will display an
+ *                    anxiety bar on the screen.
+ * <p>
+ * <b>animationNum </b> This variable keeps track of what animation will be performed next on screen
+ * <p>
+ * <b>timer </b> This variable holds the information of a Timer object 
+ * <p>
+ * <b>x </b> This variable contains the x value of the player's character relative to it's starting point
+ * <p>
+ * <b>y </b> This variable contains the y value of the player's character relative to it's starting point
+ * <p>
+ * <b>dx </b> This variable contains the speed of the player's character in the horizontal directions
+ * <p>
+ * <b>dy </b> This variable contains the speed of the player's character in the vertical direction 
+ * <p>
+ * <b>anxietyPercent </b> This varibale contains the percent of the character's anxiety from 0 to 100
+ * <p>
+ * <b>bigBroX </b> This variable contains the x value of the big brother character relative to the background
+ * <p>
+ * <b>bigBroY </b> This variable contains the y value of the big brother character relative to the background
+ * <p>
+ * 
+ * @author James Houle and Juan Diego Castano
+ * @version 3 05.28.19
+ */
 public class LevelOne extends JPanel implements ActionListener, KeyListener {
    
   Images sprite;
   Images background;
-  SpringLayout layout;
   Images brotherSprite;
+  SpringLayout layout;
   
   MenuButton menuButton;
   AnxietyBar anxietyBar;
   
   int animationNum = 0;
   
+  /**
+   * This instantiates a new timer object with parameters 5 and <b>this</b>
+   */
   Timer timer = new Timer(5,this);
   private int x = 0, y = 0, dx = 0, dy = 0;
   private int anxietyPercent = 0;
   
   private int bigBroX = 790, bigBroY = 405;
   
+  /**
+   * This is the constructor for the LevelOne Class. This class instatiates all the required images
+   * (sprite, background and brotherSprite) as well as menuButton and anxietyBar. It also instatiates 
+   * layout to be a new SpringLayout. Additionally, it sets up the constraints for all the instantiated
+   * objects.
+   */
   public LevelOne (){
     
+    /**
+     * This instantiates a new Images object with a location of "AlexSmile.png" and dimensions of 200 by 200
+     */
     sprite = new Images ("AlexSmile.png",200,200);
+    /**
+     * This instantiates a new Images object with a location of "BackgroundVersion1.png" and dimensions of 
+     * 8000 by 750
+     */
     background = new Images ("BackgroundVersion1.png",8000,750);
+    /**
+     * This instantiates a new Images object with a location of "BigBrother.png" and a dimensions 210 by 200
+     */
     brotherSprite = new Images ("BigBrother.png",210,200);
-    
+    /**
+     * This instantiates a new MenuButton object with dimension of 135 by 40
+     */
     menuButton = new MenuButton (135,40);
+    /**
+     * This instantiates a new AnxietyBar object which is 0% full
+     */
     anxietyBar = new AnxietyBar (0);
     
     //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
@@ -40,31 +114,44 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     setFocusTraversalKeysEnabled(false);
     //End of source code
     
-    setVisible (true);
+    //setVisible (true);
     layout = new SpringLayout ();
     setLayout (layout);
     
+    //applies the constraints for the main character's sprite and adds it to the JPanel
     layout.putConstraint (layout.EAST, sprite, 250, layout.WEST, this);
     layout.putConstraint (layout.NORTH, sprite, 450, layout.NORTH, this);
     add (sprite);
     
+    //applies the constraints for the big brother's sprite and adds it to the JPanel
     layout.putConstraint (layout.WEST, brotherSprite, 790, layout.WEST, background);
     layout.putConstraint (layout.NORTH, brotherSprite, 405, layout.NORTH, this);
     add (brotherSprite);
     
+    //applies the constraints for the menu button and adds it to the JPanel
     layout.putConstraint (layout.EAST, menuButton, 25, layout.EAST, this);
     layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
     add (menuButton);
     
+    //applies the constraints for the anxiety bar and adds it to the JPanel
     layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
     layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
     add (anxietyBar);
     
+    //applies the constraints for the background and adds it to the JPanel
     layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
     layout.putConstraint (layout.NORTH, background, 0, layout.NORTH, this);
     add (background);
   }
   
+  /**
+   * The actionPerformed method defines how the game reacts to a players specific input. This method 
+   * defines the boundaries of the game, the movement of the jump, and how the playeer is allowed to 
+   * move around stairs. It also defines the locations of events in the game like when the anxiety
+   * bar has to change, and when and how the non-player characters will move. 
+   * 
+   * @param e is an object of the ActionEvent class
+   */
   public void actionPerformed (ActionEvent e){
     //stops player from leaving boundries
     if (x < 0){
@@ -229,7 +316,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     }
     
     //Anxiety bar updates
-    boolean check1 = false;
+    boolean check1 = false; //MOVE THIS TO THE TOP ---------------------------------------
     if (x >= 2000 && check1 == false){
       anxietyBar.setPercent (15);
     }
@@ -270,32 +357,45 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     repaint();
   }
   
+  /**
+   * The update method redefines the constraints of any objects that can move or change
+   */
   public void update (){
     
+    //This redefines the constraints of anxietyBar
     layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
     layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
     
+    //This redefines the constraints of sprite
     layout.putConstraint (layout.NORTH, sprite, 450+y, layout.NORTH, this);
     layout.putConstraint (layout.EAST, sprite, 250, layout.WEST, this);
     
+    //This redefines the constraints of background
     layout.putConstraint (layout.WEST, background, 0-x, layout.WEST, this);
     layout.putConstraint (layout.NORTH, background, 0, layout.NORTH, this);
     
+    //This redefines the constraints of brotherSprite
     layout.putConstraint (layout.WEST, brotherSprite, bigBroX, layout.WEST, background);
-      layout.putConstraint (layout.NORTH, brotherSprite, bigBroY, layout.NORTH, this);
+    layout.putConstraint (layout.NORTH, brotherSprite, bigBroY, layout.NORTH, this);
     
     refresh();
   }
   
-  public void refresh (){
+  /**
+   * The refresh method calls upon the repaint and revalidate methods
+   */
+  public void refresh (){ //put override?
       repaint ();
       revalidate ();
     }
   
   /**
+   * The keyPressed method defines how the program will react when certain keys are pressed
+   * 
+   * @param e is a KeyEvent object
    * @source https://www.youtube.com/watch?v=Km81XyczqC4
    */
-  public void keyPressed (KeyEvent e){
+  public void keyPressed (KeyEvent e){ //put override?
     int c = e.getKeyCode();
     
     if (c == KeyEvent.VK_LEFT || c == KeyEvent.VK_A) {
@@ -310,8 +410,19 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     }
   }
   
-  public void keyTyped (KeyEvent e){}
-  public void keyReleased (KeyEvent e){
+  /**
+   * The keyTyped method is an inherited method with no uses in this class
+   * 
+   * @param e is a KeyEvent object
+   */
+  public void keyTyped (KeyEvent e){} //put override?
+
+  /**
+   * The keyReleased method defines what happens when the player releases whatver key they were pressing
+   * 
+   * @param e is a KeyEvent object
+   */
+  public void keyReleased (KeyEvent e){ //put override?
     if (dy == -2 || dy == 2){
       if (dx == -3)
         dx = -3;
