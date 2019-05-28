@@ -1,6 +1,8 @@
 import java.awt.even.MouseEvent; 
 
-
+/**
+ * @author James Houle & Juan Diego Castano 
+ */
 public class LevelOneButton extends CustomButton{
 
     public LevelOneButton (int width, int height){
