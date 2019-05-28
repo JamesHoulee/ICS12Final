@@ -25,9 +25,9 @@ import javax.swing.JFrame;
  *                       used for the first level
  * <p>
  * <b>infoScreenFrame </b> This holds the information from the JFrame class for the JFrame
- *                         used fot the information screen
+ *                         used for the information screen
  * 
- * @author James Houle
+ * @author James Houle and Juan Diego Castano
  * @version 2 05.28.19
  */
 public class AnxiousAlex {
