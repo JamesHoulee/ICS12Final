@@ -93,7 +93,7 @@ public class CustomButton extends JButton implements MouseListener {
   public static int getPath (){
     return path;
   }
-  public static void setPath (int newPath){
+  public void setPath (int newPath){
     path = newPath;
   }
 }

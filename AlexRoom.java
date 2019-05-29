@@ -23,6 +23,8 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener {
   
   int x,y,dx,dy;
   
+  Main main = new Main ();
+  
   public AlexRoom (){
 
     sprite = new Images ("AlexSmile.png",200,200);
@@ -116,7 +118,7 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener {
       dy = 3;
     }
     if (c == KeyEvent.VK_E && (x >= 380 && x <= 620 && y > -250)){
-      CustomButton.setPath (1);
+      main.button.setPath (1);
     }
     update ();
   }

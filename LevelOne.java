@@ -77,6 +77,8 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   
   private int bigBroX, bigBroY;
   
+  Main main = new Main ();
+  
   /**
    * This is the constructor for the LevelOne Class. This class instatiates all the required images
    * (sprite, background and brotherSprite) as well as menuButton and anxietyBar. It also instatiates 
@@ -335,8 +337,11 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     //moving big bro
     if (x >= 500 && x <1350)
       animationNum = 1;
-    else if (x >= 1350)
+    else if (x >= 1350 && x < 2550)
       animationNum = 2;
+    else if (x >= 2550){
+      animationNum = 3;
+    }
     else 
       animationNum = 0;
     
@@ -354,6 +359,21 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     if (animationNum == 2){
       if (bigBroX <= 3000)
         bigBroX += 3;
+    }
+    if (animationNum == 3){
+      if (bigBroX <= 4600)
+        bigBroX += 3;
+      if (bigBroX <3930)
+        bigBroY = 80;
+      else if (bigBroX < 4020)
+        bigBroY = 170;
+      else if (bigBroX < 4110)
+        bigBroY = 260;
+      else if (bigBroX < 4200)
+        bigBroY = 350;
+      else //if (bigBroX == 4160)
+        bigBroY = 460;
+      
     }
     
     update();
@@ -415,9 +435,8 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       update();
     }
     if (c == KeyEvent.VK_E && (x >= 2030 && x <2060)){
-      CustomButton.setPath (7);
+      main.button.setPath (7);
     }
-      
   }
   
   /**
@@ -445,7 +464,6 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
         dx = 0;
     }
   }
-  
   
   //temp
   public static void main (String [] args){

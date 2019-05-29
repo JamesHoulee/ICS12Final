@@ -107,12 +107,10 @@ public class AnxiousAlex {
         alexRoomFrame.dispose ();
         fromAlexRoom = false;
       }
+      
       levelOneFrame.setSize (1000,750);
       levelOneFrame.setVisible (true);
       levelOneFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-      
-      
-      
       levelOneFrame.add (levelOne);
       mainMenu.button.setPath (0);
     }
