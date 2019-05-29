@@ -99,11 +99,11 @@ public class AnxiousAlex {
       levelOneFrame = new JFrame ("The Anxious Life Of Alex Joe");
       
       if (fromAlexRoom == false){
-        levelOne = new LevelOne ();
+        levelOne = new LevelOne (0,0,0,790,405);
         mainMenuFrame.dispose ();
       }
       else {
-        levelOne = new LevelOne ();
+        levelOne = new LevelOne (2030,-360,2,3000,80);
         alexRoomFrame.dispose ();
         fromAlexRoom = false;
       }

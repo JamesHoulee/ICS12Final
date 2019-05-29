@@ -66,16 +66,16 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   MenuButton menuButton;
   AnxietyBar anxietyBar;
   
-  int animationNum = 0;
+  int animationNum;
   
   /**
    * This instantiates a new timer object with parameters 5 and <b>this</b>
    */
   Timer timer = new Timer(5,this);
-  private int x = 0, y = 0, dx = 0, dy = 0;
+  private int x, y, dx = 0, dy = 0;
   private int anxietyPercent = 0;
   
-  private int bigBroX = 790, bigBroY = 405;
+  private int bigBroX, bigBroY;
   
   /**
    * This is the constructor for the LevelOne Class. This class instatiates all the required images
@@ -83,7 +83,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
    * layout to be a new SpringLayout. Additionally, it sets up the constraints for all the instantiated
    * objects.
    */
-  public LevelOne (){
+  public LevelOne (int x, int y, int animationNumber, int bigX, int bigY){
     
     /**
      * This instantiates a new Images object with a location of "AlexSmile.png" and dimensions of 200 by 200
@@ -106,6 +106,13 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
      * This instantiates a new AnxietyBar object which is 0% full
      */
     anxietyBar = new AnxietyBar (0);
+    
+    this.x = x;
+    this.y = y;
+    animationNum = animationNumber;
+    
+    bigBroX = bigX;
+    bigBroY = bigY;
     
     //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
     timer.start ();
@@ -345,7 +352,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       }
     }
     if (animationNum == 2){
-      if (bigBroX < 3000)
+      if (bigBroX <= 3000)
         bigBroX += 3;
     }
     

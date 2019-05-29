@@ -23,9 +23,6 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener {
   
   int x,y,dx,dy;
   
-  /*int x=400, y=20;
-  int dx=0, dy=0; */
-  
   public AlexRoom (){
 
     sprite = new Images ("AlexSmile.png",200,200);
