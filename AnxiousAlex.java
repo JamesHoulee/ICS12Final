@@ -34,11 +34,15 @@ public class AnxiousAlex {
   
   Main mainMenu;
   LevelOne levelOne;
+  AlexRoom alexRoom; //add to var dic
   InformationScreen infoScreen;
   
   JFrame mainMenuFrame;
   JFrame levelOneFrame;
+  JFrame alexRoomFrame; //add to var dic
   JFrame infoScreenFrame;
+  
+  boolean fromAlexRoom;
   
   /**
    * This is the constructor for the AnxiousAlex class. It firsts instantiates mainMenu as an 
@@ -52,6 +56,8 @@ public class AnxiousAlex {
     
     levelOneFrame = new JFrame ("The Anxious Life Of Alex Joe");
     infoScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
+    
+    fromAlexRoom = false;
     
     while (true){
       checkPath ();
@@ -92,12 +98,22 @@ public class AnxiousAlex {
     if (CustomButton.getPath () == 1){
       levelOneFrame = new JFrame ("The Anxious Life Of Alex Joe");
       
-      levelOne = new LevelOne ();
-      levelOneFrame.add (levelOne);
+      if (fromAlexRoom == false){
+        levelOne = new LevelOne ();
+        mainMenuFrame.dispose ();
+      }
+      else {
+        levelOne = new LevelOne ();
+        alexRoomFrame.dispose ();
+        fromAlexRoom = false;
+      }
       levelOneFrame.setSize (1000,750);
       levelOneFrame.setVisible (true);
       levelOneFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-      mainMenuFrame.dispose ();
+      
+      
+      
+      levelOneFrame.add (levelOne);
       mainMenu.button.setPath (0);
     }
     else if (CustomButton.getPath () == 2){
@@ -124,6 +140,19 @@ public class AnxiousAlex {
     }
     else if (CustomButton.getPath () == 3){
       System.exit(0);
+    }
+    else if (CustomButton.getPath () == 7){
+      alexRoomFrame = new JFrame ("The Anxious Life Of Alex Joe");
+      
+      alexRoom = new AlexRoom ();
+      alexRoomFrame.add (alexRoom);
+      alexRoomFrame.setSize (1000,750);
+      alexRoomFrame.setVisible (true);
+      alexRoomFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      levelOneFrame.dispose ();
+      mainMenu.button.setPath (0);
+      
+      fromAlexRoom = true;
     }
     else
       System.out.print ("");

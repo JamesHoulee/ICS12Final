@@ -349,7 +349,6 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
         bigBroX += 3;
     }
     
-    
     update();
     
     x = x + dx;
@@ -387,7 +386,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   public void refresh (){ //put override?
       repaint ();
       revalidate ();
-    }
+  }
   
   /**
    * The keyPressed method defines how the program will react when certain keys are pressed
@@ -408,6 +407,10 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       dy = -2;
       update();
     }
+    if (c == KeyEvent.VK_E && (x >= 2030 && x <2060)){
+      CustomButton.setPath (7);
+    }
+      
   }
   
   /**
@@ -423,14 +426,17 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
    * @param e is a KeyEvent object
    */
   public void keyReleased (KeyEvent e){ //put override?
-    if (dy == -2 || dy == 2){
-      if (dx == -3)
-        dx = -3;
-      else if (dx == 3)
-        dx = 3;
+    int c = e.getKeyCode();
+    if (c != KeyEvent.VK_E){
+      if (dy == -2 || dy == 2){
+        if (dx == -3)
+          dx = -3;
+        else if (dx == 3)
+          dx = 3;
+      }
+      else 
+        dx = 0;
     }
-    else 
-      dx = 0;
   }
   
   
