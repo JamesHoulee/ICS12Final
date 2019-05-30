@@ -61,10 +61,14 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   Images sprite;
   Images background;
   Images brotherSprite;
+  Images firstText;
+  Images secondText;
+  
   SpringLayout layout;
   
   MenuButton menuButton;
   AnxietyBar anxietyBar;
+  Inventory inventory;
   
   int animationNum;
   
@@ -104,6 +108,12 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
      * This instantiates a new MenuButton object with dimension of 135 by 40
      */
     menuButton = new MenuButton (135,40);
+    
+    firstText = new Images ("LevelOneA.png",390,255); //-------------
+    secondText = new Images ("LevelOneB.png",280,145);
+    
+    inventory = new Inventory (true);
+    
     /**
      * This instantiates a new AnxietyBar object which is 0% full
      */
@@ -137,6 +147,15 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     layout.putConstraint (layout.NORTH, brotherSprite, 405, layout.NORTH, this);
     add (brotherSprite);
     
+    layout.putConstraint (layout.SOUTH, firstText, 30, layout.NORTH, brotherSprite);
+    layout.putConstraint (layout.EAST, firstText, 115, layout.WEST, brotherSprite); //--------------
+    add (firstText);
+    
+    layout.putConstraint (layout.SOUTH, secondText, 70, layout.NORTH, brotherSprite);
+    layout.putConstraint (layout.EAST, secondText, 75, layout.WEST, brotherSprite);
+    add (secondText);
+    secondText.setVisible (false);
+    
     //applies the constraints for the menu button and adds it to the JPanel
     layout.putConstraint (layout.EAST, menuButton, 25, layout.EAST, this);
     layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
@@ -146,6 +165,10 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
     layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
     add (anxietyBar);
+    
+    layout.putConstraint (layout.SOUTH, inventory, 115, layout.SOUTH, this);
+    layout.putConstraint (layout.WEST, inventory, 0, layout.WEST, this);
+    add (inventory);
     
     //applies the constraints for the background and adds it to the JPanel
     layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
@@ -339,24 +362,28 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       animationNum = 1;
     else if (x >= 1350 && x < 2550)
       animationNum = 2;
-    else if (x >= 2550){
+    else if (x >= 2550)
       animationNum = 3;
-    }
     else 
       animationNum = 0;
     
     if (animationNum == 1){
+      firstText.setVisible (false);
       if (bigBroX < 1125)
         bigBroX+=3;
       if (bigBroX >= 1125 && bigBroX < 1600 && bigBroY > 80 ){
         bigBroX +=2;
         bigBroY -=2;
       }
-      if (bigBroX < 1800 && bigBroY <= 80){
+      if (bigBroX < 1800 && bigBroY <= 80)
         bigBroX +=3;
-      }
+      if (bigBroY == 81)
+        secondText.setVisible (true);
     }
+    
     if (animationNum == 2){
+      firstText.setVisible (false);
+      secondText.setVisible (false);
       if (bigBroX <= 3000)
         bigBroX += 3;
     }
@@ -371,7 +398,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
         bigBroY = 260;
       else if (bigBroX < 4200)
         bigBroY = 350;
-      else //if (bigBroX == 4160)
+      else
         bigBroY = 460;
       
     }
