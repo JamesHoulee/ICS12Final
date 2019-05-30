@@ -1,4 +1,4 @@
-import java.awt.even.MouseEvent; 
+import java.awt.event.MouseEvent; 
 
 /**
  * @author James Houle & Juan Diego Castano 

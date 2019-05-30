@@ -36,8 +36,10 @@ public class AnxiousAlex {
   LevelOne levelOne;
   AlexRoom alexRoom; //add to var dic
   InformationScreen infoScreen;
+  PlayScreen playScreen; //add to var dic
   
   JFrame mainMenuFrame;
+  JFrame playScreenFrame; //add to var dic
   JFrame levelOneFrame;
   JFrame alexRoomFrame; //add to var dic
   JFrame infoScreenFrame;
@@ -54,7 +56,8 @@ public class AnxiousAlex {
     
     mainMenu = new Main ();
     
-    levelOneFrame = new JFrame ("The Anxious Life Of Alex Joe");
+    playScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
+    //levelOneFrame = new JFrame ("The Anxious Life Of Alex Joe");
     infoScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
     
     fromAlexRoom = false;
@@ -95,12 +98,13 @@ public class AnxiousAlex {
    * back to 0.
    */
   public void checkPath (){
-    if (CustomButton.getPath () == 1){
+    if (CustomButton.getPath () == 4){
       levelOneFrame = new JFrame ("The Anxious Life Of Alex Joe");
       
       if (fromAlexRoom == false){
         levelOne = new LevelOne (0,0,0,790,405);
-        mainMenuFrame.dispose ();
+        //mainMenuFrame.dispose ();
+        playScreenFrame.dispose ();
       }
       else {
         levelOne = new LevelOne (2030,-360,2,3000,80);
@@ -132,7 +136,7 @@ public class AnxiousAlex {
       mainMenuFrame.setSize (1000,750);
       mainMenuFrame.setVisible (true);
       mainMenuFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-      levelOneFrame.dispose ();
+      playScreenFrame.dispose ();
       infoScreenFrame.dispose ();
       mainMenu.button.setPath (0);
     }
@@ -151,6 +155,17 @@ public class AnxiousAlex {
       mainMenu.button.setPath (0);
       
       fromAlexRoom = true;
+    }
+    else if (CustomButton.getPath () == 1){
+      playScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
+      
+      playScreen = new PlayScreen ();
+      playScreenFrame.add (playScreen);
+      playScreenFrame.setSize (1000,750);
+      playScreenFrame.setVisible (true);
+      playScreenFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      mainMenuFrame.dispose ();
+      mainMenu.button.setPath (0);
     }
     else
       System.out.print ("");

@@ -63,6 +63,8 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   Images brotherSprite;
   Images firstText;
   Images secondText;
+  Images thirdText;
+  Images fourthText;
   
   SpringLayout layout;
   
@@ -111,6 +113,8 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     
     firstText = new Images ("LevelOneA.png",390,255); //-------------
     secondText = new Images ("LevelOneB.png",280,145);
+    thirdText = new Images ("LevelOneC.png",280,145);
+    fourthText = new Images ("LevelOneD.png",280,145);
     
     inventory = new Inventory (true);
     
@@ -155,6 +159,16 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     layout.putConstraint (layout.EAST, secondText, 75, layout.WEST, brotherSprite);
     add (secondText);
     secondText.setVisible (false);
+    
+    layout.putConstraint (layout.SOUTH, thirdText, 70, layout.NORTH, brotherSprite);
+    layout.putConstraint (layout.EAST, thirdText, 75, layout.WEST, brotherSprite);
+    add (thirdText);
+    thirdText.setVisible (false);
+    
+    layout.putConstraint (layout.SOUTH, fourthText, 50, layout.NORTH, sprite);
+    layout.putConstraint (layout.WEST, fourthText, -50, layout.EAST, sprite);
+    add (fourthText);
+    fourthText.setVisible (false); 
     
     //applies the constraints for the menu button and adds it to the JPanel
     layout.putConstraint (layout.EAST, menuButton, 25, layout.EAST, this);
@@ -386,8 +400,13 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       secondText.setVisible (false);
       if (bigBroX <= 3000)
         bigBroX += 3;
+      if (bigBroX >= 2600)
+        thirdText.setVisible (true);
     }
+    
     if (animationNum == 3){
+      fourthText.setVisible (true);
+      thirdText.setVisible (false);
       if (bigBroX <= 4600)
         bigBroX += 3;
       if (bigBroX <3930)
@@ -400,11 +419,9 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
         bigBroY = 350;
       else
         bigBroY = 460;
-      
     }
     
-    update();
-    
+    update(); 
     x = x + dx;
     y = y + dy;
     repaint();

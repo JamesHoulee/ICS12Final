@@ -1,11 +1,11 @@
-import java.awt.even.MouseEvent; 
+import java.awt.event.MouseEvent; 
 
 /**
  * @author James Houle & Juan Diego Castano 
  */
 public class LevelThreeButton extends CustomButton{
 
-    public LevelOneButton (int width, int height){
+    public LevelThreeButton (int width, int height){
         super ("Level Three", width, height);
       }
       
