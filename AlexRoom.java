@@ -6,6 +6,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 
+import javax.swing.JFrame;
+
 /**
  * 
  * @author James Houle and Juan Diego Castano

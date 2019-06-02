@@ -35,6 +35,7 @@ public class AnxiousAlex {
   Main mainMenu;
   LevelOne levelOne;
   AlexRoom alexRoom; //add to var dic
+  LevelTwoOutside levelTwoOut; //
   InformationScreen infoScreen;
   PlayScreen playScreen; //add to var dic
   
@@ -42,6 +43,7 @@ public class AnxiousAlex {
   JFrame playScreenFrame; //add to var dic
   JFrame levelOneFrame;
   JFrame alexRoomFrame; //add to var dic
+  JFrame levelTwoOutFrame; //
   JFrame infoScreenFrame;
   
   boolean fromAlexRoom;
@@ -57,7 +59,8 @@ public class AnxiousAlex {
     mainMenu = new Main ();
     
     playScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
-    //levelOneFrame = new JFrame ("The Anxious Life Of Alex Joe");
+    levelOneFrame = new JFrame ("The Anxious Life Of Alex Joe");
+    levelTwoOutFrame = new JFrame ("The Anxious Life Of Alex Joe");
     infoScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
     
     fromAlexRoom = false;
@@ -138,6 +141,7 @@ public class AnxiousAlex {
       mainMenuFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       playScreenFrame.dispose ();
       infoScreenFrame.dispose ();
+      levelOneFrame.dispose ();
       mainMenu.button.setPath (0);
     }
     else if (CustomButton.getPath () == 3){
@@ -165,6 +169,17 @@ public class AnxiousAlex {
       playScreenFrame.setVisible (true);
       playScreenFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       mainMenuFrame.dispose ();
+      mainMenu.button.setPath (0);
+    }
+    else if (CustomButton.getPath () == 5){
+      levelTwoOutFrame = new JFrame ("The Anxious Life Of Alex Joe");
+      
+      levelTwoOut = new LevelTwoOutside ();
+      levelTwoOutFrame.add (levelTwoOut);
+      levelTwoOutFrame.setSize (1000,750);
+      levelTwoOutFrame.setVisible (true);
+      levelTwoOutFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      playScreenFrame.dispose ();
       mainMenu.button.setPath (0);
     }
     else

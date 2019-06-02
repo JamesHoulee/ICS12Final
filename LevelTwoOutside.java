@@ -88,9 +88,10 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     revalidate ();
   }
   
+  @Override
   public void keyPressed (KeyEvent e){ //put override?
+    
     int c = e.getKeyCode();
-    System.out.println ("Im here");
     if (c == KeyEvent.VK_LEFT || c == KeyEvent.VK_A) {
       dx = -3;
     }
