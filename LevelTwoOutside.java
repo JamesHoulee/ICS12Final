@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 
-import javax.swing.JFrame;
 /**
  * 
  * @author James Houle and Juan Diego Castano
@@ -26,16 +25,17 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
   public LevelTwoOutside () { //maybe add the ability for the player to come back outside??
     
     sprite = new Images ("AlexSmile.png",200,200);
-    background = new Images ("OutsideSchoolV1.png",2000,750);
+    background = new Images ("OutsideSchoolV1.png",2500,750);
     brotherSprite = new Images ("BigBrother.png",210,200);
     //friendSprite = new Images ("Friend.png",200,200); need to create friend sprite
+    path = new CustomButton ();
     
     x = 0;
     y = -40;
     dx = 0;
     dy = 0;
     
-     //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
+    //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
     timer.start ();
     addKeyListener(this);
     setFocusable(true);
@@ -61,10 +61,53 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
       x = 0;
       dx = 0;
     }
-    if (x > 780){
-      x = 780;
+    if (x > 1200){
+      x = 1200;
       dx = 0;
     } 
+    //defines the jump motion
+    if (x < 300){
+      if (y < -240){
+        y = -240;
+        dy = 2;
+      }
+      if (y > -40){
+        y = -40;
+        dy = 0;
+      }
+      if (dy == 0)
+        y = -40;
+    }
+    //first step
+    if (x >= 300 && x <= 370 && y <= -80){
+      if (y < -280){
+        y = -280;
+        dy = 2;
+      }
+      if (y > -80){
+        y = -80;
+        dy = 0;
+      }
+      if (dy == 0)
+        y = -80;
+    }
+    //blocks the player from walking through the second step
+   /* if (x > 370 && y > -120){
+      x = 370;
+      dy = 0;
+    }*/
+    
+    //top platform
+    if (x >= 370){
+      if (y < -320){
+        dy = 2;
+        y = -320;
+      }
+      if (y > -120){
+        dy = 0;
+        y = -120;
+      }
+    }
     
     update ();
     x += dx;
@@ -98,6 +141,12 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     if (c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D){
       dx = 3;
     }
+    if ((c == KeyEvent.VK_UP || c == KeyEvent.VK_W) && (y == -40 || y == -80)){
+      dy = -2;
+    }
+    if (c == KeyEvent.VK_E && x >= 985 && x <= 1200){
+      path.setPath (8);
+    }
     
     update ();
   }
@@ -105,8 +154,13 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
   public void keyTyped (KeyEvent e){} //put override?
   
   public void keyReleased (KeyEvent e){ //put override?
-    dx = 0;
-    dy = 0;
+    if (dy == 0)
+      dx = 0;
+  }
+  
+  //temp
+  public static void main (String [] args){
+    new AnxiousAlex ();
   }
 }
   

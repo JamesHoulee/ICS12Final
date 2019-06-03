@@ -15,6 +15,8 @@ public class CustomButton extends JButton implements MouseListener {
   
   private static int path = -999;
   
+  public CustomButton (){}
+  
   public CustomButton (String text, int sizeX, int sizeY){
     setVisible(true);
     setBorderPainted(false);

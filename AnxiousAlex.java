@@ -36,6 +36,7 @@ public class AnxiousAlex {
   LevelOne levelOne;
   AlexRoom alexRoom; //add to var dic
   LevelTwoOutside levelTwoOut; //
+  LevelTwoHall levelTwoHall; //
   InformationScreen infoScreen;
   PlayScreen playScreen; //add to var dic
   
@@ -44,9 +45,11 @@ public class AnxiousAlex {
   JFrame levelOneFrame;
   JFrame alexRoomFrame; //add to var dic
   JFrame levelTwoOutFrame; //
+  JFrame levelTwoHallFrame; //
   JFrame infoScreenFrame;
   
   boolean fromAlexRoom;
+  boolean fromHall;
   
   /**
    * This is the constructor for the AnxiousAlex class. It firsts instantiates mainMenu as an 
@@ -64,6 +67,7 @@ public class AnxiousAlex {
     infoScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
     
     fromAlexRoom = false;
+    fromHall = false;
     
     while (true){
       checkPath ();
@@ -179,8 +183,26 @@ public class AnxiousAlex {
       levelTwoOutFrame.setSize (1000,750);
       levelTwoOutFrame.setVisible (true);
       levelTwoOutFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-      playScreenFrame.dispose ();
+      if (fromHall == false){
+        playScreenFrame.dispose ();
+      }
+      else {
+        levelTwoHallFrame.dispose ();
+        fromHall = false;
+      }
       mainMenu.button.setPath (0);
+    }
+    else if (CustomButton.getPath () == 8){
+      levelTwoHallFrame = new JFrame ("The Anxious Life Of Alex Joe");
+      
+      levelTwoHall = new LevelTwoHall ();
+      levelTwoHallFrame.add (levelTwoHall);
+      levelTwoHallFrame.setSize (1000,750);
+      levelTwoHallFrame.setVisible (true);
+      levelTwoHallFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      levelTwoOutFrame.dispose ();
+      mainMenu.button.setPath (0);
+      fromHall = true;
     }
     else
       System.out.print ("");
