@@ -7,33 +7,31 @@ import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 
 /**
- * 
  * @author James Houle and Juan Diego Castano
- * @version 2 06.05.19
+ * @version 1 06.05.19
  */
-public class AlexRoom extends JPanel implements ActionListener, KeyListener {
+public abstract class ClassRoom extends JPanel implements ActionListener, KeyListener {
   
   Images sprite;
   Images background;
+  int x,y,dx,dy;
+  Timer timer = new Timer (5, this);
   SpringLayout layout;
+  
+  MenuButton menuButton;
+  
   Inventory inventory;
   
-  Timer timer = new Timer(5,this);
-  
-  int x,y,dx,dy;
-  
-  Main main = new Main ();
-  
-  public AlexRoom (){
-
-    sprite = new Images ("AlexSmile.png",200,200);
-    background = new Images ("AlexRoomV1.png",1000,750);
+  public ClassRoom (){
     
-    x = 400;
-    y = 20;
+    sprite = new Images ("AlexSmile.png",200,200);
+    background = new Images ("MathClassV1.png",1000,750);
+    
+    x = 100;
+    y = 0;
     dx = 0;
     dy = 0;
-
+    
     //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
     timer.start ();
     addKeyListener(this);
@@ -44,15 +42,21 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener {
     layout = new SpringLayout ();
     setLayout (layout);
     
+    menuButton = new MenuButton (135,40);
+    
     inventory = new Inventory ();
+    
+    layout.putConstraint (layout.SOUTH, inventory, 115, layout.SOUTH, this);
+    layout.putConstraint (layout.WEST, inventory, 0, layout.WEST, this);
+    add (inventory);
     
     layout.putConstraint (layout.WEST, sprite, x, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
     add (sprite);
-                          
-    layout.putConstraint (layout.SOUTH, inventory, 115, layout.SOUTH, this);
-    layout.putConstraint (layout.WEST, inventory, 0, layout.WEST, this);
-    add (inventory);
+    
+    layout.putConstraint (layout.EAST, menuButton, -25, layout.EAST, this);
+    layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
+    add (menuButton);
     
     layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);
@@ -79,59 +83,52 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener {
       dy = 0;
     }
     
-    update();
+    update ();
+    x += dx;
+    y += dy;
+    repaint ();
+  }
+  
+  public void keyPressed (KeyEvent e){
+    int c = e.getKeyCode ();
     
-    x = x + dx;
-    y = y + dy;
-    
-    repaint();  
+    if (c == KeyEvent.VK_LEFT || c == KeyEvent.VK_A)
+      dx = -2;
+    if (c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D)
+      dx = 2;
+    if (c == KeyEvent.VK_UP || c == KeyEvent.VK_W)
+      dy = -2;
+    if (c == KeyEvent.VK_DOWN || c == KeyEvent.VK_S)
+      dy = 2;
+    if (c == KeyEvent.VK_E && x >= 50 && x <= 300 && y >= -20)
+      menuButton.setPath (8);
+  }
+  
+  public void keyTyped (KeyEvent e) {}
+  
+  public void keyReleased (KeyEvent e) {//this is basic fix this
+    dx = 0;
+    dy = 0;
   }
   
   public void update (){
     
     layout.putConstraint (layout.WEST, sprite, x, layout.WEST, this);
-    layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, background);
+    layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
     
     refresh ();
   }
   
-  public void refresh (){ //put override?
+  public void refresh (){
     repaint ();
     revalidate ();
   }
-  
-  public void keyPressed (KeyEvent e){ //put override?
-    int c = e.getKeyCode();
-    
-    if (c == KeyEvent.VK_LEFT || c == KeyEvent.VK_A) {
-      dx = -3;
-    }
-    if (c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D){
-      dx = 3;
-    }
-    if (c == KeyEvent.VK_UP || c == KeyEvent.VK_W){
-      dy = -3;
-    }
-    if (c == KeyEvent.VK_DOWN || c == KeyEvent.VK_S){
-      dy = 3;
-    }
-    if (c == KeyEvent.VK_E && (x >= 380 && x <= 430 && y > -50)){
-      main.button.setPath (4);
-    }
-    if (c == KeyEvent.VK_E && x >= 400 && x <= 440 && y <=-450)
-      inventory.setPencilCase (true);
-    update ();
-  }
-  
-  public void keyTyped (KeyEvent e){} //put override?
-  
-  public void keyReleased (KeyEvent e){ //put override?
-    dx = 0;
-    dy = 0;
-  } 
   
   //temp
   public static void main (String [] args){
      new AnxiousAlex ();
   }
 }
+  
+    
+  

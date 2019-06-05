@@ -28,7 +28,7 @@ import javax.swing.JFrame;
  *                         used for the information screen
  * 
  * @author James Houle and Juan Diego Castano
- * @version 2 05.28.19
+ * @version 3 06.05.19
  */
 public class AnxiousAlex {
   
@@ -39,6 +39,8 @@ public class AnxiousAlex {
   LevelTwoHall levelTwoHall; //
   InformationScreen infoScreen;
   PlayScreen playScreen; //add to var dic
+  MathClass mathClass; //
+  EnglishClass englishClass; //
   
   JFrame mainMenuFrame;
   JFrame playScreenFrame; //add to var dic
@@ -46,10 +48,12 @@ public class AnxiousAlex {
   JFrame alexRoomFrame; //add to var dic
   JFrame levelTwoOutFrame; //
   JFrame levelTwoHallFrame; //
+  JFrame classFrame; //
   JFrame infoScreenFrame;
   
   boolean fromAlexRoom;
   boolean fromHall;
+  boolean fromClass;
   
   /**
    * This is the constructor for the AnxiousAlex class. It firsts instantiates mainMenu as an 
@@ -68,6 +72,9 @@ public class AnxiousAlex {
     
     fromAlexRoom = false;
     fromHall = false;
+    fromClass = false;
+    
+    Inventory.setPencilCase (false);
     
     while (true){
       checkPath ();
@@ -135,6 +142,13 @@ public class AnxiousAlex {
       infoScreenFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       mainMenuFrame.dispose ();
       mainMenu.button.setPath (0);
+      
+      boolean checkScreen = true;
+      while (checkScreen){
+        infoScreen.checkScreen ();
+        if (infoScreen.screen == 3)
+          checkScreen = false;
+      }
     }
     else if (CustomButton.getPath () == -999){
       mainMenuFrame = new JFrame ("The Anxious Life Of Alex Joe");
@@ -200,9 +214,39 @@ public class AnxiousAlex {
       levelTwoHallFrame.setSize (1000,750);
       levelTwoHallFrame.setVisible (true);
       levelTwoHallFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-      levelTwoOutFrame.dispose ();
+      if (fromClass == false){
+        levelTwoOutFrame.dispose ();
+      }
+      else {
+        classFrame.dispose ();
+        fromClass = false;
+      }
       mainMenu.button.setPath (0);
       fromHall = true;
+    }
+    else if (CustomButton.getPath () == 9){
+      classFrame = new JFrame ("The Anxious Life Of Alex Joe");
+      
+      mathClass = new MathClass ();
+      classFrame.add (mathClass);
+      classFrame.setSize (1000,750);
+      classFrame.setVisible (true);
+      classFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      levelTwoHallFrame.dispose ();
+      mainMenu.button.setPath (0);
+      fromClass = true;
+    }
+    else if (CustomButton.getPath () == 10){
+      classFrame = new JFrame ("The Anxious Life Of Alex Joe");
+      
+      englishClass = new EnglishClass ();
+      classFrame.add (englishClass);
+      classFrame.setSize (1000,750);
+      classFrame.setVisible (true);
+      classFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      levelTwoHallFrame.dispose ();
+      mainMenu.button.setPath (0);
+      fromClass = true;
     }
     else
       System.out.print ("");

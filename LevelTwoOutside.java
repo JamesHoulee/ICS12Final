@@ -19,16 +19,21 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
   Images friendSprite;
   SpringLayout layout;
   int x,y,dx,dy;
+  int bigBroX, bigBroY;
   CustomButton path;
   Timer timer = new Timer(5,this);
+  
+  MenuButton menuButton;
   
   public LevelTwoOutside () { //maybe add the ability for the player to come back outside??
     
     sprite = new Images ("AlexSmile.png",200,200);
     background = new Images ("OutsideSchoolV1.png",2500,750);
     brotherSprite = new Images ("BigBrother.png",210,200);
-    //friendSprite = new Images ("Friend.png",200,200); need to create friend sprite
+    friendSprite = new Images ("BigBrother.png",200,200); //need to create friend sprite
     path = new CustomButton ();
+    
+    menuButton = new MenuButton (135,40);
     
     x = 0;
     y = -40;
@@ -48,6 +53,15 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     layout.putConstraint (layout.WEST, sprite, 280, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
     add (sprite);
+    
+    layout.putConstraint (layout.WEST, friendSprite, 1340, layout.WEST, background);
+    layout.putConstraint (layout.SOUTH, friendSprite, -120, layout.SOUTH, background);
+    add (friendSprite);
+    friendSprite.setVisible (false);
+    
+    layout.putConstraint (layout.EAST, menuButton, -25, layout.EAST, this);
+    layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
+    add (menuButton);
     
     layout.putConstraint (layout.WEST, background, -x, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);
@@ -91,12 +105,6 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
       if (dy == 0)
         y = -80;
     }
-    //blocks the player from walking through the second step
-   /* if (x > 370 && y > -120){
-      x = 370;
-      dy = 0;
-    }*/
-    
     //top platform
     if (x >= 370){
       if (y < -320){
@@ -109,6 +117,10 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
       }
     }
     
+    //makes friend appear 
+    if (x >= 666)
+      friendSprite.setVisible (true);
+    
     update ();
     x += dx;
     y += dy;
@@ -119,6 +131,9 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     
     layout.putConstraint (layout.WEST, sprite, 280, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
+    
+    layout.putConstraint (layout.WEST, friendSprite, 1440, layout.WEST, background);
+    layout.putConstraint (layout.SOUTH, friendSprite, -120, layout.SOUTH, background);
     
     layout.putConstraint (layout.WEST, background, -x, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);

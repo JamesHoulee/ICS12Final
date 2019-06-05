@@ -21,7 +21,7 @@ public class LevelTwoHall extends JPanel implements ActionListener, KeyListener 
   int x,y,dx,dy;
   Timer timer = new Timer (5, this);
   
-  CustomButton path;
+  MenuButton menuButton;
   
   public LevelTwoHall (){
     
@@ -34,7 +34,7 @@ public class LevelTwoHall extends JPanel implements ActionListener, KeyListener 
     dx = 0;
     dy = 0;
     
-    path = new CustomButton ();
+    menuButton = new MenuButton (135,40);
     
     //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
     timer.start ();
@@ -50,6 +50,10 @@ public class LevelTwoHall extends JPanel implements ActionListener, KeyListener 
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
     add (sprite);
     
+    layout.putConstraint (layout.EAST, menuButton, -25, layout.EAST, this);
+    layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
+    add (menuButton);
+    
     layout.putConstraint (layout.WEST, background, -x, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);
     add (background);
@@ -58,6 +62,9 @@ public class LevelTwoHall extends JPanel implements ActionListener, KeyListener 
   }
   
   public void actionPerformed (ActionEvent e){
+    
+   // if (x > 2500)
+   //   System.out.println (x);
     
     update ();
     x += dx;
@@ -74,8 +81,15 @@ public class LevelTwoHall extends JPanel implements ActionListener, KeyListener 
       dx = 3;
     }
     if (c == KeyEvent.VK_E && x >= 0 && x <= 150){
-      path.setPath (5);
+      menuButton.setPath (5);
     }
+    if (c == KeyEvent.VK_E && x >=1730 && x <= 1950){
+      menuButton.setPath (9);
+    }
+    if (c == KeyEvent.VK_E && x >=3140 && x <= 3370){
+      menuButton.setPath (10);
+    }
+    
   }
   
   public void keyTyped (KeyEvent e){}

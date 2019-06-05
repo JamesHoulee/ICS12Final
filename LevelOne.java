@@ -116,7 +116,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     thirdText = new Images ("LevelOneC.png",280,145);
     fourthText = new Images ("LevelOneD.png",280,145);
     
-    inventory = new Inventory (true);
+    inventory = new Inventory ();
     
     /**
      * This instantiates a new AnxietyBar object which is 0% full
@@ -140,6 +140,11 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     //setVisible (true);
     layout = new SpringLayout ();
     setLayout (layout);
+    
+    //applies the constraints for the menu button and adds it to the JPanel
+    layout.putConstraint (layout.EAST, menuButton, 25, layout.EAST, this);
+    layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
+    add (menuButton);
     
     //applies the constraints for the main character's sprite and adds it to the JPanel
     layout.putConstraint (layout.EAST, sprite, 250, layout.WEST, this);
@@ -169,11 +174,6 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     layout.putConstraint (layout.WEST, fourthText, -50, layout.EAST, sprite);
     add (fourthText);
     fourthText.setVisible (false); 
-    
-    //applies the constraints for the menu button and adds it to the JPanel
-    layout.putConstraint (layout.EAST, menuButton, 25, layout.EAST, this);
-    layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
-    add (menuButton);
     
     //applies the constraints for the anxiety bar and adds it to the JPanel
     layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
@@ -208,6 +208,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       dx = 0;
       x = 8000;
     }
+    
     
     //defines the movement of the jump pre/post stairs
     if (x <= 1075 || x >= 4155){
@@ -480,6 +481,9 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     }
     if (c == KeyEvent.VK_E && (x >= 2030 && x <2060)){
       main.button.setPath (7);
+    }
+    if (c == KeyEvent.VK_E && x >= 7540 && x <= 7580){
+      
     }
   }
   
