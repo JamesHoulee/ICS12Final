@@ -61,6 +61,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   Images sprite;
   Images background;
   Images brotherSprite;
+  Images slime;
   Images firstText;
   Images secondText;
   Images thirdText;
@@ -73,6 +74,8 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   Inventory inventory;
   
   int animationNum;
+  boolean check1;
+  boolean slime1Taken;
   
   /**
    * This instantiates a new timer object with parameters 5 and <b>this</b>
@@ -111,6 +114,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
      */
     menuButton = new MenuButton (135,40);
     
+    slime = new Images ("Slime.png",150,60);
     firstText = new Images ("LevelOneA.png",390,255); //-------------
     secondText = new Images ("LevelOneB.png",280,145);
     thirdText = new Images ("LevelOneC.png",280,145);
@@ -126,6 +130,8 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     this.x = x;
     this.y = y;
     animationNum = animationNumber;
+    check1 = false;
+    slime1Taken = false;
     
     bigBroX = bigX;
     bigBroY = bigY;
@@ -180,6 +186,10 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
     add (anxietyBar);
     
+    layout.putConstraint (layout.WEST, slime, 6620, layout.WEST, background);
+    layout.putConstraint (layout.SOUTH, slime, -160, layout.SOUTH, background);
+    add (slime);
+    
     layout.putConstraint (layout.SOUTH, inventory, 115, layout.SOUTH, this);
     layout.putConstraint (layout.WEST, inventory, 0, layout.WEST, this);
     add (inventory);
@@ -208,7 +218,6 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       dx = 0;
       x = 8000;
     }
-    
     
     //defines the movement of the jump pre/post stairs
     if (x <= 1075 || x >= 4155){
@@ -362,14 +371,20 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       dx = 0;
     }
     
-    //Anxiety bar updates
-    boolean check1 = false; //MOVE THIS TO THE TOP ---------------------------------------
-    if (x >= 2000 && check1 == false){
-      anxietyBar.setPercent (15);
+    //ALL OF THE UPDATE CHECKERS COULD PROBABLY BE THEIR OWN METHODS
+    
+    //slime updates
+    if (x >= 6400 && x <= 6402 && slime1Taken == false){
+      anxietyBar.setPercent (0);
+      update ();
+      slime1Taken = true;
+      remove (slime);
     }
-    if (x >= 4000){ //this is being used as a proof of concept
-      anxietyBar.setPercent (60);
-      check1 = true; //this line must be used to prevent the anxiety bar from reverting just because the player goes backwards
+    
+    //Anxiety bar updates
+    if (x >= 2000 && x <= 2002 && check1 == false){
+      anxietyBar.setPercent (15);
+      check1 = true;
     }
     
     //moving big bro
@@ -455,7 +470,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   /**
    * The refresh method calls upon the repaint and revalidate methods
    */
-  public void refresh (){ //put override?
+  public void refresh (){
       repaint ();
       revalidate ();
   }

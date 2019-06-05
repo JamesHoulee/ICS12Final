@@ -65,5 +65,11 @@ public class AnxietyBar extends JPanel{
    */
   public void setPercent (int percent){
     anxietyPercent = percent;
+    if (anxietyPercent < 0)
+      anxietyPercent = 0;
+  }
+  
+  public int getPercent (){
+    return anxietyPercent;
   }
 }
