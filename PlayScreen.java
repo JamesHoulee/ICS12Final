@@ -12,23 +12,25 @@ import javax.swing.SpringLayout;
  */
 
 public class PlayScreen extends JPanel {
-  LevelOneButton button; 
-  LevelTwoButton button2; 
-  LevelThreeButton button3; 
+  LevelButtons button; 
+  LevelButtons button2; 
+  LevelButtons button3; 
   SpringLayout layout;
   MenuButton backButton; 
   Images background; 
+  
   /**
    * 
    */
+  
   public PlayScreen(){
     
     layout = new SpringLayout (); 
     setLayout (layout); 
     
-    button = new LevelOneButton (250,150); 
-    button2 = new LevelTwoButton(250,150); 
-    button3 = new LevelThreeButton(250,100); 
+    button = new LevelButtons (250,150, "Level One",4); 
+    button2 = new LevelButtons(250,150,"Level Two ",5); 
+    button3 = new LevelButtons (250,100, "Level Three",6); 
     backButton = new MenuButton (135,40); 
     // background = new Images ()
     layout.putConstraint (layout.WEST, button, 250, layout.WEST, this); 

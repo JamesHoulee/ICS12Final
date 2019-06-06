@@ -4,7 +4,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
 /**
- * 
+ * @author James Houle & JuanDiego Castano 
+ * @version 2 06.06.19
  */
 public class CustomButton extends JButton implements MouseListener {
   
