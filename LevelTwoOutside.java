@@ -20,10 +20,11 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
   SpringLayout layout;
   int x,y,dx,dy;
   int bigBroX, bigBroY;
-  CustomButton path;
   Timer timer = new Timer(5,this);
   
   MenuButton menuButton;
+  AnxietyBar anxietyBar;
+  Inventory inventory;
   
   public LevelTwoOutside () { //maybe add the ability for the player to come back outside??
     
@@ -31,9 +32,10 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     background = new Images ("OutsideSchoolV1.png",2500,750);
     brotherSprite = new Images ("BigBrother.png",210,200);
     friendSprite = new Images ("BigBrother.png",200,200); //need to create friend sprite
-    path = new CustomButton ();
     
     menuButton = new MenuButton (135,40);
+    anxietyBar = new AnxietyBar ();
+    inventory = new Inventory ();
     
     x = 0;
     y = -40;
@@ -50,6 +52,10 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     layout = new SpringLayout ();
     setLayout (layout);
         
+    layout.putConstraint (layout.SOUTH, inventory, 115, layout.SOUTH, this);
+    layout.putConstraint (layout.WEST, inventory, 0, layout.WEST, this);
+    add (inventory);
+    
     layout.putConstraint (layout.WEST, sprite, 280, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
     add (sprite);
@@ -62,6 +68,11 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     layout.putConstraint (layout.EAST, menuButton, 0, layout.EAST, this);
     layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
     add (menuButton);
+    
+    //applies the constraints for the anxiety bar and adds it to the JPanel
+    layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
+    layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
+    add (anxietyBar);
     
     layout.putConstraint (layout.WEST, background, -x, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);
@@ -160,7 +171,7 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
       dy = -2;
     }
     if (c == KeyEvent.VK_E && x >= 985 && x <= 1200){
-      path.setPath (8);
+      menuButton.setPath (8);
     }
     
     update ();

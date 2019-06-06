@@ -11,7 +11,7 @@ import javax.swing.Timer;
  * @author James Houle and Juan Diego Castano
  * @version 2 06.05.19
  */
-public class AlexRoom extends JPanel implements ActionListener, KeyListener {
+public class AlexRoom extends JPanel implements ActionListener, KeyListener { //have to fix the boundaries for picking up the pencil case
   
   Images sprite;
   Images background;
@@ -23,6 +23,8 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener {
   int x,y,dx,dy;
   
   MenuButton menuButton;
+  
+  AnxietyBar anxietyBar;
   
   public AlexRoom (){
 
@@ -46,11 +48,17 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener {
     
     inventory = new Inventory ();
     menuButton = new MenuButton (135,40);
+    anxietyBar = new AnxietyBar ();
     
     //applies the constraints for the menu button and adds it to the JPanel
     layout.putConstraint (layout.EAST, menuButton, 25, layout.EAST, this);
     layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
     add (menuButton);
+    
+    //applies the constraints for the anxiety bar and adds it to the JPanel
+    layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
+    layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
+    add (anxietyBar);
     
     layout.putConstraint (layout.WEST, sprite, x, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
