@@ -33,10 +33,10 @@ public class InformationScreen extends JPanel {
     screen = 1;
     
     //applies the constraints for the menu button and adds it to the JPanel
-    layout.putConstraint (layout.EAST, menuButton, 25, layout.EAST, this);
+    layout.putConstraint (layout.EAST, menuButton, 0, layout.EAST, this);
     layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
     
-    layout.putConstraint (layout.EAST, next, 25, layout.EAST, this);
+    layout.putConstraint (layout.EAST, next, 0, layout.EAST, this);
     layout.putConstraint (layout.NORTH, next, 10, layout.NORTH, this);
     add (next);
     

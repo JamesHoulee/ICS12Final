@@ -29,7 +29,7 @@ public class PlayScreen extends JPanel {
     button = new LevelOneButton (250,150); 
     button2 = new LevelTwoButton(250,150); 
     button3 = new LevelThreeButton(250,100); 
-    backButton = new MenuButton (100,100); 
+    backButton = new MenuButton (135,40); 
     // background = new Images ()
     layout.putConstraint (layout.WEST, button, 250, layout.WEST, this); 
     layout.putConstraint (layout.NORTH, button, 100 , layout.NORTH, this);

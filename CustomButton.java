@@ -8,15 +8,17 @@ import javax.swing.JButton;
  */
 public class CustomButton extends JButton implements MouseListener {
   
-  private boolean hover = false;
-  private boolean click = false;
-  private String text = "";
-  private int sizeX, sizeY;
+  protected boolean hover = false;
+  protected boolean click = false;
+  protected String text = "";
+  protected int sizeX, sizeY;
   
-  private static int path = -999;
+  protected static int path = -999;
   
   public CustomButton (){}
-  
+  /**
+   * 
+   */
   public CustomButton (String text, int sizeX, int sizeY){
     setVisible(true);
     setBorderPainted(false);
@@ -27,7 +29,9 @@ public class CustomButton extends JButton implements MouseListener {
     
     addMouseListener(this);
   }
-  
+  /**
+   * 
+   */
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
@@ -50,51 +54,74 @@ public class CustomButton extends JButton implements MouseListener {
     int width = metrics.stringWidth(text);
     g.drawString(text, sizeX/2 - width / 2, 85); // xSize/2 , size/2
   } 
-  
+  /**
+   * 
+   */
   public void redraw() {
     this.repaint();
   }
-  
+  /**
+   * 
+   */
   @Override
   public Dimension getPreferredSize() {
     return new Dimension (sizeX, sizeY);
   }
-  
+  /**
+   * 
+   */
   public void setButtonText(String text) {
     this.text = text;
     
   }
-  
+  /**
+   * 
+   */
   public String setButtonText() {
     return text;
   }
-  
+  /**
+   * 
+   */
   @Override
   public void mouseEntered(MouseEvent e) {
     hover = true;
   }
-  
+  /**
+   * 
+   */
   @Override
   public void mousePressed(MouseEvent e) {
     click = true;
   }
-  
+  /**
+   * 
+   */
   @Override
   public void mouseExited(MouseEvent e) {
     hover = false;
   }
-  
+  /**
+   * 
+   */
   @Override
   public void mouseReleased(MouseEvent e) {
     click = false;
   }
-  
+  /**
+   * 
+   */
   @Override
   public void mouseClicked(MouseEvent e) {}
-  
+  /**
+   * 
+   */
   public static int getPath (){
     return path;
   }
+  /**
+   * 
+   */
   public void setPath (int newPath){
     path = newPath;
   }

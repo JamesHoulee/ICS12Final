@@ -59,7 +59,7 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     add (friendSprite);
     friendSprite.setVisible (false);
     
-    layout.putConstraint (layout.EAST, menuButton, -25, layout.EAST, this);
+    layout.putConstraint (layout.EAST, menuButton, 0, layout.EAST, this);
     layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
     add (menuButton);
     
