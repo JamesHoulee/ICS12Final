@@ -13,6 +13,6 @@ public class LevelButtons extends CustomButton{
       
       @Override
       public void mouseClicked (MouseEvent e){
-        setPath(path); // level 1 = 4; level 2 = 5; level 3 = 6 
+        setPath(path); 
       }
 }

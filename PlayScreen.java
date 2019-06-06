@@ -30,18 +30,18 @@ public class PlayScreen extends JPanel {
     
     button = new LevelButtons (250,150, "Level One",4); 
     button2 = new LevelButtons(250,150,"Level Two ",5); 
-    button3 = new LevelButtons (250,100, "Level Three",6); 
+    button3 = new LevelButtons (250,150, "Level Three",6); 
     backButton = new MenuButton (135,40); 
     // background = new Images ()
-    layout.putConstraint (layout.WEST, button, 250, layout.WEST, this); 
+    layout.putConstraint (layout.WEST, button, 375, layout.WEST, this); 
     layout.putConstraint (layout.NORTH, button, 100 , layout.NORTH, this);
     add (button);
     
-    layout.putConstraint (layout.WEST, button2, 250, layout.WEST, this); 
+    layout.putConstraint (layout.WEST, button2, 375, layout.WEST, this); 
     layout.putConstraint (layout.NORTH, button2, 250 , layout.NORTH, this);
     add (button2);
     
-    layout.putConstraint (layout.WEST, button3, 250, layout.WEST, this); 
+    layout.putConstraint (layout.WEST, button3, 375, layout.WEST, this); 
     layout.putConstraint (layout.NORTH, button3, 400 , layout.NORTH, this);
     add (button3);
     

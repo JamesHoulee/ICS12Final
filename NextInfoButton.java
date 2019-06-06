@@ -6,11 +6,16 @@ import java.awt.*;
  * @version 1 06.05.19
  */
 public class NextInfoButton extends CustomButton {
-  
+  /**
+   * This constructor is responsible for 
+   */
   public NextInfoButton (int width, int height){
      super ("Next", width, height);
   }
   
+  /**
+   * This method overrides 
+   */
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
@@ -31,9 +36,11 @@ public class NextInfoButton extends CustomButton {
     g.setFont(Font.decode("arial-BOLD-20"));
     FontMetrics metrics = g.getFontMetrics();
     int width = metrics.stringWidth(text);
-    g.drawString(text, sizeX/2 - width / 2, 29); // xSize/2 , size/2
+    g.drawString(text, sizeX/2 - width / 2, 29); 
   }  
-  
+  /**
+   * 
+   */
   @Override 
   public void mouseClicked (MouseEvent e){
     if (InformationScreen.screen == 1)
