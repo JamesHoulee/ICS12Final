@@ -42,6 +42,7 @@ public class AnxiousAlex {
   PlayScreen playScreen; //add to var dic
   MathClass mathClass; //
   EnglishClass englishClass; //
+  TeachingAlex teachingAlex; //
   
   JFrame mainMenuFrame;
   JFrame playScreenFrame; //add to var dic
@@ -163,6 +164,22 @@ public class AnxiousAlex {
       }
       mainMenu.button.setPath (0);
     }
+    else if (CustomButton.getPath () == 6){
+      alexRoomFrame = new JFrame ("The Anxious Life Of Alex Joe");
+      
+      teachingAlex = new TeachingAlex ();
+      alexRoomFrame.add (teachingAlex);
+      alexRoomFrame.setSize (1000,750);
+      alexRoomFrame.setVisible (true);
+      alexRoomFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      if (fromEnglish == true){
+        classFrame.dispose ();
+        fromEnglish = false;
+      }
+      else
+        playScreenFrame.dispose ();
+      mainMenu.button.setPath(0);
+    }
     else if (CustomButton.getPath () == 7){
       alexRoomFrame = new JFrame ("The Anxious Life Of Alex Joe");
       
@@ -248,7 +265,7 @@ public class AnxiousAlex {
         System.out.println ("remove me!");
       }
       else {
-        System.out.println ("presentation failed");
+        mainMenu.button.setPath (6);
       }
     }
     
