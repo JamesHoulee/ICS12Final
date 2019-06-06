@@ -22,6 +22,8 @@ public class LevelTwoHall extends JPanel implements ActionListener, KeyListener 
   Timer timer = new Timer (5, this);
   
   MenuButton menuButton;
+  AnxietyBar anxietyBar;
+  Inventory inventory;
   
   public LevelTwoHall (){
     
@@ -35,6 +37,9 @@ public class LevelTwoHall extends JPanel implements ActionListener, KeyListener 
     dy = 0;
     
     menuButton = new MenuButton (135,40);
+    anxietyBar = new AnxietyBar ();
+    inventory = new Inventory ();
+    
     
     //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
     timer.start ();
@@ -49,6 +54,15 @@ public class LevelTwoHall extends JPanel implements ActionListener, KeyListener 
     layout.putConstraint (layout.WEST, sprite, 280, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
     add (sprite);
+    
+    //applies the constraints for the anxiety bar and adds it to the JPanel
+    layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
+    layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
+    add (anxietyBar);
+    
+    layout.putConstraint (layout.SOUTH, inventory, 115, layout.SOUTH, this);
+    layout.putConstraint (layout.WEST, inventory, 0, layout.WEST, this);
+    add (inventory);
     
     layout.putConstraint (layout.EAST, menuButton, -25, layout.EAST, this);
     layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
@@ -78,7 +92,7 @@ public class LevelTwoHall extends JPanel implements ActionListener, KeyListener 
       dx = -3;
     }
     if (c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D){
-      dx = 3;
+      dx = 7; //change back to 3
     }
     if (c == KeyEvent.VK_E && x >= 0 && x <= 150){
       menuButton.setPath (5);

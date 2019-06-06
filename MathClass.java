@@ -36,8 +36,19 @@ public class MathClass extends ClassRoom implements ActionListener {
     if (c == KeyEvent.VK_E && x >= 50 && x <= 300 && y >= -20)
       menuButton.setPath (8);
     if (c == KeyEvent.VK_E && x >= 240 && x <= 300 && y <= -120 && y >= -170){
-      testOpen = true;
+      if (inventory.getPencilCase() == true)
+        testOpen = true;
+      else {
+        anxietyBar.increasePercent (50);
+        increasePercent = anxietyBar.getPercent ();
+        getPencil ();
+      }
     }
+  }
+  
+  public void getPencil (){
+    System.out.println ("Here's a pencil");
+    testOpen = true;
   }
   
   @Override 
