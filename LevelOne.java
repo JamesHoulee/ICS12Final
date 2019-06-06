@@ -82,11 +82,8 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
    */
   Timer timer = new Timer(5,this);
   private int x, y, dx = 0, dy = 0;
-  private int anxietyPercent = 0;
   
   private int bigBroX, bigBroY;
-  
-  Main main = new Main ();
   
   /**
    * This is the constructor for the LevelOne Class. This class instatiates all the required images
@@ -125,7 +122,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     /**
      * This instantiates a new AnxietyBar object which is 0% full
      */
-    anxietyBar = new AnxietyBar (0);
+    anxietyBar = new AnxietyBar ();
     
     this.x = x;
     this.y = y;
@@ -375,7 +372,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     
     //slime updates
     if (x >= 6400 && x <= 6402 && slime1Taken == false){
-      anxietyBar.setPercent (0);
+      anxietyBar.setPercent (anxietyBar.getPercent () - 15);
       update ();
       slime1Taken = true;
       remove (slime);
@@ -495,10 +492,10 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       update();
     }
     if (c == KeyEvent.VK_E && (x >= 2030 && x <2060)){
-      main.button.setPath (7);
+      menuButton.setPath (7);
     }
     if (c == KeyEvent.VK_E && x >= 7540 && x <= 7580){
-      
+      menuButton.setPath (5);
     }
   }
   

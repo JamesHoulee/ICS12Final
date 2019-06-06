@@ -22,7 +22,7 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener {
   
   int x,y,dx,dy;
   
-  Main main = new Main ();
+  MenuButton menuButton;
   
   public AlexRoom (){
 
@@ -45,6 +45,12 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener {
     setLayout (layout);
     
     inventory = new Inventory ();
+    menuButton = new MenuButton (135,40);
+    
+    //applies the constraints for the menu button and adds it to the JPanel
+    layout.putConstraint (layout.EAST, menuButton, 25, layout.EAST, this);
+    layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
+    add (menuButton);
     
     layout.putConstraint (layout.WEST, sprite, x, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
@@ -116,7 +122,7 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener {
       dy = 3;
     }
     if (c == KeyEvent.VK_E && (x >= 380 && x <= 430 && y > -50)){
-      main.button.setPath (4);
+      menuButton.setPath (4);
     }
     if (c == KeyEvent.VK_E && x >= 400 && x <= 440 && y <=-450)
       inventory.setPencilCase (true);

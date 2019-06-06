@@ -19,7 +19,7 @@ import java.awt.Graphics;
  */
 public class AnxietyBar extends JPanel{
   
-  private int anxietyPercent;
+  private static int anxietyPercent;
   
   /**
    * This is the constructor for the AnxietyBar class. It sets the value of the
@@ -27,8 +27,7 @@ public class AnxietyBar extends JPanel{
    * 
    * @param percent This variable is the value that anxietyPercent will be set to
    */
-  public AnxietyBar (int percent){
-    anxietyPercent = percent;
+  public AnxietyBar (){
   }
 
   /**

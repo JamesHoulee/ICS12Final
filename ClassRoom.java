@@ -19,8 +19,8 @@ public abstract class ClassRoom extends JPanel implements ActionListener, KeyLis
   SpringLayout layout;
   
   MenuButton menuButton;
-  
   Inventory inventory;
+  AnxietyBar anxietyBar;
   
   public ClassRoom (){
     
@@ -43,12 +43,17 @@ public abstract class ClassRoom extends JPanel implements ActionListener, KeyLis
     setLayout (layout);
     
     menuButton = new MenuButton (135,40);
-    
     inventory = new Inventory ();
+    anxietyBar = new AnxietyBar ();
     
     layout.putConstraint (layout.SOUTH, inventory, 115, layout.SOUTH, this);
     layout.putConstraint (layout.WEST, inventory, 0, layout.WEST, this);
     add (inventory);
+    
+    //applies the constraints for the anxiety bar and adds it to the JPanel
+    layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
+    layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
+    add (anxietyBar);
     
     layout.putConstraint (layout.WEST, sprite, x, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
@@ -100,7 +105,7 @@ public abstract class ClassRoom extends JPanel implements ActionListener, KeyLis
       dy = -2;
     if (c == KeyEvent.VK_DOWN || c == KeyEvent.VK_S)
       dy = 2;
-    if (c == KeyEvent.VK_E && x >= 50 && x <= 300 && y >= -20)
+    if (c == KeyEvent.VK_E && x >= 50 && x <= 125 && y >= -20)
       menuButton.setPath (8);
   }
   

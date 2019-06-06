@@ -1,11 +1,3 @@
-import javax.swing.JPanel;
-import javax.swing.SpringLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
-import javax.swing.Timer;
-
 /**
  * 
  * @author James Houle and Juan Diego Castano

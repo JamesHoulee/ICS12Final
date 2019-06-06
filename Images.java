@@ -7,8 +7,6 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 import java.io.File;
 
-import javax.swing.JFrame;
-
 /**
  * The Images class is a subclass of the JLabel class. It imports an image
  * with a specified name to be used in the program. The image is then added

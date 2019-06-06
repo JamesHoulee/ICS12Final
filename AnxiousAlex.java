@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import javax.swing.SpringLayout;
 
 /**
  * The AnxiousAlex class is the Driver class for <i>The Anxious Life of Alex"</i> video game.
@@ -54,6 +55,9 @@ public class AnxiousAlex {
   boolean fromAlexRoom;
   boolean fromHall;
   boolean fromClass;
+  boolean fromLv1;
+  
+  SpringLayout layout;
   
   /**
    * This is the constructor for the AnxiousAlex class. It firsts instantiates mainMenu as an 
@@ -65,16 +69,14 @@ public class AnxiousAlex {
     
     mainMenu = new Main ();
     
-    playScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
-    levelOneFrame = new JFrame ("The Anxious Life Of Alex Joe");
-    levelTwoOutFrame = new JFrame ("The Anxious Life Of Alex Joe");
-    infoScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
-    
     fromAlexRoom = false;
     fromHall = false;
     fromClass = false;
+    fromLv1 = false;
     
     Inventory.setPencilCase (false);
+    
+    layout = new SpringLayout ();
     
     while (true){
       checkPath ();
@@ -82,34 +84,7 @@ public class AnxiousAlex {
   }
   
   /**
-   * The checkPath method checks the value of the path variable from the CustomButton class to 
-   * determine which part of the game the player will go to next. 
-   * <p>
-   * If the path variable equals
-   * 1, the player will start the game. The levelOneFrame variable is instantiated as a JFrame
-   * object with the title "The Anxious Life Of Alex Joe" and the levelOne variable is 
-   * instantiated as a new LevelOne object. levelOne is added to the levelOneFrame JFrame and 
-   * the frame's size is set to 1000 by 750, is set to be visible and its default close 
-   * operation is set to EXIT_ON_CLOSE. The mainMenuFrame is then disposed and the path is set
-   * back to 0.
-   * <p>
-   * If the path variable equals 2, the player will go to the information screen. The 
-   * infoScreenFrame variable is instantiated as a JFrame
-   * object with the title "The Anxious Life Of Alex Joe" and the infoScreen variable is 
-   * instantiated as a new InformationScreen object. infoScreen is added to the infoScreenFrame JFrame and 
-   * the frame's size is set to 1000 by 750, is set to be visible and its default close 
-   * operation is set to EXIT_ON_CLOSE. The mainMenuFrame is then disposed and the path is set
-   * back to 0.
-   * <p>
-   * If the path variable equals 3, the game will finish and exit.
-   * <p>
-   * If the path variable equals -999, the player will go to the mainMenu screen. The 
-   * mainMenuFrame variable is instantiated as a JFrame
-   * object with the title "The Anxious Life Of Alex Joe" and the mainMenu variable is 
-   * instantiated as a new Main object. mainMenu is added to the mainMenuFrame JFrame and 
-   * the frame's size is set to 1000 by 750, is set to be visible and its default close 
-   * operation is set to EXIT_ON_CLOSE. The all other frames are then disposed and the path is set
-   * back to 0.
+   * 
    */
   public void checkPath (){
     if (CustomButton.getPath () == 4){
@@ -117,7 +92,6 @@ public class AnxiousAlex {
       
       if (fromAlexRoom == false){
         levelOne = new LevelOne (0,0,0,790,405);
-        //mainMenuFrame.dispose ();
         playScreenFrame.dispose ();
       }
       else {
@@ -131,6 +105,7 @@ public class AnxiousAlex {
       levelOneFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       levelOneFrame.add (levelOne);
       mainMenu.button.setPath (0);
+      fromLv1 = true;
     }
     else if (CustomButton.getPath () == 2){
       infoScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
@@ -157,9 +132,7 @@ public class AnxiousAlex {
       mainMenuFrame.setSize (1000,750);
       mainMenuFrame.setVisible (true);
       mainMenuFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-      playScreenFrame.dispose ();
-      infoScreenFrame.dispose ();
-      levelOneFrame.dispose ();
+      disposeAll ();
       mainMenu.button.setPath (0);
     }
     else if (CustomButton.getPath () == 3){
@@ -197,12 +170,16 @@ public class AnxiousAlex {
       levelTwoOutFrame.setSize (1000,750);
       levelTwoOutFrame.setVisible (true);
       levelTwoOutFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-      if (fromHall == false){
-        playScreenFrame.dispose ();
-      }
-      else {
+      if (fromHall == true){
         levelTwoHallFrame.dispose ();
         fromHall = false;
+      }
+      else if (fromLv1 == true){
+        levelOneFrame.dispose ();
+        fromLv1 = false;
+      }
+      else {
+        playScreenFrame.dispose ();
       }
       mainMenu.button.setPath (0);
     }
@@ -224,7 +201,7 @@ public class AnxiousAlex {
       mainMenu.button.setPath (0);
       fromHall = true;
     }
-    else if (CustomButton.getPath () == 9){
+    else if (CustomButton.getPath () == 9){     
       classFrame = new JFrame ("The Anxious Life Of Alex Joe");
       
       mathClass = new MathClass ();
@@ -235,6 +212,15 @@ public class AnxiousAlex {
       levelTwoHallFrame.dispose ();
       mainMenu.button.setPath (0);
       fromClass = true;
+      
+      boolean checkTest = true;
+      while (checkTest){
+        System.out.print ("");
+        if (mathClass.testOpen () == true){
+          Test test = new Test (classFrame, "Math Test");
+          checkTest = false;
+        }
+      }
     }
     else if (CustomButton.getPath () == 10){
       classFrame = new JFrame ("The Anxious Life Of Alex Joe");
@@ -250,6 +236,64 @@ public class AnxiousAlex {
     }
     else
       System.out.print ("");
+  }
+  
+  private void disposeAll (){
+    try {
+      playScreenFrame.dispose ();
+    }
+    catch (NullPointerException e){
+      levelOneFrame = new JFrame ();
+      levelOneFrame.dispose ();
+    }
+    
+    try {
+      levelOneFrame.dispose ();
+    }
+    catch (NullPointerException e){
+      playScreenFrame = new JFrame ();
+      playScreenFrame.dispose ();
+    }
+    
+    try {
+      alexRoomFrame.dispose ();
+    }
+    catch (NullPointerException e){
+      alexRoomFrame = new JFrame ();
+      alexRoomFrame.dispose ();
+    }
+    
+    try {
+      levelTwoOutFrame.dispose ();
+    }
+    catch (NullPointerException e){
+      levelTwoOutFrame = new JFrame ();
+      levelTwoOutFrame.dispose ();
+    }
+    
+    try {
+      levelTwoHallFrame.dispose ();
+    }
+    catch (NullPointerException e){
+      levelTwoHallFrame = new JFrame ();
+      levelTwoHallFrame.dispose ();
+    }
+    
+    try {
+      classFrame.dispose ();
+    }
+    catch (NullPointerException e){
+      classFrame = new JFrame ();
+      classFrame.dispose ();
+    }
+    
+    try {
+      infoScreenFrame.dispose ();
+    }
+    catch (NullPointerException e){
+      infoScreenFrame = new JFrame ();
+      infoScreenFrame.dispose ();
+    }
   }
 
   /**
