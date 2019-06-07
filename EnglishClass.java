@@ -9,11 +9,14 @@ import java.lang.Thread;
  */
 public class EnglishClass extends ClassRoom implements ActionListener{
   
-  double increasePercent;
-  
   public EnglishClass (){
-    increasePercent = (double)(anxietyBar.getPercent ());
-    System.out.println ("Please come to the front of the class to do your speach, Alex");
+    
+    layout.putConstraint (layout.SOUTH, firstEnglish, 70, layout.NORTH, teacherSprite);
+    layout.putConstraint (layout.EAST, firstEnglish, 75, layout.WEST, teacherSprite);
+    firstEnglish.setVisible (true);
+    
+    layout.putConstraint (layout.EAST, teacherSprite, -50, layout.EAST, this);
+    layout.putConstraint (layout.SOUTH, teacherSprite, -300, layout.SOUTH, this);
   }
   
   public void actionPerformed (ActionEvent ae){
@@ -37,9 +40,10 @@ public class EnglishClass extends ClassRoom implements ActionListener{
     if (x >= 700){
       try{
         Thread.sleep (250);
+        anxietyBar.increasePercent (4);//change the number
       }
       catch (Exception e){}
-      anxietyBar.increasePercent (4);//change the number
+      
     }
     
     update ();

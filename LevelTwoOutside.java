@@ -165,7 +165,7 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
       dx = -3;
     }
     if (c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D){
-      dx = 3;
+      dx = 7; //change to 3
     }
     if ((c == KeyEvent.VK_UP || c == KeyEvent.VK_W) && (y == -40 || y == -80)){
       dy = -2;

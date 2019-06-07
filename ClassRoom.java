@@ -14,6 +14,7 @@ public abstract class ClassRoom extends JPanel implements ActionListener, KeyLis
   
   Images sprite;
   Images background;
+  Images teacherSprite;
   int x,y,dx,dy;
   Timer timer = new Timer (5, this);
   SpringLayout layout;
@@ -22,10 +23,17 @@ public abstract class ClassRoom extends JPanel implements ActionListener, KeyLis
   Inventory inventory;
   AnxietyBar anxietyBar;
   
+  Images firstMath;
+  Images firstEnglish;
+  
   public ClassRoom (){
     
     sprite = new Images ("AlexSmile.png",200,200);
     background = new Images ("MathClassV1.png",1000,750);
+    teacherSprite = new Images ("TeacherSprite.png",200,200);
+    
+    firstMath = new Images ("MathClassA.png",280,145);
+    firstEnglish = new Images ("EnglishClassA.png",280,145);
     
     x = 100;
     y = 0;
@@ -59,9 +67,16 @@ public abstract class ClassRoom extends JPanel implements ActionListener, KeyLis
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
     add (sprite);
     
+    add (teacherSprite);
+    
     layout.putConstraint (layout.EAST, menuButton, -25, layout.EAST, this);
     layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
     add (menuButton);
+    
+    add (firstMath);
+    firstMath.setVisible (false);
+    add (firstEnglish);
+    firstEnglish.setVisible (false);
     
     layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);

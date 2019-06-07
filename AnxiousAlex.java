@@ -225,6 +225,9 @@ public class AnxiousAlex {
       
       boolean checkTest = true;
       while (checkTest){
+        if (CustomButton.getPath () == 8){
+          checkTest = false;
+        }
         System.out.print ("");
         if (mathClass.testOpen () == true){
           Test test = new Test (classFrame, "Math Test");

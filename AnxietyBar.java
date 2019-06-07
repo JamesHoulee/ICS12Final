@@ -68,7 +68,7 @@ public class AnxietyBar extends JPanel{
       anxietyPercent = 0;
   }
   
-  public void increasePercent (int increase){
+  public static void increasePercent (int increase){
     anxietyPercent += increase;
   }
   

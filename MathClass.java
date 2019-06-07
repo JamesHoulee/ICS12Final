@@ -13,12 +13,19 @@ public class MathClass extends ClassRoom implements ActionListener {
   
   JDialog test;
   static boolean testOpen;
-  
   double increasePercent;
   
   public MathClass (){
     testOpen = false;
     increasePercent = 0.0;
+    
+    layout.putConstraint (layout.SOUTH, firstMath, 70, layout.NORTH, teacherSprite);
+    layout.putConstraint (layout.EAST, firstMath, 75, layout.WEST, teacherSprite);
+    firstMath.setVisible (true);
+    
+    layout.putConstraint (layout.EAST, teacherSprite, -50, layout.EAST, this);
+    layout.putConstraint (layout.SOUTH, teacherSprite, -100, layout.SOUTH, this);
+    
   }
   
   @Override
@@ -33,7 +40,7 @@ public class MathClass extends ClassRoom implements ActionListener {
       dy = -2;
     if (c == KeyEvent.VK_DOWN || c == KeyEvent.VK_S)
       dy = 2;
-    if (c == KeyEvent.VK_E && x >= 50 && x <= 300 && y >= -20)
+    if (c == KeyEvent.VK_E && x >= 50 && x <= 90 && y >= -20)
       menuButton.setPath (8);
     if (c == KeyEvent.VK_E && x >= 240 && x <= 300 && y <= -120 && y >= -170){
       if (inventory.getPencilCase() == true)
