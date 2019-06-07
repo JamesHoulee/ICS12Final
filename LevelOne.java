@@ -66,6 +66,11 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
   Images secondText;
   Images thirdText;
   Images fourthText;
+  Images fifthText;
+  Images sixthText;
+  Images seventhText;
+  Images eighthText;
+  Images ninthText;
   
   SpringLayout layout;
   
@@ -116,6 +121,11 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     secondText = new Images ("LevelOneB.png",280,145);
     thirdText = new Images ("LevelOneC.png",280,145);
     fourthText = new Images ("LevelOneD.png",280,145);
+    fifthText = new Images ("LevelOneE.png",280,145);
+    sixthText = new Images ("LevelOneF.png",390,255);
+    seventhText = new Images ("LevelOneG.png",280,145);
+    eighthText = new Images ("LevelOneH.png",415,205);
+    ninthText = new Images ("LevelOneI.png",330,205);
     
     inventory = new Inventory ();
     
@@ -178,6 +188,31 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     add (fourthText);
     fourthText.setVisible (false); 
     
+    layout.putConstraint (layout.SOUTH, fifthText, 70, layout.NORTH, brotherSprite);
+    layout.putConstraint (layout.EAST, fifthText, 75, layout.WEST, brotherSprite);
+    add (fifthText);
+    fifthText.setVisible (false);
+    
+    layout.putConstraint (layout.SOUTH, sixthText, 30, layout.NORTH, brotherSprite);
+    layout.putConstraint (layout.EAST, sixthText, 115, layout.WEST, brotherSprite); //--------------
+    add (sixthText);
+    sixthText.setVisible (false);
+    
+    layout.putConstraint (layout.SOUTH, seventhText, 50, layout.NORTH, sprite);
+    layout.putConstraint (layout.WEST, seventhText, -50, layout.EAST, sprite);
+    add (seventhText);
+    seventhText.setVisible (false);
+    
+    layout.putConstraint (layout.SOUTH, ninthText, 30, layout.NORTH, brotherSprite);
+    layout.putConstraint (layout.EAST, ninthText, 115, layout.WEST, brotherSprite); //--------------
+    add (ninthText);
+    ninthText.setVisible (false);
+    
+    layout.putConstraint (layout.SOUTH, eighthText, 30, layout.NORTH, brotherSprite);
+    layout.putConstraint (layout.EAST, eighthText, 115, layout.WEST, brotherSprite); //--------------
+    add (eighthText);
+    eighthText.setVisible (false);
+    
     //applies the constraints for the anxiety bar and adds it to the JPanel
     layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
     layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
@@ -186,6 +221,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     layout.putConstraint (layout.WEST, slime, 6620, layout.WEST, background);
     layout.putConstraint (layout.SOUTH, slime, -160, layout.SOUTH, background);
     add (slime);
+    slime.setVisible (false);
     
     layout.putConstraint (layout.SOUTH, inventory, 115, layout.SOUTH, this);
     layout.putConstraint (layout.WEST, inventory, 0, layout.WEST, this);
@@ -211,9 +247,9 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       dx = 0;
       x = 0;
     }
-    if (x > 8000){
+    if (x > 7580){
       dx = 0;
-      x = 8000;
+      x = 7580;
     }
     
     //defines the movement of the jump pre/post stairs
@@ -389,8 +425,14 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       animationNum = 1;
     else if (x >= 1350 && x < 2550)
       animationNum = 2;
-    else if (x >= 2550)
+    else if (x >= 2550 && x < 3400)
       animationNum = 3;
+    else if (x >= 3400 && x < 4250)
+      animationNum = 4;
+    else if (x >= 4250 && x < 5300)
+      animationNum = 5;
+    else if (x >= 5300)
+      animationNum = 6;
     else 
       animationNum = 0;
     
@@ -398,7 +440,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
       firstText.setVisible (false);
       if (bigBroX < 1125)
         bigBroX+=3;
-      if (bigBroX >= 1125 && bigBroX < 1600 && bigBroY > 80 ){
+      if (bigBroX >= 1125 && bigBroX < 1600 && bigBroY > 80){
         bigBroX +=2;
         bigBroY -=2;
       }
@@ -418,13 +460,24 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
     }
     
     if (animationNum == 3){
-      fourthText.setVisible (true);
-      thirdText.setVisible (false);
+      if (bigBroX > 2550 && bigBroX < 4000){
+        fourthText.setVisible (true);
+        thirdText.setVisible (false);
+      }
+      if (bigBroX <= 3730)
+        bigBroX += 3;
+      if (bigBroX == 3732){
+        fourthText.setVisible (false);
+        fifthText.setVisible (true);
+      }
+    }
+    
+    if (animationNum == 4){
       if (bigBroX <= 4600)
         bigBroX += 3;
       if (bigBroX <3930)
         bigBroY = 80;
-      else if (bigBroX < 4020)
+      else if (bigBroX < 4020) 
         bigBroY = 170;
       else if (bigBroX < 4110)
         bigBroY = 260;
@@ -432,6 +485,28 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
         bigBroY = 350;
       else
         bigBroY = 460;
+      if (bigBroX == 4602){
+        fifthText.setVisible (false);
+        sixthText.setVisible (true);
+      }
+    }
+    if (animationNum == 5){
+      sixthText.setVisible (false);
+      seventhText.setVisible (true);
+      eighthText.setVisible (true);
+      if (bigBroX <= 5700)
+        bigBroX += 3;
+    }
+    if (animationNum == 6){
+      seventhText.setVisible (false);
+      if (bigBroX <= 6800)
+        bigBroX += 3;
+      if (bigBroX == 6102)
+        eighthText.setVisible (false);
+      if (bigBroX == 6801){
+        ninthText.setVisible (true);
+        slime.setVisible (true);
+      }
     }
     
     update(); 
