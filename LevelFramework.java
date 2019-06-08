@@ -21,6 +21,7 @@ public abstract class LevelFramework extends JPanel implements ActionListener, K
   
   Timer timer;
   int x,y,dx,dy;
+  int time;
   
   public LevelFramework (){
     sprite = new Images ("AlexSmile.png",200,200);
@@ -36,13 +37,6 @@ public abstract class LevelFramework extends JPanel implements ActionListener, K
     
     dx = 0;
     dy = 0;
-    
-    //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
-    timer.start ();
-    addKeyListener(this);
-    setFocusable(true);
-    setFocusTraversalKeysEnabled(false);
-    //End of source code
     
     //applies the constraints for the menu button and adds it to the JPanel
     layout.putConstraint (layout.EAST, menuButton, 0, layout.EAST, this);

@@ -1,46 +1,34 @@
-import javax.swing.JPanel;
-import javax.swing.SpringLayout;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-import javax.swing.Timer;
 
 /**
  * 
  * @author James Houle and Juan Diego Castano
  * @version 1 05.30.19
  */ 
-public class LevelTwoOutside extends JPanel implements ActionListener, KeyListener {
+public class LevelTwoOutside extends LevelFramework {
 
-  Images sprite;
   Images background;
   Images brotherSprite;
   Images friendSprite;
-  SpringLayout layout;
-  int x,y,dx,dy;
-  int bigBroX, bigBroY;
-  Timer timer = new Timer(5,this);
+  Images firstText;
+  Images secondText;
   
-  MenuButton menuButton;
-  AnxietyBar anxietyBar;
-  Inventory inventory;
+  int fromWhere;
   
-  public LevelTwoOutside () { //maybe add the ability for the player to come back outside??
+  /**
+   * @param fromWhere is an integer representation of where the player came from. If fromWhere = 1, the player is from 
+   *        the inside the school. Otherwise, the player just started the level.
+   */
+  public LevelTwoOutside (int fromWhere) { //maybe add the ability for the player to come back outside??
     
-    sprite = new Images ("AlexSmile.png",200,200);
+    this.fromWhere = fromWhere;
+    
     background = new Images ("OutsideSchoolV2.png",2500,750);
-    brotherSprite = new Images ("BigBrother.png",210,200);
-    friendSprite = new Images ("BigBrother.png",200,200); //need to create friend sprite
-    
-    menuButton = new MenuButton (135,40);
-    anxietyBar = new AnxietyBar ();
-    inventory = new Inventory ();
-    
-    x = 0;
-    y = -40;
-    dx = 0;
-    dy = 0;
+    brotherSprite = new Images ("BigBrotherRev.png",210,200);
+    friendSprite = new Images ("FriendSprite.png",200,200); 
+    firstText = new Images ("LevelTwoA.png",280,145);
+    secondText = new Images ("LevelTwoB.png",280,145);
     
     //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
     timer.start ();
@@ -49,30 +37,34 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     setFocusTraversalKeysEnabled(false);
     //End of source code
     
-    layout = new SpringLayout ();
-    setLayout (layout);
-        
-    layout.putConstraint (layout.SOUTH, inventory, 115, layout.SOUTH, this);
-    layout.putConstraint (layout.WEST, inventory, 0, layout.WEST, this);
-    add (inventory);
+    y = -40;
+    if (fromWhere != 1){
+      x = 0;
+      
+      layout.putConstraint (layout.WEST, firstText, -70, layout.EAST, brotherSprite);
+      layout.putConstraint (layout.SOUTH, firstText, 50, layout.NORTH, brotherSprite);
+      add (firstText);
+      
+      layout.putConstraint (layout.EAST, secondText, 70, layout.WEST, friendSprite);
+      layout.putConstraint (layout.SOUTH, secondText, 50, layout.NORTH, friendSprite);
+      add (secondText);
+      secondText.setVisible (false);
+      
+      layout.putConstraint (layout.WEST, brotherSprite, 10, layout.WEST, background);
+      layout.putConstraint (layout.SOUTH, brotherSprite, -40, layout.SOUTH, this);
+      add (brotherSprite);
+      
+      layout.putConstraint (layout.WEST, friendSprite, 1340, layout.WEST, background);
+      layout.putConstraint (layout.SOUTH, friendSprite, -120, layout.SOUTH, background);
+      add (friendSprite);
+      friendSprite.setVisible (false);
+    }
+    else {
+      x = 990;
+    }
     
     layout.putConstraint (layout.WEST, sprite, 280, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
-    add (sprite);
-    
-    layout.putConstraint (layout.WEST, friendSprite, 1340, layout.WEST, background);
-    layout.putConstraint (layout.SOUTH, friendSprite, -120, layout.SOUTH, background);
-    add (friendSprite);
-    friendSprite.setVisible (false);
-    
-    layout.putConstraint (layout.EAST, menuButton, 0, layout.EAST, this);
-    layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
-    add (menuButton);
-    
-    //applies the constraints for the anxiety bar and adds it to the JPanel
-    layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
-    layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
-    add (anxietyBar);
     
     layout.putConstraint (layout.WEST, background, -x, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);
@@ -129,13 +121,15 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     }
     
     //makes friend appear 
-    if (x >= 666)
+    if (x == 666){
       friendSprite.setVisible (true);
+      secondText.setVisible (true);
+      anxietyBar.increasePercent (15);
+    }
     
-    update ();
     x += dx;
     y += dy;
-    repaint ();
+    update ();
   }
   
   public void update (){
@@ -143,18 +137,15 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     layout.putConstraint (layout.WEST, sprite, 280, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
     
-    layout.putConstraint (layout.WEST, friendSprite, 1440, layout.WEST, background);
-    layout.putConstraint (layout.SOUTH, friendSprite, -120, layout.SOUTH, background);
-    
     layout.putConstraint (layout.WEST, background, -x, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);
     
+    if (fromWhere != 1){
+      layout.putConstraint (layout.WEST, friendSprite, 1440, layout.WEST, background);
+      layout.putConstraint (layout.SOUTH, friendSprite, -120, layout.SOUTH, background);
+    }
+    
     refresh ();
-  }
-  
-  public void refresh (){
-    repaint ();
-    revalidate ();
   }
   
   @Override
@@ -165,7 +156,7 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
       dx = -3;
     }
     if (c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D){
-      dx = 7; //change to 3
+      dx = 3;
     }
     if ((c == KeyEvent.VK_UP || c == KeyEvent.VK_W) && (y == -40 || y == -80)){
       dy = -2;
@@ -176,8 +167,6 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
     
     update ();
   }
-  
-  public void keyTyped (KeyEvent e){} //put override?
   
   public void keyReleased (KeyEvent e){ //put override?
     if (dy == 0)

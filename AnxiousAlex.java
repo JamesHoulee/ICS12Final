@@ -148,22 +148,25 @@ public class AnxiousAlex {
     else if (CustomButton.getPath () == 5){
       outsideSchoolFrame = new JFrame ("The Anxious Life Of Alex Joe");
       
-      levelTwoOut = new LevelTwoOutside ();
-      outsideSchoolFrame.add (levelTwoOut);
-      outsideSchoolFrame.setSize (1000,750);
-      outsideSchoolFrame.setVisible (true);
-      outsideSchoolFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       if (fromHall == true){
+        levelTwoOut = new LevelTwoOutside (1);
         levelTwoHallFrame.dispose ();
         fromHall = false;
       }
       else if (fromLv1 == true){
+        levelTwoOut = new LevelTwoOutside (0);
         levelOneFrame.dispose ();
         fromLv1 = false;
+        
       }
       else {
+        levelTwoOut = new LevelTwoOutside (0);
         playScreenFrame.dispose ();
       }
+      outsideSchoolFrame.add (levelTwoOut);
+      outsideSchoolFrame.setSize (1000,750);
+      outsideSchoolFrame.setVisible (true);
+      outsideSchoolFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       mainMenu.button.setPath (0);
     }
     else if (CustomButton.getPath () == 6){
@@ -198,18 +201,20 @@ public class AnxiousAlex {
     else if (CustomButton.getPath () == 8){
       levelTwoHallFrame = new JFrame ("The Anxious Life Of Alex Joe");
       
-      levelTwoHall = new LevelTwoHall ();
+      if (fromClass == false){
+        outsideSchoolFrame.dispose ();
+        levelTwoHall = new LevelTwoHall (0);
+      }
+      else {
+        levelTwoHall = new LevelTwoHall (1);
+        classFrame.dispose ();
+        fromClass = false;
+      }
       levelTwoHallFrame.add (levelTwoHall);
       levelTwoHallFrame.setSize (1000,750);
       levelTwoHallFrame.setVisible (true);
       levelTwoHallFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-      if (fromClass == false){
-        outsideSchoolFrame.dispose ();
-      }
-      else {
-        classFrame.dispose ();
-        fromClass = false;
-      }
+      
       mainMenu.button.setPath (0);
       fromHall = true;
     }

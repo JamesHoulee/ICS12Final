@@ -90,9 +90,7 @@ public class TeachingAlex extends JPanel implements ActionListener, KeyListener 
     layout.putConstraint (layout.SOUTH, firstText, 50, layout.NORTH, sprite);
     add (firstText);
     
-    layout.putConstraint (layout.EAST, secondText, 70, layout.WEST, brotherSprite);
-    layout.putConstraint (layout.SOUTH, secondText, 50, layout.NORTH, brotherSprite);
-    add (secondText);
+    
     secondText.setVisible (false);
     
     layout.putConstraint (layout.EAST, thirdText, 70, layout.WEST, brotherSprite);

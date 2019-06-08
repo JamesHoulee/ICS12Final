@@ -1,12 +1,14 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+
 /**
- * 
+ * @author James Houle and Juan Diego Castano
+ * @version 1 06.08.19
  */
 public class HelpingAlex extends LevelFramework {
   
   Images background;
-  Images friendSprite1 = new Images ("FriendSprite.png", 200, 200);
+  Images friendSprite1;
   Images friendSprite2;
   Images friendSprite3;
   Images firstText;
@@ -33,6 +35,13 @@ public class HelpingAlex extends LevelFramework {
     x = 170;
     y = -40;
     friendX  = 400;
+    
+    //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
+    timer.start ();
+    addKeyListener(this);
+    setFocusable(true);
+    setFocusTraversalKeysEnabled(false);
+    //End of source code
     
     layout.putConstraint (layout.EAST, firstText, 70, layout.WEST, friendSprite1);
     layout.putConstraint (layout.SOUTH, firstText, 50, layout.NORTH, friendSprite1);
@@ -96,13 +105,13 @@ public class HelpingAlex extends LevelFramework {
         x += dx;
         y += dy;
       }
-      update ();
     }
     else {
       if (time % 6 == 0)
         anxietyBar.increasePercent (3);
       
     }
+    update ();
   }
   
   public void yard (){

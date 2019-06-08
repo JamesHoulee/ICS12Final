@@ -1,8 +1,7 @@
-import java.awt.event.KeyEvent;
 import javax.swing.JDialog;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.Thread;
 
 /**
  * 
@@ -11,21 +10,42 @@ import java.lang.Thread;
  */
 public class MathClass extends ClassRoom implements ActionListener {
   
+  Images firstText;
+  Images secondText;
+  Images thirdText;
+  
   JDialog test;
   static boolean testOpen;
-  double increasePercent;
   
   public MathClass (){
     testOpen = false;
-    increasePercent = 0.0;
+    background = new Images ("ClassV2.png",1000,750);
+    firstText = new Images ("MathClassA.png",280,145);
     
-    layout.putConstraint (layout.SOUTH, firstMath, 70, layout.NORTH, teacherSprite);
-    layout.putConstraint (layout.EAST, firstMath, 75, layout.WEST, teacherSprite);
-    firstMath.setVisible (true);
+    layout.putConstraint (layout.SOUTH, firstText, 70, layout.NORTH, teacherSprite);
+    layout.putConstraint (layout.EAST, firstText, 75, layout.WEST, teacherSprite);
+    add (firstText);
     
     layout.putConstraint (layout.EAST, teacherSprite, -50, layout.EAST, this);
     layout.putConstraint (layout.SOUTH, teacherSprite, -100, layout.SOUTH, this);
     
+    if (inventory.getPencilCase () == false){
+      secondText = new Images ("MathClassB.png",280,145);
+      thirdText = new Images ("MathClassC.png",280,145);
+      
+      layout.putConstraint (layout.EAST, secondText, 75, layout.WEST, sprite);
+      layout.putConstraint (layout.SOUTH, secondText, 50, layout.NORTH, sprite);
+      add (secondText);
+      secondText.setVisible (false);
+      
+      layout.putConstraint (layout.SOUTH, thirdText, 70, layout.NORTH, teacherSprite);
+      layout.putConstraint (layout.EAST, thirdText, 75, layout.WEST, teacherSprite);
+      add (thirdText);
+      thirdText.setVisible (false);
+    }
+    layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
+    layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);
+    add (background);
   }
   
   @Override
@@ -40,26 +60,28 @@ public class MathClass extends ClassRoom implements ActionListener {
       dy = -2;
     if (c == KeyEvent.VK_DOWN || c == KeyEvent.VK_S)
       dy = 2;
-    if (c == KeyEvent.VK_E && x >= 50 && x <= 90 && y >= -20)
+    if (c == KeyEvent.VK_E && x >= 0 && x <= 80 && y >= -20)
       menuButton.setPath (8);
-    if (c == KeyEvent.VK_E && x >= 240 && x <= 300 && y <= -120 && y >= -170){
+    if (c == KeyEvent.VK_E && x >= 240 && x <= 310 && y <= -35 && y >= -110){
+      remove (firstText);
       if (inventory.getPencilCase() == true)
         testOpen = true;
       else {
-        anxietyBar.increasePercent (50);
-        increasePercent = anxietyBar.getPercent ();
         getPencil ();
       }
     }
   }
   
   public void getPencil (){
-    System.out.println ("Here's a pencil");
+    anxietyBar.increasePercent (50);
+    secondText.setVisible (true);
+    thirdText.setVisible (true);
     testOpen = true;
   }
   
   @Override 
   public void actionPerformed (ActionEvent ae){
+    time ++;
     if (x < 0){
       x = 0;
       dx = 0;
@@ -77,14 +99,8 @@ public class MathClass extends ClassRoom implements ActionListener {
       dy = 0;
     }
     
-    if (testOpen == true){
-      increasePercent += 0.1;
-      try {
-        Thread.sleep (250);
-      }
-      catch (Exception e){}
-      anxietyBar.setPercent ((int)(increasePercent));
-      update ();
+    if (testOpen == true && (time % 300) == 0){
+      anxietyBar.increasePercent (1);
     }
     
     update ();
