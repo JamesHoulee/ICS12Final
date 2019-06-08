@@ -29,7 +29,7 @@ public class LevelTwoHall extends JPanel implements ActionListener, KeyListener 
     
     sprite = new Images ("AlexSmile.png",200,200);
     //friendSprite = new Images (
-    background = new Images ("LevelTwoHall.png",8000,750);
+    background = new Images ("LevelTwoHallV2.png",8000,750);
     
     x = 0;
     y = -120;

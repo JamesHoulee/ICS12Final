@@ -29,7 +29,7 @@ public class LevelTwoOutside extends JPanel implements ActionListener, KeyListen
   public LevelTwoOutside () { //maybe add the ability for the player to come back outside??
     
     sprite = new Images ("AlexSmile.png",200,200);
-    background = new Images ("OutsideSchoolV1.png",2500,750);
+    background = new Images ("OutsideSchoolV2.png",2500,750);
     brotherSprite = new Images ("BigBrother.png",210,200);
     friendSprite = new Images ("BigBrother.png",200,200); //need to create friend sprite
     

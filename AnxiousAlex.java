@@ -43,14 +43,16 @@ public class AnxiousAlex {
   MathClass mathClass; //
   EnglishClass englishClass; //
   TeachingAlex teachingAlex; //
+  HelpingAlex helpingAlex; //
   
   JFrame mainMenuFrame;
   JFrame playScreenFrame; //add to var dic
   JFrame levelOneFrame;
   JFrame alexRoomFrame; //add to var dic
-  JFrame levelTwoOutFrame; //
+  JFrame outsideSchoolFrame; //
   JFrame levelTwoHallFrame; //
   JFrame classFrame; //
+  JFrame yardFrame;
   JFrame infoScreenFrame;
   
   boolean fromAlexRoom;
@@ -144,13 +146,13 @@ public class AnxiousAlex {
       fromLv1 = true;
     }
     else if (CustomButton.getPath () == 5){
-      levelTwoOutFrame = new JFrame ("The Anxious Life Of Alex Joe");
+      outsideSchoolFrame = new JFrame ("The Anxious Life Of Alex Joe");
       
       levelTwoOut = new LevelTwoOutside ();
-      levelTwoOutFrame.add (levelTwoOut);
-      levelTwoOutFrame.setSize (1000,750);
-      levelTwoOutFrame.setVisible (true);
-      levelTwoOutFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      outsideSchoolFrame.add (levelTwoOut);
+      outsideSchoolFrame.setSize (1000,750);
+      outsideSchoolFrame.setVisible (true);
+      outsideSchoolFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       if (fromHall == true){
         levelTwoHallFrame.dispose ();
         fromHall = false;
@@ -202,7 +204,7 @@ public class AnxiousAlex {
       levelTwoHallFrame.setVisible (true);
       levelTwoHallFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       if (fromClass == false){
-        levelTwoOutFrame.dispose ();
+        outsideSchoolFrame.dispose ();
       }
       else {
         classFrame.dispose ();
@@ -248,6 +250,18 @@ public class AnxiousAlex {
       fromClass = true;
       fromEnglish = true;
     }
+    else if (CustomButton.getPath () == 11){
+      outsideSchoolFrame = new JFrame ("The Anxious Life Of Alex Joe");
+      
+      helpingAlex = new HelpingAlex ();
+      outsideSchoolFrame.add (helpingAlex);
+      outsideSchoolFrame.setSize (1000,750);
+      outsideSchoolFrame.setVisible (true);
+      outsideSchoolFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      alexRoomFrame.dispose ();
+      mainMenu.button.setPath (0);
+    }
+      
     else if (CustomButton.getPath () == -999){
       mainMenuFrame = new JFrame ("The Anxious Life Of Alex Joe");
       
@@ -268,10 +282,10 @@ public class AnxiousAlex {
         System.out.println ("remove me!");
       }
       else {
+        System.out.println ("here");
         mainMenu.button.setPath (6);
       }
     }
-    
   }
   
   private void disposeAll (){
@@ -300,11 +314,11 @@ public class AnxiousAlex {
     }
     
     try {
-      levelTwoOutFrame.dispose ();
+      outsideSchoolFrame.dispose ();
     }
     catch (NullPointerException e){
-      levelTwoOutFrame = new JFrame ();
-      levelTwoOutFrame.dispose ();
+      outsideSchoolFrame = new JFrame ();
+      outsideSchoolFrame.dispose ();
     }
     
     try {
@@ -330,6 +344,14 @@ public class AnxiousAlex {
       infoScreenFrame = new JFrame ();
       infoScreenFrame.dispose ();
     }
+    
+    try {
+      yardFrame.dispose ();
+    }
+    catch (NullPointerException e){
+      yardFrame = new JFrame ();
+      yardFrame.dispose ();
+    }      
   }
 
   /**

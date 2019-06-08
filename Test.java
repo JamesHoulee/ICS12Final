@@ -45,7 +45,7 @@ public class Test extends JDialog implements ActionListener{
     q2C = new JButton ("-5 and 2");
     
     layout.putConstraint (layout.WEST, tip, 0, layout.WEST, this);
-    layout.putConstraint (layout.SOUTH, tip, 30, layout.SOUTH, this);
+    layout.putConstraint (layout.NORTH, tip, 70, layout.NORTH, this);
     add (tip);
     
     layout.putConstraint (layout.WEST, q1, 0, layout.WEST, this);

@@ -106,7 +106,7 @@ public class LevelOne extends JPanel implements ActionListener, KeyListener {
      * This instantiates a new Images object with a location of "BackgroundVersion1.png" and dimensions of 
      * 8000 by 750
      */
-    background = new Images ("BackgroundVersion1.png",8000,750);
+    background = new Images ("LevelOneV2.png",10000,750);
     /**
      * This instantiates a new Images object with a location of "BigBrother.png" and a dimensions 210 by 200
      */

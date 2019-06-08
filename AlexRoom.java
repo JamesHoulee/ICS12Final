@@ -29,7 +29,7 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener { //
   public AlexRoom (){
 
     sprite = new Images ("AlexSmile.png",200,200);
-    background = new Images ("AlexRoomV1.png",1000,750);
+    background = new Images ("AlexRoomV2.png",1000,750);
     
     x = 400;
     y = 20;

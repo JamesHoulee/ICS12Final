@@ -29,7 +29,7 @@ public abstract class ClassRoom extends JPanel implements ActionListener, KeyLis
   public ClassRoom (){
     
     sprite = new Images ("AlexSmile.png",200,200);
-    background = new Images ("MathClassV1.png",1000,750);
+    background = new Images ("ClassV2.png",1000,750);
     teacherSprite = new Images ("TeacherSprite.png",200,200);
     
     firstMath = new Images ("MathClassA.png",280,145);
