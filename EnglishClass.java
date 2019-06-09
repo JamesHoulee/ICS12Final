@@ -9,7 +9,9 @@ import java.lang.Thread;
  */
 public class EnglishClass extends ClassRoom implements ActionListener{
   
-  Images firstText;
+  private Images firstText;
+  
+  private static boolean levelComplete;
   
   public EnglishClass (){
     
@@ -61,9 +63,12 @@ public class EnglishClass extends ClassRoom implements ActionListener{
     }
   }
   
-  //temp
-  public static void main (String [] args){
-     new AnxiousAlex ();
+  public static boolean levelComplete (){
+    return levelComplete;
+  }
+  
+  public static void completeLevel (){ ///REMOVE STATIC
+    levelComplete = true;
   }
 }
   

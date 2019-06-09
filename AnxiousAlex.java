@@ -32,6 +32,9 @@ import javax.swing.JFrame;
  * <p>
  * <b>helpingAlex </b> This holds the information from the HelpingAlex class for the second part of the third level
  * <p>
+ * <b>incLvl </b> This hold the information from the IncompleteLevel class that opens a JDialog to tell them that they 
+ *                haven't completed the previous levels
+ * <p>
  * <b>mainMenuFrame </b> This holds the information from the JFrame class for the JFrame used for the main menu
  * <p>
  * <b>playScreenFrame </b> This holds the information from the JFrame class for the JFrame used for the play screen
@@ -76,6 +79,7 @@ public class AnxiousAlex {
   private InformationScreen infoScreen;
   private TeachingAlex teachingAlex;
   private HelpingAlex helpingAlex;
+  private IncompleteLevel incLvl;
   
   private JFrame mainMenuFrame;
   private JFrame playScreenFrame;
@@ -168,42 +172,56 @@ public class AnxiousAlex {
       fromLv1 = true;
     }
     else if (CustomButton.getPath () == 5){
-      outsideSchoolFrame = new JFrame ("The Anxious Life Of Alex Joe");
-      
       if (fromHall == true){
         levelTwoOut = new LevelTwoOutside (1);
         levelTwoHallFrame.dispose ();
         fromHall = false;
       }
-      else if (fromLv1 == true){
+      else if (fromLv1 == true){        
         levelTwoOut = new LevelTwoOutside (0);
         levelOneFrame.dispose ();
         fromLv1 = false;
       }
       else {
-        levelTwoOut = new LevelTwoOutside (0);
-        playScreenFrame.dispose ();
+        if (LevelOne.levelComplete () == true){
+          levelTwoOut = new LevelTwoOutside (0);
+          playScreenFrame.dispose ();
+        }
+        else{
+          incLvl = new IncompleteLevel (1);
+        }
       }
-      outsideSchoolFrame.add (levelTwoOut);
-      outsideSchoolFrame.setSize (1000,750);
-      outsideSchoolFrame.setVisible (true);
-      outsideSchoolFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      if (LevelOne.levelComplete () == true){
+        outsideSchoolFrame = new JFrame ("The Anxious Life Of Alex Joe");
+        outsideSchoolFrame.add (levelTwoOut);
+        outsideSchoolFrame.setSize (1000,750);
+        outsideSchoolFrame.setVisible (true);
+        outsideSchoolFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      }
       mainMenu.button.setPath (0);
     }
     else if (CustomButton.getPath () == 6){
-      alexRoomFrame = new JFrame ("The Anxious Life Of Alex Joe");
-      
-      teachingAlex = new TeachingAlex ();
-      alexRoomFrame.add (teachingAlex);
-      alexRoomFrame.setSize (1000,750);
-      alexRoomFrame.setVisible (true);
-      alexRoomFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      EnglishClass.completeLevel (); //////////////REMOVE THIS
+      if (EnglishClass.levelComplete () == true){
+        alexRoomFrame = new JFrame ("The Anxious Life Of Alex Joe");
+        teachingAlex = new TeachingAlex ();
+        alexRoomFrame.add (teachingAlex);
+        alexRoomFrame.setSize (1000,750);
+        alexRoomFrame.setVisible (true);
+        alexRoomFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+      }
       if (fromEnglish == true){
         classFrame.dispose ();
         fromEnglish = false;
       }
-      else
-        playScreenFrame.dispose ();
+      else {
+        if (EnglishClass.levelComplete () == true){
+          playScreenFrame.dispose ();
+        }
+        else{
+          incLvl = new IncompleteLevel (2);
+        }
+      }
       mainMenu.button.setPath(0);
     }
     else if (CustomButton.getPath () == 7){
@@ -299,11 +317,12 @@ public class AnxiousAlex {
    */
   private void checkAnxiety (){
     if (AnxietyBar.getPercent () >= 100){
-      if (fromEnglish == false){
-        System.out.println ("remove me!");
+      if (fromEnglish == false){ //add faint screen
+        
       }
       else {
         englishClass.timer.stop();
+        englishClass.completeLevel ();
         mainMenu.button.setPath (6);
       }
     }

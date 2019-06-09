@@ -54,6 +54,7 @@ public class Test extends JDialog implements ActionListener{
     
     setVisible (true);
     setSize (310,150);
+    setSize (311,150);
     setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
     
     layout = new SpringLayout ();

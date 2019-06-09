@@ -74,6 +74,7 @@ public class LevelOne extends LevelFramework {
   private boolean slime1Taken;
   
   private int bigBroX, bigBroY;
+  private static boolean levelComplete;
   
   /**
    * This is the constructor for the LevelOne Class. This constructor instatiates all the required images
@@ -246,6 +247,7 @@ public class LevelOne extends LevelFramework {
    * @param e is an object of the ActionEvent class
    */
   public void actionPerformed (ActionEvent e){
+    
     //stops player from leaving boundries
     if (x < 0){
       dx = 0;
@@ -459,6 +461,7 @@ public class LevelOne extends LevelFramework {
       else
         bigBroY = 460;
       if (bigBroX == 4602){
+        fourthText.setVisible (false);
         fifthText.setVisible (false);
         sixthText.setVisible (true);
       }
@@ -472,6 +475,7 @@ public class LevelOne extends LevelFramework {
         bigBroX += 3;
     }
     if (animationNum == 6){
+      fourthText.setVisible (false);
       seventhText.setVisible (false);
       if (bigBroX <= 6800)
         bigBroX += 4;
@@ -591,6 +595,7 @@ public class LevelOne extends LevelFramework {
     }
     if (c == KeyEvent.VK_E && x >= 7540 && x <= 7580){
       menuButton.setPath (5);
+      levelComplete = true;
     }
   }
 
@@ -612,5 +617,14 @@ public class LevelOne extends LevelFramework {
       else 
         dx = 0;
     }
+  }
+  
+  /**
+   * The levelComplete method returns value of levelComplete.
+   * 
+   * @return levelComplete
+   */
+  public static boolean levelComplete (){
+    return levelComplete;
   }
 }
