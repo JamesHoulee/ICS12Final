@@ -7,18 +7,48 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
+ * The Test class extends JDialog and implements ActionListener. This class creates a new JDialog representing the 
+ * player's math test. It lays out questions for the player to answer. Wrong answers make Alex more anxious.
+ * 
+ * <p>
+ * <b>Instance Variable: </b>
+ * <p>
+ * <b>layout </b> This variable represents the layout for the JDialog.
+ * <p>
+ * <b>tip </b> This variable represents the tip that the player gets.
+ * <p>
+ * <b>q1 </b> This variable represents the first question
+ * <p>
+ * <b>q2 </b> This variable represents the second question
+ * <p>
+ * <b>q1A </b> This variable represents the first option for the first question
+ * <p>
+ * <b>q1B </b> This variable represents the second option for the first question
+ * <p>
+ * <b>q1C </b> This variable represents the third option for the first question
+ * <p>
+ * <b>q2A </b> This variable represents the first option for the second question
+ * <p>
+ * <b>q2B </b> This variable represents the second option for the second question
+ * <p>
+ * <b>q2C </b> This variable represents the third option for the second question
+ * 
  * @author James Houle and Juan Diego Castano
- * @version V 06.07.19
+ * @version 1 06.07.19
  */
 public class Test extends JDialog implements ActionListener{
   
-  SpringLayout layout;
+  private SpringLayout layout;
   
-  JTextField tip;
-  JTextField q1, q2; 
-  JButton q1A, q1B, q1C;
-  JButton q2A, q2B, q2C;
+  private JTextField tip;
+  private JTextField q1, q2; 
+  private JButton q1A, q1B, q1C;
+  private JButton q2A, q2B, q2C;
   
+  /**
+   * This is the constructor for the Test class. This constructor instatiates all the required text fields and buttons
+   * and it sets up the constraints for all the instantiated objects.
+   */
   public Test (JFrame owner, String title){
     super (owner, title);
     
@@ -84,7 +114,12 @@ public class Test extends JDialog implements ActionListener{
     layout.putConstraint (layout.NORTH, q2, 0, layout.NORTH, this);
   }
   
-  public void nextQuestion (int questionNumber){
+  /**
+   * The nextQuestion method sets the screen for the next question
+   * 
+   * @param questionNumber represents the next question number.
+   */
+  private void nextQuestion (int questionNumber){
     if (questionNumber == 2){
       remove (q1);
       remove (q1A);
@@ -99,6 +134,13 @@ public class Test extends JDialog implements ActionListener{
     revalidate ();
   }
   
+  /**
+   * The actionPerformed method defines how the game reacts to a players specific input. This method 
+   * defines the boundaries of the game. It also defines the locations of events in the game such as when the anxiety
+   * bar has to change. 
+   * 
+   * @param e is an object of the ActionEvent class
+   */
   @Override
   public void actionPerformed (ActionEvent ae){
     if (ae.getActionCommand ().equals ("8")){
@@ -131,15 +173,12 @@ public class Test extends JDialog implements ActionListener{
     refresh ();
   }
   
+  /**
+   * The refresh method calls the repaint and revalidate methods.
+   */
   public void refresh (){
     repaint ();
     revalidate ();
-  }
-
-  
-  //temp
-  public static void main (String [] args){
-    new AnxiousAlex ();
   }
 }
   

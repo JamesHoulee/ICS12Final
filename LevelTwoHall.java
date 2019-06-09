@@ -7,12 +7,12 @@ import java.awt.event.KeyEvent;
  */
 public class LevelTwoHall extends LevelFramework {
   
-  Images friendSprite;
-  Images background;
-  Images text;
+  private Images friendSprite;
+  private Images background;
+  private Images text;
   
-  int friendX;
-  int fromWhere;
+  private int friendX;
+  private int fromWhere;
   
   /**
    * @param fromWhere is an integer representation of where the player came from. If fromWhere = 1, the player is from 
@@ -72,6 +72,15 @@ public class LevelTwoHall extends LevelFramework {
   
   public void actionPerformed (ActionEvent e){
     
+    if (x > 5500){
+      dx = 0;
+      x = 5500;
+    }
+    if (x < 0){
+      dx = 0;
+      x =0;
+    }
+    
     if (friendX < 2040 && fromWhere != 1)
       friendX += 3;
     if (friendX < 3440 && fromWhere == 1)
@@ -119,10 +128,5 @@ public class LevelTwoHall extends LevelFramework {
     layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);
     
     refresh ();
-  }
-  
-  //temp
-  public static void main (String [] args){
-    new AnxiousAlex ();
   }
 }

@@ -1,10 +1,8 @@
 import javax.swing.JFrame;
-import javax.swing.SpringLayout;
 
 /**
- * The AnxiousAlex class is the Driver class for <i>The Anxious Life of Alex"</i> video game.
- * When instantiated, it will create a new main menu using the Main class. It then instantiates
- * a JFrame for each of the other menu options: level one and information screen. It will then 
+ * The AnxiousAlex class is the Driver class for <i>"The Anxious Life of Alex"</i> video game.
+ * When instantiated, it will create a new main menu using the Main class. It will then 
  * repeatedly check to see if the the user's path choice has changed. If it has, it will dispose
  * of the currently open JFrame and open a new one according to the user's path choice. When the
  * user selects quit, the System.exit() method is called and the program closes.
@@ -14,60 +12,91 @@ import javax.swing.SpringLayout;
  * <p>
  * <b>mainMenu </b> This holds the information from the Main class for the mainMenu
  * <p>
+ * <b>playScreen </b> This holds the information from the PlayScreen class for the level selection screen
+ * <p>
  * <b>levelOne </b> This holds the information from the LevelOne class for the first level
  * <p>
- * <b>infoScreen </b> This holds the information from the InformationScreen class for the
- *                    information screen
+ * <b>alexRoom </b> This holds the information from the AlexRoom class for Alex's room in the first level
  * <p>
- * <b>mainMenuFrame </b> This holds the information from the JFrame class for the 
- *                       JFrame used for the main menu
+ * <b>levelTwoOut </b> This holds the information from the levelTwoOutside class for the first part of the second level
  * <p>
- * <b>levelOneFrame </b> This holds the information from the JFrame class for the JFrame 
- *                       used for the first level
+ * <b>levelTwoHall </b> This holds the information from the levelTwoHall class for the second part of the second level
  * <p>
- * <b>infoScreenFrame </b> This holds the information from the JFrame class for the JFrame
- *                         used for the information screen
+ * <b>mathClass </b> This holds the information from the MathClass class for the math class in the second level
+ * <p>
+ * <b>englishClass </b> This holds the information from the EnglishClass class for the english class in the second level
+ * <p>
+ * <b>infoScreen </b> This holds the information from the InformationScreen class for the information screen
+ * <p>
+ * <b>teachingAlex </b> This holds the information from the TeachingAlex class for the first part of the third level
+ * <p>
+ * <b>helpingAlex </b> This holds the information from the HelpingAlex class for the second part of the third level
+ * <p>
+ * <b>mainMenuFrame </b> This holds the information from the JFrame class for the JFrame used for the main menu
+ * <p>
+ * <b>playScreenFrame </b> This holds the information from the JFrame class for the JFrame used for the play screen
+ * <p>
+ * <b>levelOneFrame </b> This holds the information from the JFrame class for the JFrame used for the first level
+ * <p>
+ * <b>alexRoomFrame </b> This holds the information from the JFrame class for the JFrame used for Alex's room
+ * <p>
+ * <b>outsideSchoolFrame </b> This holds the information from the JFrame class for the JFrame used for outside of the school
+ * <p>
+ * <b>levelTwoHallFrame </b> This holds the information from the JFrame class for the JFrame used for the school hallway
+ * <p>
+ * <b>classFrame </b> This holds the information from the JFrame class for the JFrame used for the classrooms
+ * <p>
+ * <b>yardFrame </b> This holds the information from the JFrame class for the JFrame used for the yard
+ * <p>
+ * <b>infoScreenFrame </b> This holds the information from the JFrame class for the JFrame used for the information screen
+ * <p>
+ * <b>fromAlexRoom </b> This keeps track of whether the player was last in Alex's room
+ * <p>
+ * <b>fromHall </b> This keeps track of whether the player was last in the school hall
+ * <p>
+ * <b>fromClass </b> This keeps track of whether the player was last in a classroom
+ * <p>
+ * <b>fromLv1 </b> This keeps track of whether the player was last in level one
+ * <p>
+ * <b>fromEnglish </b> This keeps track of whether the player was last in english class
  * 
  * @author James Houle and Juan Diego Castano
  * @version 3 06.05.19
  */
 public class AnxiousAlex {
   
-  Main mainMenu;
-  LevelOne levelOne;
-  AlexRoom alexRoom; //add to var dic
-  LevelTwoOutside levelTwoOut; //
-  LevelTwoHall levelTwoHall; //
-  InformationScreen infoScreen;
-  PlayScreen playScreen; //add to var dic
-  MathClass mathClass; //
-  EnglishClass englishClass; //
-  TeachingAlex teachingAlex; //
-  HelpingAlex helpingAlex; //
+  private Main mainMenu;
+  private PlayScreen playScreen;
+  private LevelOne levelOne;
+  private AlexRoom alexRoom;
+  private LevelTwoOutside levelTwoOut;
+  private LevelTwoHall levelTwoHall;
+  private MathClass mathClass;
+  private EnglishClass englishClass;
+  private InformationScreen infoScreen;
+  private TeachingAlex teachingAlex;
+  private HelpingAlex helpingAlex;
   
-  JFrame mainMenuFrame;
-  JFrame playScreenFrame; //add to var dic
-  JFrame levelOneFrame;
-  JFrame alexRoomFrame; //add to var dic
-  JFrame outsideSchoolFrame; //
-  JFrame levelTwoHallFrame; //
-  JFrame classFrame; //
-  JFrame yardFrame;
-  JFrame infoScreenFrame;
+  private JFrame mainMenuFrame;
+  private JFrame playScreenFrame;
+  private JFrame levelOneFrame;
+  private JFrame alexRoomFrame;
+  private JFrame outsideSchoolFrame;
+  private JFrame levelTwoHallFrame;
+  private JFrame classFrame;
+  private JFrame yardFrame;
+  private JFrame infoScreenFrame;
   
-  boolean fromAlexRoom;
-  boolean fromHall;
-  boolean fromClass;
-  boolean fromLv1;
-  boolean fromEnglish;
-  
-  SpringLayout layout;
+  private boolean fromAlexRoom;
+  private boolean fromHall;
+  private boolean fromClass;
+  private boolean fromLv1;
+  private boolean fromEnglish;
   
   /**
    * This is the constructor for the AnxiousAlex class. It firsts instantiates mainMenu as an 
-   * object of the Main class, as well as instantiating levelOneFrame and infoScreenFrame as 
-   * objects of the JFrame class with titles of "The Anxious Life Of Alex Joe" in both. It 
-   * then repeatedly calls the checkPath method.
+   * object of the Main class, as well as setting all the from___ variables to be false. It then repeatedly
+   * checks to see the path and the anxiety level
    */
   public AnxiousAlex (){
     
@@ -81,8 +110,6 @@ public class AnxiousAlex {
     
     Inventory.setPencilCase (false);
     
-    layout = new SpringLayout ();
-    
     while (true){
       checkPath ();
       checkAnxiety ();
@@ -90,12 +117,11 @@ public class AnxiousAlex {
   }
   
   /**
-   * 
+   * The checkPath method checks what path the player has selected to go to and creates the path's respective frame
    */
-  public void checkPath (){
+  private void checkPath (){
     if (CustomButton.getPath () == 1){
       playScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
-      
       playScreen = new PlayScreen ();
       playScreenFrame.add (playScreen);
       playScreenFrame.setSize (1000,750);
@@ -106,7 +132,6 @@ public class AnxiousAlex {
     }
     else if (CustomButton.getPath () == 2){
       infoScreenFrame = new JFrame ("The Anxious Life Of Alex Joe");
-      
       infoScreen = new InformationScreen ();
       infoScreenFrame.add (infoScreen);
       infoScreenFrame.setSize (1000,750);
@@ -114,7 +139,6 @@ public class AnxiousAlex {
       infoScreenFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       mainMenuFrame.dispose ();
       mainMenu.button.setPath (0);
-      
       boolean checkScreen = true;
       while (checkScreen){
         infoScreen.checkScreen ();
@@ -127,7 +151,6 @@ public class AnxiousAlex {
     }
     else if (CustomButton.getPath () == 4){
       levelOneFrame = new JFrame ("The Anxious Life Of Alex Joe");
-      
       if (fromAlexRoom == false){
         levelOne = new LevelOne (0,0,0,790,405);
         playScreenFrame.dispose ();
@@ -137,7 +160,6 @@ public class AnxiousAlex {
         alexRoomFrame.dispose ();
         fromAlexRoom = false;
       }
-      
       levelOneFrame.setSize (1000,750);
       levelOneFrame.setVisible (true);
       levelOneFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -157,7 +179,6 @@ public class AnxiousAlex {
         levelTwoOut = new LevelTwoOutside (0);
         levelOneFrame.dispose ();
         fromLv1 = false;
-        
       }
       else {
         levelTwoOut = new LevelTwoOutside (0);
@@ -195,12 +216,10 @@ public class AnxiousAlex {
       alexRoomFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       levelOneFrame.dispose ();
       mainMenu.button.setPath (0);
-      
       fromAlexRoom = true;
     }
     else if (CustomButton.getPath () == 8){
       levelTwoHallFrame = new JFrame ("The Anxious Life Of Alex Joe");
-      
       if (fromClass == false){
         outsideSchoolFrame.dispose ();
         levelTwoHall = new LevelTwoHall (0);
@@ -214,13 +233,11 @@ public class AnxiousAlex {
       levelTwoHallFrame.setSize (1000,750);
       levelTwoHallFrame.setVisible (true);
       levelTwoHallFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-      
       mainMenu.button.setPath (0);
       fromHall = true;
     }
     else if (CustomButton.getPath () == 9){     
       classFrame = new JFrame ("The Anxious Life Of Alex Joe");
-      
       mathClass = new MathClass ();
       classFrame.add (mathClass);
       classFrame.setSize (1000,750);
@@ -229,7 +246,6 @@ public class AnxiousAlex {
       levelTwoHallFrame.dispose ();
       mainMenu.button.setPath (0);
       fromClass = true;
-      
       boolean checkTest = true;
       while (checkTest){
         if (CustomButton.getPath () == 8){
@@ -244,7 +260,6 @@ public class AnxiousAlex {
     }
     else if (CustomButton.getPath () == 10){
       classFrame = new JFrame ("The Anxious Life Of Alex Joe");
-      
       englishClass = new EnglishClass ();
       classFrame.add (englishClass);
       classFrame.setSize (1000,750);
@@ -257,7 +272,6 @@ public class AnxiousAlex {
     }
     else if (CustomButton.getPath () == 11){
       outsideSchoolFrame = new JFrame ("The Anxious Life Of Alex Joe");
-      
       helpingAlex = new HelpingAlex ();
       outsideSchoolFrame.add (helpingAlex);
       outsideSchoolFrame.setSize (1000,750);
@@ -266,10 +280,8 @@ public class AnxiousAlex {
       alexRoomFrame.dispose ();
       mainMenu.button.setPath (0);
     }
-      
     else if (CustomButton.getPath () == -999){
       mainMenuFrame = new JFrame ("The Anxious Life Of Alex Joe");
-      
       mainMenuFrame.add (mainMenu);
       mainMenuFrame.setSize (1000,750);
       mainMenuFrame.setVisible (true);
@@ -281,18 +293,25 @@ public class AnxiousAlex {
       System.out.print ("");
   }
   
+  /**
+   * The checkAnxiety method checks to see whether or not the player's anxiety has reached max. If it has, it will
+   * cause the player to restart their level.
+   */
   private void checkAnxiety (){
-    if (AnxietyBar.getPercent () == 100){
+    if (AnxietyBar.getPercent () >= 100){
       if (fromEnglish == false){
         System.out.println ("remove me!");
       }
       else {
-        System.out.println ("here");
+        englishClass.timer.stop();
         mainMenu.button.setPath (6);
       }
     }
   }
   
+  /**
+   * The disposeAll method attempts to close every single frame except for the main menu frame.
+   */
   private void disposeAll (){
     try {
       playScreenFrame.dispose ();

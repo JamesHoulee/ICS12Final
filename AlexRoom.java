@@ -1,40 +1,42 @@
-import javax.swing.JPanel;
-import javax.swing.SpringLayout;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-import javax.swing.Timer;
 
 /**
+ * The AlexRoom class extends LevelFramework. This class defines the progression as well as the boundaries of Alex's
+ * room. The main purpose of the room is for the player to pick up their pencil case before leaving for school.
+ * 
+ * <p>
+ * <b>Instance Variables: </b>
+ * <p>
+ * <b>background </b> This variable holds the information of an Images object representing the level's background
+ * <p>
+ * <b>tip </b> This variable holds the information of an Images object representing a tip for the player.
+ * <p>
  * 
  * @author James Houle and Juan Diego Castano
  * @version 2 06.05.19
  */
-public class AlexRoom extends JPanel implements ActionListener, KeyListener { //have to fix the boundaries for picking up the pencil case
+public class AlexRoom extends LevelFramework { //have to fix the boundaries for picking up the pencil case
   
-  Images sprite;
-  Images background;
-  SpringLayout layout;
-  Inventory inventory;
+  private Images background;
+  private Images tip;
   
-  Timer timer = new Timer(5,this);
-  
-  int x,y,dx,dy;
-  
-  MenuButton menuButton;
-  
-  AnxietyBar anxietyBar;
-  
+  /**
+   * This is the constructor for the AlexRoom class. It instantiates all required objects and sets the constraints
+   * for all on screen objects.
+   */
   public AlexRoom (){
-
-    sprite = new Images ("AlexSmile.png",200,200);
+    /**
+     * This instantiates a new Images object with a location of "AlexRoomV2.png" and dimensions of 1000 by 750
+     */
     background = new Images ("AlexRoomV2.png",1000,750);
+    /**
+     * This instantiates a new Images object with a location of "AlexRoomTip.png" and dimensions of 225 by 130
+     */
+    tip = new Images ("AlexRoomTip.png",225,130);
     
     x = 400;
     y = 20;
-    dx = 0;
-    dy = 0;
 
     //This code is taken from https://www.youtube.com/watch?v=Km81XyczqC4
     timer.start ();
@@ -43,31 +45,13 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener { //
     setFocusTraversalKeysEnabled(false);
     //End of source code
     
-    layout = new SpringLayout ();
-    setLayout (layout);
-    
-    inventory = new Inventory ();
-    menuButton = new MenuButton (135,40);
-    anxietyBar = new AnxietyBar ();
-    
-    //applies the constraints for the menu button and adds it to the JPanel
-    layout.putConstraint (layout.EAST, menuButton, 25, layout.EAST, this);
-    layout.putConstraint (layout.NORTH, menuButton, 10, layout.NORTH, this);
-    add (menuButton);
-    
-    //applies the constraints for the anxiety bar and adds it to the JPanel
-    layout.putConstraint (layout.WEST, anxietyBar, 25, layout.WEST, this);
-    layout.putConstraint (layout.NORTH, anxietyBar, 10, layout.NORTH, this);
-    add (anxietyBar);
-    
     layout.putConstraint (layout.WEST, sprite, x, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
-    add (sprite);
-                          
-    layout.putConstraint (layout.SOUTH, inventory, 115, layout.SOUTH, this);
-    layout.putConstraint (layout.WEST, inventory, 0, layout.WEST, this);
-    add (inventory);
     
+    layout.putConstraint (layout.EAST, tip, 0, layout.EAST, this);
+    layout.putConstraint (layout.SOUTH, tip, 0, layout.SOUTH, this);
+    add (tip);
+                           
     layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);
     add (background);
@@ -75,6 +59,12 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener { //
     update ();
   }
   
+  /**
+   * The actionPerformed method defines how the game reacts to a players specific input. This method 
+   * defines the boundaries of the game.
+   * 
+   * @param e is an object of the ActionEvent class
+   */
   public void actionPerformed (ActionEvent e){
     if (x < 0){
       x = 0;
@@ -92,15 +82,16 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener { //
       y = -500;
       dy = 0;
     }
-    
-    update();
-    
+
     x = x + dx;
     y = y + dy;
-    
-    repaint();  
+    update();;  
   }
   
+  /**
+   * The update method redefines the constraints of any objects that can move or change
+   */
+  @Override
   public void update (){
     
     layout.putConstraint (layout.WEST, sprite, x, layout.WEST, this);
@@ -109,12 +100,13 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener { //
     refresh ();
   }
   
-  public void refresh (){ //put override?
-    repaint ();
-    revalidate ();
-  }
-  
-  public void keyPressed (KeyEvent e){ //put override?
+  /**
+   * The keyPressed method defines how the program will react when certain keys are pressed
+   * 
+   * @param e is a KeyEvent object
+   */
+  @Override
+  public void keyPressed (KeyEvent e){
     int c = e.getKeyCode();
     
     if (c == KeyEvent.VK_LEFT || c == KeyEvent.VK_A) {
@@ -137,15 +129,13 @@ public class AlexRoom extends JPanel implements ActionListener, KeyListener { //
     update ();
   }
   
-  public void keyTyped (KeyEvent e){} //put override?
-  
+  /**
+   * The keyReleased method defines what happens when the player releases whatever key they were pressing
+   * 
+   * @param e is a KeyEvent object
+   */
   public void keyReleased (KeyEvent e){ //put override?
     dx = 0;
     dy = 0;
   } 
-  
-  //temp
-  public static void main (String [] args){
-     new AnxiousAlex ();
-  }
 }
