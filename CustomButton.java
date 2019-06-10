@@ -4,6 +4,21 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
 /**
+ * The CustomButton Class is responsible for creating the buttons in all the screens. 
+ * It is extended by other classes in order to create the button objects for the approprate 
+ * screens, with diffrent text, sizes and colors. 
+ * 
+ * <p>
+ * <b> hover </b> This variable represents the width of the image
+ * <p>
+ * <b> click </b> This variable represents the height of the image
+ * <p>
+ * <b> text </b> This variable represents the layout of the JLabel
+ * <p>
+ * <b> sizeX </b> This variable reperesents an object of the BufferedImage class
+ * <p>
+ * <b> sizeY </b> This variable represents the image on a JLabel
+ * <p>
  * @author James Houle & JuanDiego Castano 
  * @version 2 06.06.19
  */
