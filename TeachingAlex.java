@@ -129,7 +129,7 @@ public class TeachingAlex extends JPanel implements ActionListener, KeyListener 
     if (time == 2800){
       remove (fourthText);
     }
-    if (time > 0) { //put to 2800
+    if (time > 2800) {
       if (x < 0){
       x = 0;
       dx = 0;

@@ -97,7 +97,7 @@ public class LevelTwoHall extends LevelFramework {
       dx = -3;
     }
     if (c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D){
-      dx = 7; //change back to 3
+      dx = 3;
     }
     if (c == KeyEvent.VK_E && x >= 0 && x <= 150){
       menuButton.setPath (5);

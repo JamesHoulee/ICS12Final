@@ -96,6 +96,8 @@ public class AnxiousAlex {
   private boolean fromClass;
   private boolean fromLv1;
   private boolean fromEnglish;
+  private boolean restartLevel2;
+  private boolean restartLevel3;
   
   /**
    * This is the constructor for the AnxiousAlex class. It firsts instantiates mainMenu as an 
@@ -111,6 +113,7 @@ public class AnxiousAlex {
     fromClass = false;
     fromLv1 = false;
     fromEnglish = false;
+    restartLevel2 = false;
     
     Inventory.setPencilCase (false);
     
@@ -197,11 +200,12 @@ public class AnxiousAlex {
         outsideSchoolFrame.setSize (1000,750);
         outsideSchoolFrame.setVisible (true);
         outsideSchoolFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        if (restartLevel2 == true)
+            new RestartLevel (2);
       }
       mainMenu.button.setPath (0);
     }
     else if (CustomButton.getPath () == 6){
-      EnglishClass.completeLevel (); //////////////REMOVE THIS
       if (EnglishClass.levelComplete () == true){
         alexRoomFrame = new JFrame ("The Anxious Life Of Alex Joe");
         teachingAlex = new TeachingAlex ();
@@ -209,6 +213,8 @@ public class AnxiousAlex {
         alexRoomFrame.setSize (1000,750);
         alexRoomFrame.setVisible (true);
         alexRoomFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        if (restartLevel3 == true)
+          new RestartLevel (3);
       }
       if (fromEnglish == true){
         classFrame.dispose ();
@@ -318,7 +324,24 @@ public class AnxiousAlex {
   private void checkAnxiety (){
     if (AnxietyBar.getPercent () >= 100){
       if (fromEnglish == false){ //add faint screen
-        
+        if (AnxietyBar.getPercent () >= 100){
+          if (fromClass == true){
+            AnxietyBar.setPercent (0);
+            fromClass = false;
+            fromHall = false;
+            mathClass.timer.stop();
+            classFrame.dispose ();
+            mainMenu.button.setPath (5);
+            restartLevel2 = true;
+          }
+          if (helpingAlex.inYard () == true){
+            AnxietyBar.setPercent (0);
+            helpingAlex.timer.stop();
+            outsideSchoolFrame.dispose ();
+            mainMenu.button.setPath (6);
+            restartLevel3 = true;
+          }
+        }
       }
       else {
         englishClass.timer.stop();

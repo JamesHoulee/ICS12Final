@@ -27,7 +27,7 @@ public class HelpingAlex extends LevelFramework {
   
   int time, lastBreath;
   int friendX;
-  boolean inYard;
+  private static boolean inYard;
   boolean speech;
   
   public HelpingAlex (){
@@ -276,6 +276,10 @@ public class HelpingAlex extends LevelFramework {
     layout.putConstraint (layout.SOUTH, friendSprite1, -40, layout.SOUTH, this);
     
     refresh ();
+  }
+  
+  public static boolean inYard (){
+    return inYard;
   }
   
   //temp

@@ -54,7 +54,6 @@ public class Test extends JDialog implements ActionListener{
     
     setVisible (true);
     setSize (310,150);
-    setSize (311,150);
     setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
     
     layout = new SpringLayout ();
@@ -113,6 +112,8 @@ public class Test extends JDialog implements ActionListener{
     
     layout.putConstraint (layout.WEST, q2, 0, layout.WEST, this);
     layout.putConstraint (layout.NORTH, q2, 0, layout.NORTH, this);
+    
+    setSize (311,150);
   }
   
   /**

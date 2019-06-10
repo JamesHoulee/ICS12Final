@@ -62,7 +62,7 @@ public class AnxietyBar extends JPanel{
    * 
    * @param percent This variable is the value that anxietyPercent will be set to
    */
-  public void setPercent (int percent){
+  public static void setPercent (int percent){
     anxietyPercent = percent;
     if (anxietyPercent < 0)
       anxietyPercent = 0;

@@ -137,7 +137,7 @@ public class MathClass extends ClassRoom implements ActionListener {
     }
     
     if (testOpen == true && (time % 300) == 0){
-      anxietyBar.increasePercent (1);
+      anxietyBar.increasePercent (3);
     }
     
     update ();
