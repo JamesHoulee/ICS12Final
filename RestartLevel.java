@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * 
+ * @author James Houle and Juan Diego Castano
+ * @version 1 _______
  */
 public class RestartLevel extends JDialog implements ActionListener {
   
