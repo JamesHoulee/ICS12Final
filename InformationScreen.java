@@ -2,6 +2,24 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 /**
+ * The InformationScreen class is used in order to give the user tips and help on 
+ * how thge game works. It is a simple screen that __ 
+ * 
+ * <p>
+ * <b>Instance Variables: </b>
+ * <p>
+ * <b>menuButton </b> This variable is responsbile for creating the "Menu Button" object
+ * <p>
+ * <b>info1 </b> This variable holds the information of an Images object that is the first screen of the information screen.  
+ * <p>
+ * <b>info2 </b> This variable holds the information of an Images object that is the first screen of the information screen.
+ * <p>
+ * <b>info3 </b> This variable holds the information of an Images object that is the first screen of the information screen.
+ * <p>
+ * <b>layout </b> This variable represents the layout of the JLabel
+ * <p>
+ * <b> next </b> This variable is responsible for creating the "Next Button" objject. 
+ * <p>
  * 
  * @author James Houle and Juan Diego Castano
  * @version 2 06.05.19
@@ -17,7 +35,11 @@ public class InformationScreen extends JPanel {
   private NextInfoButton next;
   
   public static int screen;
-  
+  /**
+   * This method creates the infomation screen that has images and a button that
+   * will allow the user to switch the image when they deem appropriate. On the 
+   * final image they will be able to go directly to the main menu.
+   * */
   public InformationScreen (){
     
     menuButton = new MenuButton (135,40);
@@ -55,7 +77,10 @@ public class InformationScreen extends JPanel {
     add (info3);
     info3.setVisible (false);
   }
-  
+  /**
+   * The checkScreen method is used to direct the user to the correct place 
+   * when the button is clicked by the user. 
+   */
   public void checkScreen (){
     if (screen == 1){
       info1.setVisible (true);
