@@ -106,6 +106,8 @@ public class AnxiousAlex {
    */
   public AnxiousAlex (){
     
+    EnglishClass.completeLevel ();
+    
     mainMenu = new Main ();
     
     fromAlexRoom = false;
@@ -337,6 +339,7 @@ public class AnxiousAlex {
           if (helpingAlex.inYard () == true){
             AnxietyBar.setPercent (0);
             helpingAlex.timer.stop();
+            helpingAlex.leaveYard ();
             outsideSchoolFrame.dispose ();
             mainMenu.button.setPath (6);
             restartLevel3 = true;

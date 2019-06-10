@@ -282,6 +282,10 @@ public class HelpingAlex extends LevelFramework {
     return inYard;
   }
   
+  public static void leaveYard (){
+    inYard = false;
+  }
+  
   //temp
   public static void main (String [] args){
     new AnxiousAlex ();
