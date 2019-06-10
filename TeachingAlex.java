@@ -2,6 +2,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 /**
+ * <p>
+ * <b>Instance Variables: </b>
+ * <p>
+ * <b> brotherSprite </b>  This variable holds the information of an Images object representing the older brother. 
+ * <p>
+ * <b> background </b> This variable holds the information of an Images object that is the background of this screen.   
+ * <p>
+ * <b> firstText </b> This varible is the first text field that stores an Images object. 
+ * <p>
+ * <b> secondText </b> This varible is the first text field that stores an Images object. 
+ * <p>
+ * <b> thirdText </b>  This varible is the first text field that stores an Images object. 
+ * <p>
+ * <b> fourthText </b> This varible is the first text field that stores an Images object. 
+ * <p>
+ * <b> lastBreath </b> Stores the time the user last used breathe ability. 
+ * <p>
  * @author James Houle and Juan Diego Castano
  * @version 1 06.06.19
  */
@@ -16,7 +33,9 @@ public class TeachingAlex extends LevelFramework {
   private Images fourthText;
   
   private int lastBreath;
-  
+  /**
+   * 
+   */
   public TeachingAlex (){
     
     brotherSprite = new Images ("BigBrother.png",210,200);
