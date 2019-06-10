@@ -2,6 +2,10 @@ import java.awt.event.MouseEvent;
 import java.awt.*; 
 
 /**
+ * 
+ * This button will take the user to the next image on the information screen
+ * when it is clicked on by the user. 
+ * 
  * @author James Houle and Juan Diego Castano
  * @version 1 06.05.19
  */
@@ -14,7 +18,11 @@ public class NextInfoButton extends CustomButton {
   }
   
   /**
-   * This method overrides 
+   * This method overrides the superclass in order to cahnge the 
+   * color and string size of the button.  
+   * 
+   * @param metrics will get the font metrics of the string. 
+   * @param width will store the width of the screen. 
    */
   @Override
   public void paintComponent(Graphics g) {
@@ -38,6 +46,7 @@ public class NextInfoButton extends CustomButton {
     int width = metrics.stringWidth(text);
     g.drawString(text, sizeX/2 - width / 2, 29); 
   }  
+  
   /**
    * 
    */
