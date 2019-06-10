@@ -70,6 +70,7 @@ public class LevelTwoHall extends LevelFramework {
     update ();
   }
   
+  @Override
   public void actionPerformed (ActionEvent e){
     
     if (x > 5500){
@@ -91,6 +92,7 @@ public class LevelTwoHall extends LevelFramework {
     update ();
   }
   
+  @Override
   public void keyPressed (KeyEvent e){
     int c = e.getKeyCode();
     if (c == KeyEvent.VK_LEFT || c == KeyEvent.VK_A) {
@@ -111,11 +113,13 @@ public class LevelTwoHall extends LevelFramework {
     
   }
   
+  @Override
   public void keyReleased (KeyEvent e){
     if (dy == 0)
       dx = 0;
   }
   
+  @Override
   public void update (){
     
     layout.putConstraint (layout.WEST, sprite, 280, layout.WEST, this);

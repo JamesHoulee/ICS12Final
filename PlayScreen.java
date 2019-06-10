@@ -10,19 +10,17 @@ import javax.swing.SpringLayout;
  * @author James Houle and JuanDiego Castano 
  * @version 1 05.30.19
  */
-
 public class PlayScreen extends JPanel {
-  LevelButtons button; 
-  LevelButtons button2; 
-  LevelButtons button3; 
-  SpringLayout layout;
-  MenuButton backButton; 
-  Images background; 
+  private LevelButtons button; 
+  private LevelButtons button2; 
+  private LevelButtons button3; 
+  private SpringLayout layout;
+  private MenuButton backButton; 
+  private Images background; 
   
   /**
    * 
    */
-  
   public PlayScreen(){
     
     layout = new SpringLayout (); 

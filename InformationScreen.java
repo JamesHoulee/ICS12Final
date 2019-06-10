@@ -8,15 +8,15 @@ import javax.swing.SpringLayout;
  */
 public class InformationScreen extends JPanel {
   
-  MenuButton menuButton;
-  Images info1;
-  Images info2;
-  Images info3;
+  private MenuButton menuButton;
+  private Images info1;
+  private Images info2;
+  private Images info3;
   
-  SpringLayout layout;
-  NextInfoButton next;
+  private SpringLayout layout;
+  private NextInfoButton next;
   
-  static int screen;
+  public static int screen;
   
   public InformationScreen (){
     
@@ -73,9 +73,5 @@ public class InformationScreen extends JPanel {
       remove (next);
       add (menuButton);
     }
-  }
-  
-  public static void main (String [] args){
-    new AnxiousAlex ();
   }
 }

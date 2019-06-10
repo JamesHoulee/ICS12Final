@@ -44,6 +44,7 @@ public class IncompleteLevel extends JDialog implements ActionListener {
     setSize (401,100);
   }
     
+  @Override
   public void actionPerformed (ActionEvent e){
     if (e.getActionCommand ().equals ("Close")){
       dispose ();

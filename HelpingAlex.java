@@ -7,28 +7,28 @@ import java.awt.event.KeyEvent;
  */
 public class HelpingAlex extends LevelFramework {
   
-  Images background;
-  Images friendSprite1;
-  Images friendSprite2;
-  Images friendSprite3;
-  Images firstText;
-  Images secondText;
-  Images thirdText;
-  Images fourthText;
-  Images fifthText;
+  private Images background;
+  private Images friendSprite1;
+  private Images friendSprite2;
+  private Images friendSprite3;
+  private Images firstText;
+  private Images secondText;
+  private Images thirdText;
+  private Images fourthText;
+  private Images fifthText;
   
-  Images speech1;
-  Images speech2;
-  Images speech3;
-  Images speech4;
-  Images speech5;
-  Images speech6;
-  Images speech7;
+  private Images speech1;
+  private Images speech2;
+  private Images speech3;
+  private Images speech4;
+  private Images speech5;
+  private Images speech6;
+  private Images speech7;
   
-  int time, lastBreath;
-  int friendX;
+  private int time, lastBreath;
+  private int friendX;
   private static boolean inYard;
-  boolean speech;
+  private boolean speech;
   
   public HelpingAlex (){
     
@@ -145,6 +145,7 @@ public class HelpingAlex extends LevelFramework {
     layout.putConstraint (layout.SOUTH, sprite, y, layout.SOUTH, this);
   }
   
+  @Override
   public void actionPerformed (ActionEvent e){
     time ++;
     if (inYard == false){
@@ -234,6 +235,7 @@ public class HelpingAlex extends LevelFramework {
     time = 0;
   }
   
+  @Override
   public void keyPressed (KeyEvent e){ //put override?
     int c = e.getKeyCode();
     
@@ -243,12 +245,6 @@ public class HelpingAlex extends LevelFramework {
     if ((c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D) && speech == false){
       dx = 3;
     }
-    /*if (c == KeyEvent.VK_UP || c == KeyEvent.VK_W){
-      dy = -3;
-    }
-    if (c == KeyEvent.VK_DOWN || c == KeyEvent.VK_S){
-      dy = 3;
-    }*/
     if (c == KeyEvent.VK_C && (time - lastBreath) >= 800){
       anxietyBar.setPercent (anxietyBar.getPercent () - 40);
       lastBreath = time;
@@ -262,11 +258,13 @@ public class HelpingAlex extends LevelFramework {
     update ();
   }
   
-  public void keyReleased (KeyEvent e){ //put override?
+  @Override
+  public void keyReleased (KeyEvent e){
     dx = 0;
     dy = 0;
   } 
   
+  @Override
   public void update (){
     
     layout.putConstraint (layout.WEST, sprite, x, layout.WEST, this);
@@ -284,11 +282,6 @@ public class HelpingAlex extends LevelFramework {
   
   public static void leaveYard (){
     inYard = false;
-  }
-  
-  //temp
-  public static void main (String [] args){
-    new AnxiousAlex ();
   }
 }
     

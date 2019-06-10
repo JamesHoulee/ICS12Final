@@ -31,8 +31,8 @@ public class Images extends JLabel {
   
   private int imageWidth, imageHeight;
   private SpringLayout layout;
-  BufferedImage image;
-  JLabel imageLabel;
+  private BufferedImage image;
+  private JLabel imageLabel;
   
   /**
    * This is the constructor for the Images class. It sets the image width and height

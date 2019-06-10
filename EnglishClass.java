@@ -10,7 +10,6 @@ import java.lang.Thread;
 public class EnglishClass extends ClassRoom implements ActionListener{
   
   private Images firstText;
-  
   private static boolean levelComplete;
   
   public EnglishClass (){
@@ -30,6 +29,7 @@ public class EnglishClass extends ClassRoom implements ActionListener{
     add (background);
   }
   
+  @Override
   public void actionPerformed (ActionEvent ae){
     time ++;
     if (x < 750){

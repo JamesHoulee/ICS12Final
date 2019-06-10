@@ -26,12 +26,12 @@ import java.awt.event.ActionListener;
  */
 public class MathClass extends ClassRoom implements ActionListener {
   
-  Images firstText;
-  Images secondText;
-  Images thirdText;
+  private Images firstText;
+  private Images secondText;
+  private Images thirdText;
   
-  JDialog test;
-  static boolean testOpen;
+  private JDialog test;
+  private static boolean testOpen;
   
   /**
    * This is the constructor for the MathClass class. This constructor instatiates all the required images

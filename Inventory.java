@@ -33,9 +33,4 @@ public class Inventory extends JPanel {
   public Dimension getPreferredSize (){
     return new Dimension (200,200);
   }
-  
-  //temp
-  public static void main (String [] args){
-    new AnxiousAlex ();
-  }
 }

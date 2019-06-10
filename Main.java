@@ -6,11 +6,11 @@ import javax.swing.SpringLayout;
  */
 public class Main extends JPanel {
   
-  Images background;
-  PlayButton button;
-  InfoButton button2;
-  CustomButton button3;
-  SpringLayout layout;
+  private Images background;
+  public PlayButton button;
+  private InfoButton button2;
+  private CustomButton button3;
+  private SpringLayout layout;
   
   public Main() {
     
@@ -38,7 +38,6 @@ public class Main extends JPanel {
     
     layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
     layout.putConstraint (layout.NORTH, background, 0, layout.NORTH, this);
-    
     
     add (background);
   }

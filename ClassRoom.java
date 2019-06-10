@@ -58,6 +58,7 @@ public abstract class ClassRoom extends LevelFramework {
    * 
    * @param e is an object of the ActionEvent class
    */
+  @Override
   public void actionPerformed (ActionEvent e){
     if (x < 0){
       x = 0;
@@ -117,6 +118,7 @@ public abstract class ClassRoom extends LevelFramework {
   /**
    * The update method redefines the constraints of any objects that can move or change
    */
+  @Override
   public void update (){
     
     layout.putConstraint (layout.WEST, sprite, x, layout.WEST, this);
