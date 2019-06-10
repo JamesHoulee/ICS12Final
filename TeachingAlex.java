@@ -26,6 +26,7 @@ public class TeachingAlex extends LevelFramework {
    
   private Images brotherSprite;
   private Images background;
+  private Images card;
   
   private Images firstText;
   private Images secondText;
@@ -40,13 +41,15 @@ public class TeachingAlex extends LevelFramework {
     
     brotherSprite = new Images ("BigBrother.png",210,200);
     background = new Images ("AlexRoomV2.png", 1000, 750);
-    
+    card = new Images ("teachingAlex.png", 1000, 750);
     firstText = new Images ("LevelThreeA.png", 280, 145);
     secondText = new Images ("LevelThreeB.png", 280, 145);
     thirdText = new Images ("LevelThreeC.png", 280, 145);
     fourthText = new Images ("LevelThreeD.png", 280, 145);
     
+    sprite.setVisible (false);
     anxietyBar.setPercent (50);
+    add (card);
     
     x = 50;
     y = -200;
@@ -98,21 +101,25 @@ public class TeachingAlex extends LevelFramework {
   public void actionPerformed (ActionEvent e){
     time ++;
     if (time == 400){
+      remove (card);
+      sprite.setVisible (true);
+    }
+    if (time == 800){
       remove (firstText);
       secondText.setVisible (true);
     }
-    if (time == 1200){
+    if (time == 1600){
       remove (secondText);
       thirdText.setVisible (true);
     }
-    if (time == 2000){
+    if (time == 2400){
       remove (thirdText);
       fourthText.setVisible (true);
     }
-    if (time == 2800){
+    if (time == 3200){
       remove (fourthText);
     }
-    if (time > 0) { //2800 ///////////////////////////d
+    if (time > 0) { //3200 ///////////////////////////d
       if (x < 0){
       x = 0;
       dx = 0;

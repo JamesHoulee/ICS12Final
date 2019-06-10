@@ -22,7 +22,6 @@ public class PlayScreen extends JPanel {
    * This constructor creates the buttons and the background image of the play
    * screen.
    */
-<<<<<<< HEAD
   public PlayScreen(){
     
     layout = new SpringLayout (); 
@@ -32,7 +31,7 @@ public class PlayScreen extends JPanel {
     button2 = new LevelButtons(250,150,"Level Two ",5); 
     button3 = new LevelButtons (250,150, "Level Three",6); 
     backButton = new MenuButton (135,40); 
-    //background = new Images ()
+    background = new Images ("playScreen.png",1000,750);
     layout.putConstraint (layout.WEST, button, 375, layout.WEST, this); 
     layout.putConstraint (layout.NORTH, button, 100 , layout.NORTH, this);
     add (button);
@@ -48,32 +47,9 @@ public class PlayScreen extends JPanel {
     layout.putConstraint (layout.EAST, backButton, 0, layout.EAST, this); 
     layout.putConstraint (layout.SOUTH, backButton, 0 , layout.SOUTH, this);
     add (backButton);
-=======
-  public PlayScreen() {
-
-    layout = new SpringLayout();
-    setLayout(layout);
-
-    button = new LevelButtons(250, 150, "Level One", 4);
-    button2 = new LevelButtons(250, 150, "Level Two ", 5);
-    button3 = new LevelButtons(250, 150, "Level Three", 6);
-    backButton = new MenuButton(135, 40);
-    // background = new Images ()
-    layout.putConstraint(layout.WEST, button, 375, layout.WEST, this);
-    layout.putConstraint(layout.NORTH, button, 100, layout.NORTH, this);
-    add(button);
-
-    layout.putConstraint(layout.WEST, button2, 375, layout.WEST, this);
-    layout.putConstraint(layout.NORTH, button2, 250, layout.NORTH, this);
-    add(button2);
-
-    layout.putConstraint(layout.WEST, button3, 375, layout.WEST, this);
-    layout.putConstraint(layout.NORTH, button3, 400, layout.NORTH, this);
-    add(button3);
-
-    layout.putConstraint(layout.EAST, backButton, 0, layout.EAST, this);
-    layout.putConstraint(layout.SOUTH, backButton, 0, layout.SOUTH, this);
-    add(backButton);
->>>>>>> adcb7beb13f6f16590245cb58ef6a803c5286b25
+    
+    layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
+    layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);
+    add (background);
   }
 }

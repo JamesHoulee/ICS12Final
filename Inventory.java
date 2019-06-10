@@ -46,6 +46,7 @@ public class Inventory extends JPanel {
   @Override
   public void paintComponent(Graphics g) {
     g.drawRect(1, 1, 100, 80);
+    g.drawString ("Inventory:",5,16);
     if (pencilCase == true)
       g.drawString("Pencil Case", 20, 50);
 

@@ -99,6 +99,7 @@ public class AnxiousAlex {
   private boolean fromEnglish;
   private boolean restartLevel2;
   private boolean restartLevel3;
+  private boolean level3;
   
   /**
    * This is the constructor for the AnxiousAlex class. It firsts instantiates mainMenu as an 
@@ -110,13 +111,6 @@ public class AnxiousAlex {
     EnglishClass.completeLevel (); ///////REMOVE THIS
     
     mainMenu = new Main ();
-    
-    fromAlexRoom = false;
-    fromHall = false;
-    fromClass = false;
-    fromLv1 = false;
-    fromEnglish = false;
-    restartLevel2 = false;
     
     Inventory.setPencilCase (false);
     
@@ -212,6 +206,7 @@ public class AnxiousAlex {
       if (EnglishClass.levelComplete () == true){
         alexRoomFrame = new JFrame ("The Anxious Life Of Alex Joe");
         teachingAlex = new TeachingAlex ();
+        level3 = true;
         alexRoomFrame.add (teachingAlex);
         alexRoomFrame.setSize (1000,750);
         alexRoomFrame.setVisible (true);
@@ -298,7 +293,7 @@ public class AnxiousAlex {
       fromEnglish = true;
     }
     else if (CustomButton.getPath () == 11){
-      yardFrame = new JFrame ("The Anxious Life Of Alex Joe");
+      fromClass = false;
       helpingAlex = new HelpingAlex ();
       yardFrame.add (helpingAlex);
       yardFrame.setSize (1000,750);
@@ -328,6 +323,7 @@ public class AnxiousAlex {
       mainMenu.button.setPath (0);
     }
     else if (CustomButton.getPath () == 14){
+      fromEnglish = true;
       levelTwoHallFrame.dispose ();
       classFrame = new JFrame ("The Anxious Life Of Alex Joe");
       englishClass = new EnglishClass (3);
@@ -345,6 +341,7 @@ public class AnxiousAlex {
       mainMenuFrame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
       disposeAll ();
       mainMenu.button.setPath (0);
+      level3 = false;
     }
     else
       System.out.print ("");
@@ -356,7 +353,7 @@ public class AnxiousAlex {
    */
   private void checkAnxiety (){
     if (AnxietyBar.getPercent () >= 100){
-      if (fromEnglish == false){ //add faint screen
+      if (fromEnglish == false){
         if (AnxietyBar.getPercent () >= 100){
           if (fromClass == true){
             AnxietyBar.setPercent (0);
@@ -369,6 +366,7 @@ public class AnxiousAlex {
           }
           if (helpingAlex.inYard () == true){
             AnxietyBar.setPercent (0);
+            yardFrame.remove (helpingAlex);
             helpingAlex.timer.stop();
             helpingAlex.leaveYard ();
             yardFrame.dispose ();
@@ -378,9 +376,21 @@ public class AnxiousAlex {
         }
       }
       else {
-        englishClass.timer.stop();
-        englishClass.completeLevel ();
-        mainMenu.button.setPath (6);
+        if (level3 == false){
+          englishClass.timer.stop();
+          englishClass.completeLevel ();
+          mainMenu.button.setPath (6);
+        }
+        else {
+          AnxietyBar.setPercent (0);
+          classFrame.remove (helpingAlex);
+          englishClass.timer.stop();
+          classFrame.dispose ();
+          classFrame.remove (englishClass);
+          mainMenu.button.setPath (6);
+          restartLevel3 = true;
+          fromEnglish = false;
+        }
       }
     }
   }

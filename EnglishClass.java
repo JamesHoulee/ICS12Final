@@ -31,28 +31,29 @@ public class EnglishClass extends ClassRoom implements ActionListener{
     layout.putConstraint (layout.EAST, firstText, 75, layout.WEST, teacherSprite);
     add (firstText);
     
-    layout.putConstraint (layout.EAST, teacherSprite, -50, layout.EAST, this);
-    layout.putConstraint (layout.SOUTH, teacherSprite, -300, layout.SOUTH, this);
-    
-    layout.putConstraint (layout.WEST, speech [0], -70, layout.EAST, sprite);
+    layout.putConstraint (layout.WEST, speech [0], -70, layout.WEST, sprite);
     layout.putConstraint (layout.SOUTH, speech [0], 50, layout.NORTH, sprite);
     add (speech [0]);
     speech [0].setVisible (false);
     
-    layout.putConstraint (layout.WEST, speech [1], -70, layout.EAST, sprite);
+    layout.putConstraint (layout.WEST, speech [1], -70, layout.WEST, sprite);
     layout.putConstraint (layout.SOUTH, speech [1], 50, layout.NORTH, sprite);
     add (speech [1]);
     speech [1].setVisible (false);
     
-    layout.putConstraint (layout.WEST, speech [2], -70, layout.EAST, sprite);
+    layout.putConstraint (layout.WEST, speech [2], -70, layout.WEST, sprite);
     layout.putConstraint (layout.SOUTH, speech [2], 50, layout.NORTH, sprite);
     add (speech [2]);
     speech [2].setVisible (false);
     
-    layout.putConstraint (layout.WEST, speech [3], -70, layout.EAST, sprite);
+    layout.putConstraint (layout.WEST, speech [3], -70, layout.WEST, sprite);
     layout.putConstraint (layout.SOUTH, speech [3], 50, layout.NORTH, sprite);
     add (speech [3]);
     speech [3].setVisible (false);
+    
+    layout.putConstraint (layout.EAST, teacherSprite, -50, layout.EAST, this);
+    layout.putConstraint (layout.SOUTH, teacherSprite, -300, layout.SOUTH, this);
+    add (teacherSprite);
     
     layout.putConstraint (layout.WEST, background, 0, layout.WEST, this);
     layout.putConstraint (layout.SOUTH, background, 0, layout.SOUTH, this);
@@ -61,7 +62,7 @@ public class EnglishClass extends ClassRoom implements ActionListener{
   
   @Override
   public void actionPerformed (ActionEvent ae){
-    time ++;
+    
     if (x < 750){
       if (x < 0){
         x = 0;
@@ -83,12 +84,13 @@ public class EnglishClass extends ClassRoom implements ActionListener{
       y += dy;
     }
     else if (x >= 750 && level == 3){
-      time = 0;
+      time ++;
       speech[0].setVisible (true);
       if (time % 75 == 0)
         anxietyBar.increasePercent (5);
       if (time == 800){
         remove (speech[0]);
+        remove (firstText);
         speech[1].setVisible (true);
       }
       if (time == 1600){
@@ -99,8 +101,14 @@ public class EnglishClass extends ClassRoom implements ActionListener{
         remove (speech[2]);
         speech[3].setVisible (true);
       }
+      if (time == 3200){
+        remove (speech [3]);
+        timer.stop ();
+        menuButton.setPath (-999);
+      }
     }
     else{
+      time ++;
       remove (sprite);
       sprite = new Images ("AlexSadFace.png",200,200);
       add (sprite);

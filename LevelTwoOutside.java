@@ -37,6 +37,7 @@ public class LevelTwoOutside extends LevelFramework {
   private Images friendSprite;
   private Images firstText;
   private Images secondText;
+  private Images card;
   
   private int fromWhere;
   private boolean anxietyCheck;
@@ -80,6 +81,9 @@ public class LevelTwoOutside extends LevelFramework {
     setFocusable(true);
     setFocusTraversalKeysEnabled(false);
     //End of source code
+    
+    card = new Images ("theStruggle.png", 1000, 750);
+    add (card);
     
     y = -40;
     if (fromWhere != 1){
@@ -135,6 +139,13 @@ public class LevelTwoOutside extends LevelFramework {
    */
   @Override
   public void actionPerformed (ActionEvent e){
+    if (time == 0 && fromWhere != 1)
+      sprite.setVisible (false);
+    time ++;
+    if (time == 400 && fromWhere != 1){
+      remove (card);
+      sprite.setVisible (true);
+    }
     if (x < 0){
       x = 0;
       dx = 0;

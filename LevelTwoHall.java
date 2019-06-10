@@ -75,11 +75,22 @@ public class LevelTwoHall extends LevelFramework {
       dx = 0;
       x =0;
     }
+    if (dy == -2 && y < -320) {
+      dy = 2;
+      y = -320;
+    }
+    if (dy == 2 && y > 0) {
+      dy = 0;
+      y = -120;
+      dx = 0;
+    }
     
     if (friendX < 2040 && fromWhere != 1 && fromWhere != 3)
       friendX += 3;
     if (friendX < 3440 && fromWhere == 1 || fromWhere == 3)
       friendX += 3;
+    if (friendX > 3440)
+      friendX = 3440;
     
     x += dx;
     y += dy;
@@ -94,6 +105,10 @@ public class LevelTwoHall extends LevelFramework {
     }
     if (c == KeyEvent.VK_RIGHT || c == KeyEvent.VK_D){
       dx = 3;
+    }
+    if ((c == KeyEvent.VK_UP || c == KeyEvent.VK_W) && y == -120) {
+      dy = -2;
+      update();
     }
     if (fromWhere != 3){
       if (c == KeyEvent.VK_E && x >= 0 && x <= 150){
@@ -115,8 +130,16 @@ public class LevelTwoHall extends LevelFramework {
   
   @Override
   public void keyReleased (KeyEvent e){
-    if (dy == 0)
-      dx = 0;
+    int c = e.getKeyCode();
+    if (c != KeyEvent.VK_E) {
+      if (dy == -2 || dy == 2) {
+        if (dx == -3)
+          dx = -3;
+        else if (dx == 3)
+          dx = 3;
+      } else
+        dx = 0;
+    }
   }
   
   @Override

@@ -54,6 +54,7 @@ public class HelpingAlex extends LevelFramework {
     time = 0;
     lastBreath = -800;
     speech = false;
+    inYard = false;
     
     x = 170;
     y = -40;

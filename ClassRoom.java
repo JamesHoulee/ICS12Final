@@ -52,8 +52,6 @@ public abstract class ClassRoom extends LevelFramework {
     layout.putConstraint(layout.SOUTH, sprite, y, layout.SOUTH, this);
     add(sprite);
 
-    add(teacherSprite);
-
     update();
   }
 

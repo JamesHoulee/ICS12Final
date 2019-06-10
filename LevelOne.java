@@ -86,6 +86,8 @@ public class LevelOne extends LevelFramework {
   private Images eighthText;
   private Images ninthText;
   private Images tenthText;
+  
+  private Images card;
 
   private int animationNum;
   private boolean check1;
@@ -176,6 +178,10 @@ public class LevelOne extends LevelFramework {
      */
     tenthText = new Images("LevelOneJ.png", 280, 145);
 
+    sprite.setVisible (false);
+    card = new Images ("introduction.png", 1000, 750);
+    add (card);
+    
     super.x = x;
     super.y = y;
     animationNum = animationNumber;
@@ -284,7 +290,12 @@ public class LevelOne extends LevelFramework {
    * @param e is an object of the ActionEvent class
    */
   public void actionPerformed(ActionEvent e) {
-
+    time ++;
+    
+    if (time == 400){
+      remove (card);
+      sprite.setVisible (true);
+    }
     // stops player from leaving boundries
     if (x < 0) {
       dx = 0;

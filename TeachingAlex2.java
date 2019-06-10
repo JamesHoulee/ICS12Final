@@ -97,6 +97,30 @@ public class TeachingAlex2 extends LevelFramework {
       if (dy == 0)
         y = -40;
     }
+    //first step
+    if (x >= 300 && x <= 370 && y <= -80){
+      if (y < -280){
+        y = -280;
+        dy = 2;
+      }
+      if (y > -80){
+        y = -80;
+        dy = 0;
+      }
+      if (dy == 0)
+        y = -80;
+    }
+    //top platform
+    if (x >= 370){
+      if (y < -320){
+        dy = 2;
+        y = -320;
+      }
+      if (y > -120){
+        dy = 0;
+        y = -120;
+      }
+    }
     update ();
   }
   
