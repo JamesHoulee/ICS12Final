@@ -2,7 +2,8 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 /**
- * 
+ * @author James Houle and JuanDiego Castano 
+ * @version 1 ___ 
  */
 public class Main extends JPanel {
   
