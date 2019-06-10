@@ -30,7 +30,7 @@ public class PlayScreen extends JPanel {
     button2 = new LevelButtons(250,150,"Level Two ",5); 
     button3 = new LevelButtons (250,150, "Level Three",6); 
     backButton = new MenuButton (135,40); 
-    // background = new Images ()
+    //background = new Images ()
     layout.putConstraint (layout.WEST, button, 375, layout.WEST, this); 
     layout.putConstraint (layout.NORTH, button, 100 , layout.NORTH, this);
     add (button);
