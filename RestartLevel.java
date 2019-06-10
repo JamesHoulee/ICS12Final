@@ -13,6 +13,7 @@ public class RestartLevel extends JDialog implements ActionListener {
   
   private JTextField message;
   private JButton close;
+  private SpringLayout layout;
   
   /**
    * @param level represents what level is being restarted. When level = 2, LevelTwo is being restarted. When level = 3,
@@ -24,6 +25,9 @@ public class RestartLevel extends JDialog implements ActionListener {
     setSize (300,100);
     setVisible (true);
     setDefaultCloseOperation (JDialog.DISPOSE_ON_CLOSE);
+    
+    layout = new SpringLayout ();
+    setLayout (layout);
     
     if (level == 2){
       message = new JTextField ("You had an anxiety attack! You will restart from the beginning of level two!");
@@ -38,7 +42,11 @@ public class RestartLevel extends JDialog implements ActionListener {
     add (message);
     
     close = new JButton ("Ok");
+    
+    layout.putConstraint (layout.WEST, close, 150, layout.WEST, this);
+    layout.putConstraint (layout.NORTH, close, 20, layout.NORTH, this);
     add (close);
+    close.addActionListener (this);
     setSize (301,100);
   }
   

@@ -176,6 +176,18 @@ public class HelpingAlex extends LevelFramework {
       }
     }
     else if (inYard == true && speech == false){
+      if (x < 0){
+        x = 0;
+        dx = 0;
+      }
+      if (x > 550 && time < 4600){
+        x = 550;
+        dx = 0;
+      }
+      if (x > 550 && time > 4600){
+        timer.stop ();
+        menuButton.setPath (12);
+      }
       x += dx;
       y += dy;
     }
