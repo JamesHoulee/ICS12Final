@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20160913-225446">
+  <project autorefresh="false" build="" main="AnxiousAlex" manifest="" root="" work="">
+    <createjar file="TheAnxiousLifeOfAlexJo" flags="5"/>
+    <source>
+      <file active="true" name="Test.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="AlexRoom.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="AnxietyBar.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="AnxiousAlex.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="ClassRoom.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="CustomButton.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="EnglishClass.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="HelpingAlex.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Images.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="IncompleteLevel.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="InfoButton.java" package="" timestamp="28-May-2019 14:54:03">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="InformationScreen.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Inventory.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="LevelButtons.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="LevelFramework.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="LevelOne.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="LevelTwoHall.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="LevelTwoOutside.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Main.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="MathClass.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="MenuButton.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="NextInfoButton.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="PlayButton.java" package="" timestamp="30-May-2019 10:59:39">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="PlayScreen.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="QuitButton.java" package="" timestamp="28-May-2019 14:57:26">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="RestartLevel.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="TeachingAlex.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="TeachingAlex2.java" package="" timestamp="10-Jun-2019 09:21:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>
