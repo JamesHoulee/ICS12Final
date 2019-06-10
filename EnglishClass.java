@@ -84,6 +84,10 @@ public class EnglishClass extends ClassRoom implements ActionListener{
       y += dy;
     }
     else if (x >= 750 && level == 3){
+      remove (sprite);
+      sprite = new Images ("AlexSmileRev.png",200,200);
+      add (sprite);
+      update ();
       time ++;
       speech[0].setVisible (true);
       if (time % 75 == 0)

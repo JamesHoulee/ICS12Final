@@ -82,13 +82,14 @@ public class LevelTwoOutside extends LevelFramework {
     setFocusTraversalKeysEnabled(false);
     //End of source code
     
-    card = new Images ("theStruggle.png", 1000, 750);
-    add (card);
-    
     y = -40;
     if (fromWhere != 1){
       x = 0;
       anxietyCheck = false;
+      
+      card = new Images ("theStruggle.png", 1000, 750);
+      add (card);
+      sprite.setVisible (false);
       
       //applies the constraints for the first text bubble and adds it to the JPanel
       layout.putConstraint (layout.WEST, firstText, -70, layout.EAST, brotherSprite);
@@ -139,8 +140,9 @@ public class LevelTwoOutside extends LevelFramework {
    */
   @Override
   public void actionPerformed (ActionEvent e){
-    if (time == 0 && fromWhere != 1)
-      sprite.setVisible (false);
+    if (fromWhere == 1){
+      sprite.setVisible (true);
+    }
     time ++;
     if (time == 400 && fromWhere != 1){
       remove (card);

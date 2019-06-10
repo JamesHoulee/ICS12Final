@@ -119,7 +119,7 @@ public class TeachingAlex extends LevelFramework {
     if (time == 3200){
       remove (fourthText);
     }
-    if (time > 0) { //3200 ///////////////////////////d
+    if (time > 3200) {
       if (x < 0){
       x = 0;
       dx = 0;

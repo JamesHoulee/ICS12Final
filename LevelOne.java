@@ -291,7 +291,10 @@ public class LevelOne extends LevelFramework {
    */
   public void actionPerformed(ActionEvent e) {
     time ++;
-    
+    if (animationNum == 2){
+      remove (card);
+      sprite.setVisible (true);
+    }
     if (time == 400){
       remove (card);
       sprite.setVisible (true);

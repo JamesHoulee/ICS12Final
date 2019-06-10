@@ -108,8 +108,6 @@ public class AnxiousAlex {
    */
   public AnxiousAlex (){
     
-    EnglishClass.completeLevel (); ///////REMOVE THIS
-    
     mainMenu = new Main ();
     
     Inventory.setPencilCase (false);
